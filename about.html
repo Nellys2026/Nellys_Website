@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth" data-theme="dark">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Nellys Tech Pvt. Ltd.</title>
-  <meta name="description"
-    content="Nellys Tech Pvt. Ltd. (Thiruvananthapuram, Kerala) — Purpose, made practical. Comprehensive enterprise growth infrastructure unified under one expert partner.">
+  <title>About Us — Nellys Tech PVT. LTD. | Enterprise Technology & Digital Branding</title>
+  <meta name="description" content="Learn about Nellys Tech Private Limited (Kowdiar, Thiruvananthapuram). Our purpose, vision, mission, six promises, and unified enterprise growth infrastructure.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <!-- Tailwind CSS -->
+  
+  <!-- Tailwind CSS (Local bundle with CDN fallback) -->
   <script src="tailwind.cdn.js"></script>
   <script>
     if (!window.tailwind) {
@@ -31,1025 +30,833 @@
     }
   </script>
 </head>
-
 <body class="min-h-screen flex flex-col antialiased">
 
-  <body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement-bar border-b text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center flex-wrap">
+      <span class="top-announcement-badge font-bold px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider shrink-0">Company Profile</span>
+      <span class="font-medium">Technology that runs your business. Visibility that grows it.</span>
+      <a href="contact.html" class="font-semibold hover:underline flex items-center gap-1 shrink-0">
+        Contact Kowdiar Office &rarr;
+      </a>
+    </div>
+  </div>
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="top-announcement-bar border-b text-xs py-2 px-4">
-      <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center flex-wrap">
-        <span
-          class="top-announcement-badge font-bold px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider shrink-0">Corporate
-          Profile</span>
-        <span class="font-medium">Nellys Technologies: STPI Registered & ISO 27001 Certified Enterprise Firm.</span>
-        <button onclick="openModal('inquiry-modal')"
-          class="font-semibold hover:underline flex items-center gap-1 shrink-0">
-          Inquire &rarr;
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-[#0B0F19]/90 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- LOGO & BRAND NAME -->
+      <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+        <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto group-hover:scale-105 transition-transform">
+        <div class="flex flex-col">
+          <span class="text-lg font-bold tracking-tight text-white leading-none">
+            Nellys <span class="text-cyan-400">Tech</span>
+          </span>
+          <span class="text-[9px] text-cyan-400 tracking-wider font-bold uppercase mt-0.5">PVT. LTD.</span>
+        </div>
+      </a>
+
+      <!-- DESKTOP NAV LINKS -->
+      <nav class="hidden xl:flex items-center space-x-6 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="about.html" class="nav-link active hover:text-white transition-colors">About Us</a>
+        <a href="services.html" class="nav-link hover:text-white transition-colors">Services (20)</a>
+        <a href="portfolio.html" class="nav-link hover:text-white transition-colors">Portfolio</a>
+        <a href="leadership.html" class="nav-link hover:text-white transition-colors">Leadership</a>
+        <a href="coworking.html" class="nav-link hover:text-white transition-colors">Co-Working</a>
+        <a href="associates.html" class="nav-link hover:text-white transition-colors">Partners</a>
+        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+        <a href="login.html" class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors">Dashboard</a>
+      </nav>
+
+      <!-- RIGHT ACTIONS -->
+      <div class="hidden sm:flex items-center gap-3 shrink-0">
+        <!-- SINGLE ICON THEME TOGGLE BUTTON -->
+        <button class="theme-toggle-btn w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center justify-center transition-all hover:scale-105" title="Toggle Theme">
+          <i class="fas fa-sun text-amber-400 text-sm"></i>
         </button>
-        <span
-          class="top-announcement-badge font-bold px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider shrink-0">Company
-          Profile</span>
-        <span class="font-medium">Technology that runs your business. Visibility that grows it.</span>
-        <a href="contact.html" class="font-semibold hover:underline flex items-center gap-1 shrink-0">
-          Contact Kowdiar Office &rarr;
-        </a>
+        <!-- CTA Button -->
+        <button onclick="openModal('inquiry-modal')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow-md shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
+          Get in Touch
+        </button>
+      </div>
+
+      <!-- MOBILE MENU BUTTON -->
+      <div class="flex xl:hidden items-center gap-2">
+        <button class="theme-toggle-btn w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center" title="Toggle Theme">
+          <i class="fas fa-sun text-amber-400 text-xs"></i>
+        </button>
+        <button id="mobile-menu-btn" class="p-2 text-slate-300 hover:text-white focus:outline-none">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
       </div>
     </div>
+  </header>
 
-    <!-- NAVIGATION BAR -->
-    <header class="sticky top-0 z-40 bg-[#0B0F19]/90 backdrop-blur-md border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-
-        <!-- LOGO & BRAND NAME -->
-        <a href="index.html" class="flex items-center gap-3 shrink-0 group">
-          <div
-            class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-indigo-600 p-0.5 shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-            <div class="w-full h-full bg-[#0B0F19] rounded-[7px] flex items-center justify-center">
-              <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div class="h-9 w-auto flex items-center">
-              <svg class="h-9 w-auto rounded-lg shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform"
-                viewBox="0 0 102 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="badgeGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#0284C7" />
-                    <stop offset="100%" stop-color="#0369A1" />
-                  </linearGradient>
-                  <linearGradient id="cyanGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#38BDF8" />
-                    <stop offset="100%" stop-color="#00BAFF" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M 14.841,0.000 L 86.926,0.000 C 95.123,0.000 101.767,6.645 101.767,14.841 L 101.767,52.701 C 101.767,60.898 95.123,67.542 86.926,67.542 L 14.841,67.542 C 6.644,67.542 0.000,60.898 0.000,52.701 L 0.000,14.841 C 0.000,6.645 6.644,0.000 14.841,0.000 Z"
-                  fill="url(#badgeGradNav)" />
-                <path
-                  d="M 16.961,19.081 C 24.654,16.597 31.681,14.780 36.224,15.083 C 41.676,15.083 43.796,17.869 45.735,22.352 L 55.851,42.100 L 52.701,51.247 C 52.216,52.701 51.126,53.185 50.338,51.792 L 39.798,29.379 L 33.680,52.216 L 24.715,52.216 L 32.832,25.199 C 34.346,20.293 32.226,19.444 29.682,19.505 Z"
-                  fill="url(#cyanGradNav)" />
-                <path
-                  d="M 51.913,21.989 C 54.154,16.658 55.608,15.265 59.364,15.265 L 83.776,15.265 L 82.019,18.597 C 80.808,21.020 79.112,22.050 76.931,22.050 Z"
-                  fill="#FFFFFF" />
-                <path d="M 48.582,23.564 L 61.121,23.564 L 56.033,38.769 Z" fill="#FFFFFF" />
-                <path
-                  d="M 64.029,23.564 L 74.145,23.564 L 66.573,48.885 C 65.907,51.247 64.938,52.338 62.878,52.338 L 54.761,52.338 Z"
-                  fill="url(#cyanGradNav)" />
-              </svg>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-lg font-bold tracking-tight text-white leading-none">
-                NELLYS <span class="text-cyan-400">TECH</span>
-                Nellys <span class="text-cyan-400">Tech</span>
-              </span>
-              <span class="text-[9px] text-slate-400 tracking-wider uppercase font-semibold mt-0.5">Nellys Technologies
-                Pvt. Ltd.</span>
-              <span class="text-[9px] text-cyan-400 tracking-widest uppercase font-bold mt-0.5">PVT. LTD.</span>
-            </div>
-        </a>
-
-        <!-- DESKTOP NAV LINKS -->
-        <nav class="hidden xl:flex items-center space-x-6 text-sm font-medium text-slate-300">
-          <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
-          <a href="about.html" class="nav-link active hover:text-white transition-colors">About Us</a>
-          <a href="services.html" class="nav-link hover:text-white transition-colors">Services</a>
-          <a href="services.html" class="nav-link hover:text-white transition-colors">Services (20)</a>
-          <a href="portfolio.html" class="nav-link hover:text-white transition-colors">Portfolio</a>
-          <a href="leadership.html" class="nav-link hover:text-white transition-colors">Leadership</a>
-          <a href="coworking.html" class="nav-link hover:text-white transition-colors">Co-Working</a>
-          <a href="associates.html" class="nav-link hover:text-white transition-colors">Partners</a>
-          <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
-          <a href="login.html"
-            class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors">Dashboard</a>
-        </nav>
-
-        <!-- RIGHT ACTIONS -->
-        <div class="hidden sm:flex items-center gap-3 shrink-0">
-          <!-- SINGLE ICON THEME TOGGLE BUTTON -->
-          <button
-            class="theme-toggle-btn w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center justify-center transition-all hover:scale-105"
-            title="Toggle Theme">
-            <i class="fas fa-sun text-amber-400 text-sm"></i>
-          </button>
-          <!-- CTA Button -->
-          <button onclick="openModal('inquiry-modal')"
-            class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow-md shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
-            Inquire Now
-          </button>
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="fixed inset-y-0 right-0 z-50 w-72 bg-[#0B0F19] border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-7 w-auto">
+          <span class="font-extrabold text-white text-base">Nellys <span class="text-cyan-400">Tech</span></span>
         </div>
-
-        <!-- MOBILE MENU BUTTON -->
-        <div class="flex xl:hidden items-center gap-2">
-          <button
-            class="theme-toggle-btn w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center"
-            title="Toggle Theme">
-            <i class="fas fa-sun text-amber-400 text-xs"></i>
-          </button>
-          <button id="mobile-menu-btn" class="p-2 text-slate-300 hover:text-white focus:outline-none">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-        </div>
+        <button id="close-drawer-btn" class="text-slate-400 hover:text-white text-xl">
+          <i class="fas fa-xmark"></i>
+        </button>
       </div>
-    </header>
-
-    <!-- MOBILE DRAWER -->
-    <div id="mobile-drawer"
-      class="fixed inset-y-0 right-0 z-50 w-72 bg-[#0B0F19] border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-between pb-6 border-b border-slate-800">
-          <span class="font-extrabold text-white text-lg">NELLYS <span class="text-cyan-400">TECH</span></span>
-          <div class="flex items-center gap-2">
-            <img src="nellys-logo.svg" alt="Nellys Tech" class="h-7 w-auto">
-            <span class="font-extrabold text-white text-lg">Nellys <span class="text-cyan-400">Tech</span></span>
-          </div>
-          <button id="close-drawer-btn" class="text-slate-400 hover:text-white text-xl">
-            <i class="fas fa-xmark"></i>
-          </button>
-        </div>
-        <nav class="mt-6 flex flex-col space-y-4 font-medium text-slate-300">
-          <a href="index.html">Home</a>
-          <a href="about.html" class="text-cyan-400 font-bold">About Us</a>
-          <a href="services.html">Services</a>
-          <a href="portfolio.html">Portfolio & Recognitions</a>
-          <a href="services.html">Services (20 Capabilities)</a>
-          <a href="portfolio.html">Portfolio & Recognition</a>
-          <a href="leadership.html">Leadership & Team</a>
-          <a href="coworking.html">Co-Working Lease</a>
-          <a href="associates.html">Associate Firms</a>
-          <a href="contact.html">Contact Us</a>
-        </nav>
-      </div>
+      <nav class="mt-6 flex flex-col space-y-4 font-medium text-slate-300">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="text-cyan-400 font-bold">About Us</a>
+        <a href="services.html">Services (20)</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="leadership.html">Leadership</a>
+        <a href="coworking.html">Co-Working Lease</a>
+        <a href="associates.html">Partners</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="login.html">Dashboard Login</a>
+      </nav>
     </div>
+  </div>
 
-    <main class="flex-grow">
+  <main class="flex-grow">
+    
+    <!-- PAGE HERO: PURPOSE, MADE PRACTICAL -->
+    <section class="py-16 sm:py-24 border-b border-slate-800/80 relative overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-emerald-500/10 blur-3xl pointer-events-none"></div>
 
-      <!-- PAGE HERO (SPLIT LAYOUT WITH AMBIENT GLOW & CORPORATE SNAPSHOT CARD) -->
-      <!-- PAGE HERO -->
-      <section class="py-16 sm:py-24 border-b border-slate-800/80 relative overflow-hidden">
-        <!-- Background Glow -->
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-transparent blur-3xl pointer-events-none">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6 max-w-4xl">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+          <i class="fas fa-shield-halved text-cyan-400"></i> Corporate Profile & Identity
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Purpose, Made Practical.<br>
+          <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">One Partner. Every Possibility.</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+          Most businesses do not need another software vendor or another creative agency. They need one accountable, battle-tested partner that understands how <strong class="text-white">engineering runs the business</strong> and <strong class="text-white">visibility grows it</strong>.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <button onclick="openModal('inquiry-modal')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-cyan-500/20 text-xs uppercase tracking-wider transition-all transform hover:-translate-y-0.5">
+            Schedule Strategy Call &rarr;
+          </button>
+          <a href="services.html" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold px-7 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors">
+            Explore 20 Services
+          </a>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div class="grid lg:grid-cols-12 gap-12 items-center">
-
-            <!-- LEFT HERO CONTENT -->
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <span
-                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider">
-                <i class="fas fa-shield-halved text-cyan-400"></i> Corporate Identity & Heritage
-                <i class="fas fa-landmark text-cyan-400"></i> Corporate Profile &bull; 2026
-              </span>
-
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                About <span class="text-gradient">Nellys Technologies</span>
-                One Partner. <br class="hidden sm:inline">
-                <span class="text-gradient">Every Possibility.</span>
-              </h1>
-
-              <div
-                class="p-4 rounded-xl bg-slate-900/60 border border-cyan-500/20 text-cyan-400 font-serif italic text-lg sm:text-xl max-w-xl mx-auto lg:mx-0">
-                "Engineering Tomorrow's Intelligent Tech Ecosystems"
-                <div
-                  class="p-4 rounded-xl bg-slate-900/60 border border-cyan-500/20 text-cyan-300 font-serif italic text-lg sm:text-xl max-w-xl mx-auto lg:mx-0">
-                  "Technology that runs your business. Visibility that grows it."
-                </div>
-
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  Nellys Technologies Pvt. Ltd. is an established technology enterprise dedicated to high-performance
-                  software engineering, enterprise AI integration, cloud modernization, and state-of-the-art co-working
-                  lease facilities.
-                  Every business needs systems that work and people who know it exists. Most companies hire one vendor
-                  for the former and another for the latter, then spend their time getting the two to cooperate.
-                </p>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  At Nellys Tech, one team does both. Our software engineers, cloud and security experts work alongside
-                  our brand, content and marketing specialists. We plan together and work together, right here in
-                  Thiruvananthapuram.
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                  <a href="portfolio.html"
-                    class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-cyan-500/20 text-center text-xs uppercase tracking-wider">
-                    View Approvals & Portfolio &rarr;
-                    <a href="services.html"
-                      class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-cyan-500/20 text-center text-xs uppercase tracking-wider">
-                      Explore Our 20 Services &rarr;
-                    </a>
-                    <button onclick="openModal('inquiry-modal')"
-                      class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold px-7 py-3.5 rounded-xl text-center text-xs uppercase tracking-wider">
-                      Contact Board
-                    </button>
-                    <a href="contact.html"
-                      class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold px-7 py-3.5 rounded-xl text-center text-xs uppercase tracking-wider">
-                      Contact Office
-                    </a>
-                </div>
-              </div>
-
-              <!-- RIGHT HERO SNAPSHOT CARD -->
-              <!-- RIGHT HERO CORPORATE CARD -->
-              <div class="lg:col-span-5">
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30 shadow-2xl relative space-y-5">
-                  <div class="flex justify-between items-center pb-4 border-b border-slate-800">
-                    <span class="text-xs font-mono font-bold text-slate-400 uppercase">Enterprise Snapshot</span>
-                    <span
-                      class="px-2.5 py-1 bg-emerald-950 text-emerald-400 text-[10px] font-bold rounded-full border border-emerald-500/30">STPI
-                      & MeitY Approved</span>
-                    <span class="text-xs font-mono font-bold text-slate-400 uppercase">Registered Corporate
-                      Details</span>
-                    <span
-                      class="px-2.5 py-1 bg-cyan-950 text-cyan-400 text-[10px] font-bold rounded-full border border-cyan-500/30">Nellys
-                      Tech</span>
-                  </div>
-
-                  <div class="space-y-3.5 text-xs">
-                    <div class="flex items-start gap-3 p-3 bg-slate-900/90 rounded-xl border border-slate-800">
-                      <div
-                        class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-sm font-bold shrink-0">
-                        🇮🇳
-                      </div>
-                      <div>
-                        <span class="text-[10px] font-bold text-cyan-400 uppercase tracking-wider block">India
-                          Jurisdiction</span>
-                        <strong class="text-white text-sm">Software Technology Parks of India (STPI)</strong>
-                        <p class="text-slate-400 text-[11px] mt-0.5">Approved 100% Export Unit in Sector 62 Cyber Hub.
-                        </p>
-                      </div>
-                      <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1">
-                        <span class="text-[10px] font-bold text-cyan-400 uppercase tracking-wider block">Official
-                          Corporate Name</span>
-                        <strong class="text-white text-sm block">Nellys Tech Private Limited</strong>
-                        <p class="text-slate-400 text-[11px]">Nellys Tech PVT. LTD.</p>
-                      </div>
-
-                      <div class="flex items-start gap-3 p-3 bg-slate-900/90 rounded-xl border border-slate-800">
-                        <div
-                          class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm font-bold shrink-0">
-                          🇦🇪
-                        </div>
-                        <div>
-                          <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block">Abroad
-                            Jurisdiction</span>
-                          <strong class="text-white text-sm">UAE Cyber Security Council Accredited</strong>
-                          <p class="text-slate-400 text-[11px] mt-0.5">Government vendor clearance for GCC FinTech &
-                            Cloud.</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1">
-                          <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block">Registered
-                            Office</span>
-                          <p class="text-slate-200 text-xs">J-1A, TC 9/479(1) 23/2773, Jawahar Nagar, Kowdiar,
-                            Thiruvananthapuram, Kerala 695003</p>
-                        </div>
-
-                        <div class="flex items-start gap-3 p-3 bg-slate-900/90 rounded-xl border border-slate-800">
-                          <div
-                            class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm shrink-0">
-                            <i class="fas fa-certificate"></i>
-                          </div>
-                          <div>
-                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block">Security
-                              Standard</span>
-                            <strong class="text-white text-sm">ISO 27001:2022 & ISO 9001 Certified</strong>
-                            <p class="text-slate-400 text-[11px] mt-0.5">Information Security Management Systems
-                              audited.</p>
-                          </div>
-                          <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1">
-                            <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">Direct
-                              Communication</span>
-                            <p class="text-slate-300"><strong>Phone:</strong> 0471 - 270004</p>
-                            <p class="text-slate-300"><strong>Email:</strong> nellystechai@gmail.com</p>
-                            <p class="text-slate-300"><strong>Web:</strong> nellystech.in</p>
-                          </div>
-                        </div>
-
-                        <div class="pt-2 text-center">
-                          <span class="text-[11px] text-slate-400">Official Registration Number:
-                            <strong>STPI-ND-2024-889</strong></span>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <!-- QUICK CORPORATE STATS BAR -->
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-slate-800/80">
-                    <div class="stat-box p-5 rounded-2xl text-center space-y-1">
-                      <span class="text-3xl font-extrabold text-cyan-400">10+ Yrs</span>
-                      <p class="text-xs font-medium text-slate-400">Engineering Excellence</p>
-                    </div>
-                    <div class="stat-box p-5 rounded-2xl text-center space-y-1">
-                      <span class="text-3xl font-extrabold text-emerald-400">2 Global HQs</span>
-                      <p class="text-xs font-medium text-slate-400">India & Dubai Internet City</p>
-                    </div>
-                    <div class="stat-box p-5 rounded-2xl text-center space-y-1">
-                      <span class="text-3xl font-extrabold text-indigo-400">120+</span>
-                      <p class="text-xs font-medium text-slate-400">Enterprise Clients</p>
-                    </div>
-                    <div class="stat-box p-5 rounded-2xl text-center space-y-1">
-                      <span class="text-3xl font-extrabold text-amber-400">500+ Desks</span>
-                      <p class="text-xs font-medium text-slate-400">Sector 62 Co-Working Hub</p>
-                    </div>
-                  </div>
-
-                </div>
-      </section>
-
-      <!-- ORGANISATION INFORMATION CARD GRID -->
-      <!-- VISION & MISSION ("Purpose, made practical." - Page 6) -->
-      <section class="py-20 border-b border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span
-              class="px-3 py-1 bg-cyan-950 text-cyan-400 text-xs font-bold rounded-full border border-cyan-500/30 uppercase tracking-wider">
-              Official Overview
-              Vision & Mission
-            </span>
-            <h2 class="text-3xl font-extrabold">Organisation Information</h2>
-            <p class="text-slate-400 text-sm">Official corporate details, registered entities, and international offices
-            </p>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Purpose, made practical.</h2>
-            <p class="text-slate-400 text-sm">Clear direction and grounded commitments driving everything we engineer.
-            </p>
+        <!-- QUICK CAPABILITY STATS -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 border-t border-slate-800/80 mt-12 text-left">
+          <div class="p-5 bg-slate-900/60 rounded-2xl border border-slate-800 space-y-1">
+            <span class="text-3xl font-extrabold text-cyan-400">20</span>
+            <p class="text-xs text-slate-300 font-medium">Unified Capabilities</p>
+            <p class="text-[11px] text-slate-400">10 Branding + 10 IT Solutions</p>
           </div>
-
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="grid lg:grid-cols-12 gap-8 items-stretch mb-12">
-
-              <!-- CARD 1: OFFICIAL NAME -->
-              <div
-                class="glass-panel p-8 rounded-3xl border border-cyan-500/30 space-y-4 hover:border-cyan-500/60 transition-all">
-                <div class="flex justify-between items-start">
-                  <div
-                    class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
-                    <i class="fas fa-building font-bold"></i>
-                  </div>
-                  <span
-                    class="px-2.5 py-1 bg-cyan-950 text-cyan-400 text-[10px] font-bold rounded-md border border-cyan-500/30">REGISTERED</span>
-                  <!-- VISION CARD -->
-                  <div
-                    class="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-cyan-500/40 glow-cyan flex flex-col justify-between">
-                    <div class="space-y-4">
-                      <span
-                        class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest bg-cyan-950 px-3 py-1 rounded-full border border-cyan-500/30">Our
-                        Vision</span>
-                      <h3 class="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-                        To be the trusted single partner that helps ambitious organisations build strong technology and
-                        a respected, visible brand.
-                      </h3>
-                    </div>
-                    <div>
-                      <h3 class="text-xl font-bold">Firm Official Name</h3>
-                      <p class="text-sm text-cyan-400 font-semibold mt-1">Nellys Technologies Pvt. Ltd.</p>
-                      <div class="pt-6 border-t border-slate-800">
-                        <p class="text-xs text-slate-400">One partner knowing your business inside out.</p>
-                      </div>
-                      <p class="text-xs text-slate-300 leading-relaxed">
-                        Officially incorporated technology firm approved by Software Technology Parks of India (STPI)
-                        under Ministry of Electronics & IT.
-                      </p>
-                      <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-400 flex justify-between">
-                        <span>Status: <strong class="text-emerald-400">Active EOU Unit</strong></span>
-                        <span>CIN: <strong>U72900ND2016PTC</strong></span>
-                      </div>
-                    </div>
-
-                    <!-- CARD 2: HQ ADDRESS -->
-                    <div
-                      class="glass-panel p-8 rounded-3xl border border-indigo-500/30 space-y-4 hover:border-indigo-500/60 transition-all">
-                      <div class="flex justify-between items-start">
-                        <div
-                          class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
-                          <i class="fas fa-map-location-dot"></i>
-                          <!-- MISSION CARDS (4 PILLARS) -->
-                          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-
-                            <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                              <div
-                                class="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm">
-                                01
-                              </div>
-                              <span
-                                class="px-2.5 py-1 bg-indigo-950 text-indigo-400 text-[10px] font-bold rounded-md border border-indigo-500/30">DUBAI
-                                & INDIA</span>
-                              <h4 class="text-base font-bold text-white">Build technology that fits.</h4>
-                              <p class="text-xs text-slate-300 leading-relaxed">
-                                Reliable, secure and scalable solutions made for real business needs.
-                              </p>
-                            </div>
-                            <div>
-                              <h3 class="text-xl font-bold">Firm Headquarters</h3>
-                              <p class="text-xs text-indigo-400 font-semibold mt-1">Global Dual Operations Hub</p>
-                            </div>
-                            <div class="text-xs text-slate-300 space-y-2">
-                              <p><i class="fas fa-location-dot text-cyan-400 mr-2"></i> <strong>India HQ:</strong> Tech
-                                Hub Quarter, Cyber Heights, Sector 62, India</p>
-                              <p><i class="fas fa-globe text-indigo-400 mr-2"></i> <strong>Dubai Office:</strong>
-                                Building 4, Dubai Internet City, UAE</p>
-                            </div>
-                            <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-400 flex justify-between">
-                              <span>Timezones: <strong>IST & GST (UTC+4)</strong></span>
-                              <span class="text-indigo-400 font-semibold">24/7 Operations</span>
-                            </div>
-                          </div>
-
-                          <!-- CARD 3: CONTACTS -->
-                          <div
-                            class="glass-panel p-8 rounded-3xl border border-emerald-500/30 space-y-4 hover:border-emerald-500/60 transition-all">
-                            <div class="flex justify-between items-start">
-                              <div
-                                class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
-                                <i class="fas fa-envelope-open-text"></i>
-                                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                                  <div
-                                    class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-sm">
-                                    02
-                                  </div>
-                                  <span
-                                    class="px-2.5 py-1 bg-emerald-950 text-emerald-400 text-[10px] font-bold rounded-md border border-emerald-500/30">DIRECT
-                                    CHANNELS</span>
-                                </div>
-                                <div>
-                                  <h3 class="text-xl font-bold">Email & Phone Contacts</h3>
-                                  <p class="text-xs text-emerald-400 font-semibold mt-1">Official Inquiry Desks</p>
-                                </div>
-                                <div class="text-xs text-slate-300 space-y-2">
-                                  <p><i class="fas fa-envelope text-cyan-400 mr-2"></i> <strong>Official Email:</strong>
-                                    contact@nellystech.com</p>
-                                  <p><i class="fas fa-phone text-emerald-400 mr-2"></i> <strong>Phone (IN):</strong> +91
-                                    (011) 4890-8800</p>
-                                  <p><i class="fas fa-phone text-indigo-400 mr-2"></i> <strong>Phone (UAE):</strong>
-                                    +971 4 390 1111</p>
-                                </div>
-                                <div
-                                  class="pt-3 border-t border-slate-800 text-[11px] text-slate-400 flex justify-between">
-                                  <span>Response Time: <strong>&lt; 2 Hours</strong></span>
-                                  <span class="text-emerald-400 font-semibold">Verified Channel</span>
-                                </div>
-                              </div>
-
-                            </div>
-
-                          </div>
-      </section>
-
-      <!-- CORE OBJECTIVES, AIM, VISION & MISSION -->
-      <section class="py-20 border-b border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span
-              class="px-3 py-1 bg-indigo-950 text-indigo-400 text-xs font-bold rounded-full border border-indigo-500/30 uppercase tracking-wider">
-              Strategic Roadmap
-            </span>
-            <h2 class="text-3xl font-extrabold">Aim, Vision, Mission & Core Objectives</h2>
-            <p class="text-slate-400 text-sm">The foundational pillars guiding Nellys Technologies worldwide</p>
+          <div class="p-5 bg-slate-900/60 rounded-2xl border border-slate-800 space-y-1">
+            <span class="text-3xl font-extrabold text-indigo-400">6</span>
+            <p class="text-xs text-slate-300 font-medium">Promises We Live By</p>
+            <p class="text-[11px] text-slate-400">Clarity, Craft & Reliability</p>
           </div>
+          <div class="p-5 bg-slate-900/60 rounded-2xl border border-slate-800 space-y-1">
+            <span class="text-3xl font-extrabold text-emerald-400">1</span>
+            <p class="text-xs text-slate-300 font-medium">Accountable Partner</p>
+            <p class="text-[11px] text-slate-400">Zero vendor finger-pointing</p>
+          </div>
+          <div class="p-5 bg-slate-900/60 rounded-2xl border border-slate-800 space-y-1">
+            <span class="text-3xl font-extrabold text-amber-400">100%</span>
+            <p class="text-xs text-slate-300 font-medium">Security by Default</p>
+            <p class="text-[11px] text-slate-400">Hardened from the first commit</p>
+          </div>
+        </div>
 
-          <div class="grid md:grid-cols-2 gap-8">
+      </div>
+    </section>
 
-            <!-- OBJECTIVES & AIM -->
-            <div class="glass-panel p-8 rounded-3xl border border-cyan-500/30 space-y-6">
-              <div>
-                <div class="flex items-center gap-3 mb-2">
-                  <div
-                    class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
-                    <i class="fas fa-bullseye"></i>
-                  </div>
-                  <h3 class="text-xl font-bold">1. Core Objectives</h3>
-                </div>
-                <p class="text-xs text-slate-300 leading-relaxed pl-13">
-                  To pioneer intelligent, scalable digital systems for enterprise modernization; to bridge hardware
-                  edge-computing with high-throughput cloud microservices; and to foster tech entrepreneurship through
-                  shared co-working workspace infrastructure.
-                <h4 class="text-base font-bold text-white">Help you be seen and trusted.</h4>
-                <p class="text-xs text-slate-300 leading-relaxed">
-                  The right people find you, understand you and believe in you online.
-                </p>
-              </div>
-
-              <div class="pt-6 border-t border-slate-800">
-                <div class="flex items-center gap-3 mb-2">
-                  <div
-                    class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
-                    <i class="fas fa-crosshairs"></i>
-                  </div>
-                  <h3 class="text-xl font-bold">2. Our Corporate Aim</h3>
-                  <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                    <div
-                      class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      03
-                    </div>
-                    <p class="text-xs text-slate-300 leading-relaxed pl-13">
-                      To become the premier engineering partner for Fortune 500 enterprises and hyper-growth startups
-                      across India, GCC markets, and international technology corridors.
-                    <h4 class="text-base font-bold text-white">Earn long-term relationships.</h4>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                      Through honest advice, clear communication and consistent delivery.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- VISION & MISSION -->
-                <div class="glass-panel p-8 rounded-3xl border border-indigo-500/30 space-y-6">
-                  <div>
-                    <div class="flex items-center gap-3 mb-2">
-                      <div
-                        class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
-                        <i class="fas fa-eye"></i>
-                      </div>
-                      <h3 class="text-xl font-bold">3. Vision Statement</h3>
-                      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                        <div
-                          class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm">
-                          04
-                        </div>
-                        <p class="text-xs text-slate-300 leading-relaxed pl-13">
-                          To create a hyper-connected, autonomous computing ecosystem where AI-driven software handles
-                          complex operational workflows seamlessly, securely, and sustainably.
-                        <h4 class="text-base font-bold text-white">Leave skills behind.</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed">
-                          We invest in our skills and yours, so capability stays in your business after the project
-                          ends.
-                        </p>
-                      </div>
-
-                      <div class="pt-6 border-t border-slate-800">
-                        <div class="flex items-center gap-3 mb-2">
-                          <div
-                            class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
-                            <i class="fas fa-paper-plane"></i>
-                          </div>
-                          <h3 class="text-xl font-bold">4. Mission Statement</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 leading-relaxed pl-13">
-                          Delivering zero-defect software engineering, robust IoT solutions, ISO-compliant data
-                          security, and collaborative workspace environments that catalyze technological breakthroughs.
-                        </p>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-      </section>
-
-      <!-- OPERATIONAL ACTIVITIES ROADMAP (ACTIVITIES NOW VS ACTIVITIES FUTURE) -->
-      <section class="py-20 border-b border-slate-800/60">
-        <!-- SIX PROMISES WE LIVE BY (Page 7) -->
-        <section class="py-20 bg-slate-950/40 border-b border-slate-800/60">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-              <span
-                class="px-3 py-1 bg-emerald-950 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/30 uppercase tracking-wider">
-                Operational Scope
-                <span
-                  class="px-3 py-1 bg-cyan-950 text-cyan-400 text-xs font-bold rounded-full border border-cyan-500/30 uppercase tracking-wider">
-                  Corporate Objectives
-                </span>
-                <h2 class="text-3xl font-extrabold">Activities Now vs. Activities Future</h2>
-                <p class="text-slate-400 text-sm">Where Nellys Technologies operates today, and where we are innovating
-                  for tomorrow</p>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Six promises we live by.</h2>
-                <p class="text-cyan-300 font-semibold text-sm">Built on clear promises.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-10">
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- ACTIVITIES NOW -->
-                <div class="glass-panel p-8 rounded-3xl border border-emerald-500/30 space-y-6">
-                  <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                    <div class="flex items-center gap-3">
-                      <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
-                      <h3 class="text-2xl font-bold">Activities Now</h3>
-                    </div>
-                    <span
-                      class="text-xs font-bold text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/30">ACTIVE
-                      OPERATIONS</span>
-                  </div>
-                  <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-2">
-                    <span class="text-xs font-mono font-bold text-cyan-400 uppercase">01 Promise</span>
-                    <h3 class="text-xl font-bold text-white">Clarity</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">Plain language, clear scope and no surprises in
-                      timelines or costs.</p>
-                  </div>
-
-                  <ul class="space-y-4 text-xs text-slate-300">
-                    <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                      <strong class="text-white text-sm block">1. Enterprise AI Automation & Custom LLMs</strong>
-                      Deploying enterprise RAG models, natural language automation, and real-time predictive analytics
-                      engines for financial & healthcare clients.
-                    </li>
-                    <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                      <strong class="text-white text-sm block">2. Cloud Microservices & Architecture
-                        Modernization</strong>
-                      Refactoring legacy codebases into resilient Kubernetes and serverless microservices with automated
-                      CI/CD pipelines.
-                    </li>
-                    <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                      <strong class="text-white text-sm block">3. Nellys Co-Working Hub & Lease Management</strong>
-                      Operating premium shared desks, private office cabins, and server rack leases for tech teams at
-                      Sector 62 Cyber Hub.
-                    </li>
-                    <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                      <strong class="text-white text-sm block">4. International Security & Compliance Audits</strong>
-                      Conducting ISO 27001 data protection and vulnerability assessments for cross-border software
-                      implementations.
-                    </li>
-                  </ul>
-                  <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-2">
-                    <span class="text-xs font-mono font-bold text-indigo-400 uppercase">02 Promise</span>
-                    <h3 class="text-xl font-bold text-white">Reliability</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">We do what we say, when we say it. If something
-                      changes, you hear it from us early.</p>
-                  </div>
-
-                  <!-- ACTIVITIES FUTURE -->
-                  <div class="glass-panel p-8 rounded-3xl border border-purple-500/30 space-y-6">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                      <div class="flex items-center gap-3">
-                        <span class="w-3 h-3 rounded-full bg-purple-400"></span>
-                        <h3 class="text-2xl font-bold">Activities Future</h3>
-                      </div>
-                      <span
-                        class="text-xs font-bold text-purple-400 bg-purple-950 px-3 py-1 rounded-full border border-purple-500/30">R&D
-                        HORIZON</span>
-                    </div>
-                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-2">
-                      <span class="text-xs font-mono font-bold text-emerald-400 uppercase">03 Promise</span>
-                      <h3 class="text-xl font-bold text-white">Security by default</h3>
-                      <p class="text-xs text-slate-300 leading-relaxed">Protection is built in from day one, not added
-                        at the end.</p>
-                    </div>
-
-                    <ul class="space-y-4 text-xs text-slate-300">
-                      <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                        <strong class="text-white text-sm block">1. Quantum-Resistant Encryption Protocols</strong>
-                        Investigating post-quantum cryptography algorithms to secure financial & defense cloud data
-                        against future decryption threats.
-                      </li>
-                      <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                        <strong class="text-white text-sm block">2. Autonomous Industrial Robotics Software (ROS
-                          2)</strong>
-                        Building low-latency middleware for autonomous warehouse robots and smart manufacturing supply
-                        chains.
-                      </li>
-                      <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                        <strong class="text-white text-sm block">3. CleanTech AI & Carbon Footprint
-                          Optimization</strong>
-                        Developing AI algorithms that automatically throttle server energy consumption and reduce cloud
-                        data center carbon footprints.
-                      </li>
-                      <li class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
-                        <strong class="text-white text-sm block">4. Global Tech Incubation Hub Expansion</strong>
-                        Launching Nellys Tech Incubator hubs across Middle-East and European tech corridors to back
-                        early-stage founders.
-                      </li>
-                    </ul>
-                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-2">
-                      <span class="text-xs font-mono font-bold text-amber-400 uppercase">04 Promise</span>
-                      <h3 class="text-xl font-bold text-white">Business first</h3>
-                      <p class="text-xs text-slate-300 leading-relaxed">Technology and marketing serve your goals, not
-                        the other way round.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-2">
-                      <span class="text-xs font-mono font-bold text-rose-400 uppercase">05 Promise</span>
-                      <h3 class="text-xl font-bold text-white">Craft</h3>
-                      <p class="text-xs text-slate-300 leading-relaxed">We care about the quality of every line of code,
-                        design, sentence of copy and second of sound.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-2">
-                      <span class="text-xs font-mono font-bold text-cyan-400 uppercase">06 Promise</span>
-                      <h3 class="text-xl font-bold text-white">Partnership</h3>
-                      <p class="text-xs text-slate-300 leading-relaxed">Your success is our reference. We act like part
-                        of your team.</p>
-                    </div>
-
-                  </div>
-
-                </div>
-        </section>
-
-        <!-- CORPORATE MILESTONES TIMELINE SECTION -->
-        <!-- WHY CHOOSE NELLYS TECH (The 7 Pillars from Page 31) -->
-        <section class="py-20 border-b border-slate-800/60">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-              <span
-                class="px-3 py-1 bg-amber-950 text-amber-400 text-xs font-bold rounded-full border border-amber-500/30 uppercase tracking-wider">
-                Evolution & History
-                <span
-                  class="px-3 py-1 bg-indigo-950 text-indigo-400 text-xs font-bold rounded-full border border-indigo-500/30 uppercase tracking-wider">
-                  Why Choose Nellys Tech
-                </span>
-                <h2 class="text-3xl font-extrabold">Corporate Growth Timeline</h2>
-                <p class="text-slate-400 text-sm">Key growth milestones achieved by Nellys Technologies Pvt. Ltd.</p>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">One team. Lasting value.</h2>
-                <p class="text-slate-400 text-sm">Seven core pillars underpinning our operational integrity.</p>
-            </div>
-
-            <div class="grid md:grid-cols-5 gap-4 text-center">
-              <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
-                <span class="text-cyan-400 font-extrabold text-xl block">2016</span>
-                <strong class="text-white text-xs block">Incubation</strong>
-                <p class="text-[11px] text-slate-400">Incorporation of Nellys Technologies in India.</p>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                  <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                    <span class="text-cyan-400 font-mono font-bold text-xs">01</span>
-                    <h3 class="text-lg font-bold text-white">Unified Growth architecture</h3>
-                    <p class="text-xs text-slate-300">Technology and Business growth together.</p>
-                  </div>
-                  <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
-                    <span class="text-emerald-400 font-extrabold text-xl block">2019</span>
-                    <strong class="text-white text-xs block">STPI Export Unit</strong>
-                    <p class="text-[11px] text-slate-400">Software Technology Park export unit approval.</p>
-
-                    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                      <span class="text-indigo-400 font-mono font-bold text-xs">02</span>
-                      <h3 class="text-lg font-bold text-white">Business-Objective Orientation</h3>
-                      <p class="text-xs text-slate-300">We start with your goals, not with tools.</p>
-                    </div>
-                    <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
-                      <span class="text-indigo-400 font-extrabold text-xl block">2022</span>
-                      <span class="text-white text-xs block font-bold">Dubai Expansion</span>
-                      <p class="text-[11px] text-slate-400">Opened Dubai Internet City global office.</p>
-
-                      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                        <span class="text-emerald-400 font-mono font-bold text-xs">03</span>
-                        <h3 class="text-lg font-bold text-white">Native Security Governance</h3>
-                        <p class="text-xs text-slate-300">Protection is part of how we build and run things.</p>
-                      </div>
-                      <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
-                        <span class="text-amber-400 font-extrabold text-xl block">2025</span>
-                        <strong class="text-white text-xs block">Sector 62 Hub</strong>
-                        <p class="text-[11px] text-slate-400">Launched 500-desk Co-Working & Server facility.</p>
-
-                        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                          <span class="text-amber-400 font-mono font-bold text-xs">04</span>
-                          <h3 class="text-lg font-bold text-white">Corporate Transparency Framework</h3>
-                          <p class="text-xs text-slate-300">Plain language, defined scope and honest timelines.</p>
-                        </div>
-                        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2 border-cyan-500/40">
-                          <span class="text-purple-400 font-extrabold text-xl block">2026</span>
-                          <strong class="text-white text-xs block">Enterprise AI</strong>
-                          <p class="text-[11px] text-slate-400">Deployed autonomous AI & cloud microservices.</p>
-
-                          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                            <span class="text-rose-400 font-mono font-bold text-xs">05</span>
-                            <h3 class="text-lg font-bold text-white">Agile Operational Responsiveness</h3>
-                            <p class="text-xs text-slate-300">Every client gets real attention.</p>
-                          </div>
-
-                          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-                            <span class="text-cyan-400 font-mono font-bold text-xs">06</span>
-                            <h3 class="text-lg font-bold text-white">Engineered Longevity</h3>
-                            <p class="text-xs text-slate-300">Documentation, training and support, so you are never
-                              locked in or left guessing.</p>
-                          </div>
-
-                          <div
-                            class="p-6 rounded-2xl bg-slate-900/80 border border-cyan-500/40 space-y-2 sm:col-span-2 lg:col-span-3 text-center">
-                            <span class="text-emerald-400 font-mono font-bold text-xs">07</span>
-                            <h3 class="text-xl font-bold text-white">Established Geographic Presence</h3>
-                            <p class="text-sm text-cyan-300">In person right here in Thiruvananthapuram, Kerala, and
-                              online.</p>
-                          </div>
-
-                        </div>
-
-                      </div>
-        </section>
-
-        <!-- CORPORATE INQUIRY CTA BANNER -->
-        <section class="py-16">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div
-              class="glass-panel p-8 sm:p-12 rounded-3xl border border-cyan-500/30 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div class="space-y-3 max-w-2xl text-center lg:text-left">
-                <span
-                  class="text-xs font-bold text-cyan-400 uppercase tracking-widest bg-cyan-950 px-3 py-1 rounded-full border border-cyan-500/30">
-                  Corporate Governance
-                </span>
-                <h2 class="text-3xl font-extrabold">Schedule a Direct Meeting with Our Board of Directors</h2>
-                <p class="text-slate-300 text-sm leading-relaxed">
-                  Connect with Nellys Technologies executive leadership to discuss enterprise software contracts,
-                  government RFP bids, or co-working space leases.
-                </p>
-              </div>
-              <button onclick="openModal('inquiry-modal')"
-                class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-8 py-4 rounded-xl text-center text-sm shadow-xl shadow-cyan-500/20 whitespace-nowrap">
-                Schedule Executive Meeting &rarr;
-              </button>
-              <!-- CONTACT CTA -->
-              <section
-                class="py-16 bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border-b border-slate-800/60">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-                  <h2 class="text-3xl font-extrabold text-white">Your Next Chapter Starts Here</h2>
-                  <p class="text-slate-300 text-sm">
-                    Connect with Nellys Tech Private Limited today.
-                  </p>
-                  <div class="pt-4 flex justify-center gap-4">
-                    <a href="contact.html"
-                      class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-xs uppercase tracking-wider">
-                      Contact Us &rarr;
-                    </a>
-                    <a href="services.html"
-                      class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-8 py-3.5 rounded-xl border border-slate-700 text-xs uppercase tracking-wider">
-                      Explore 20 Services
-                    </a>
-                  </div>
-                </div>
-              </section>
-
-    </main>
-
-    <!-- STANDARDIZED 5-COLUMN CORPORATE FOOTER -->
-    <!-- STANDARDIZED CORPORATE FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm pt-16 pb-12">
+    <!-- SECTION: WHEN ONE TEAM DOES IT ALL, NOTHING FALLS THROUGH -->
+    <section class="py-20 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/80 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
+            The Nellys Tech Synergy
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">When One Team Does It All, Nothing Falls Through</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Every digital product needs strong infrastructure to run and sharp branding to win. When these two halves work under one roof, your business moves faster, safer, and with zero friction.
+          </p>
+        </div>
 
-          <!-- COL 1: ORGANISATION INFO -->
-          <div class="lg:col-span-2 space-y-4">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-indigo-600 p-0.5">
-                <div class="w-full h-full bg-[#0B0F19] rounded-[6px] flex items-center justify-center">
-                  <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto">
-                <div>
-                  <span class="text-lg font-bold text-white block leading-none">Nellys Tech</span>
-                  <span class="text-[9px] text-cyan-400 tracking-wider font-bold">PVT. LTD.</span>
-                </div>
-                <span class="text-lg font-bold text-white">Nellys Technologies Pvt. Ltd.</span>
-              </div>
-              <p class="text-xs text-slate-200 leading-relaxed max-w-sm">
-                Slogan: <em class="text-cyan-400 font-semibold">"Engineering Tomorrow's Intelligent Tech
-                  Ecosystems"</em>
-                <em class="text-cyan-400 font-semibold">"Technology that runs your business. Visibility that grows
-                  it."</em>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Build + Protect</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Clean, modular software architecture meets Zero Trust cybersecurity. We write performant code and protect it with enterprise-grade firewalls, continuous audit trails, and strict access controls.
+            </p>
+            <span class="text-[11px] font-mono text-cyan-400 block pt-1">DevOps &bull; Hardening &bull; Compliance</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Attract + Follow Up</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Organic search optimization and targeted social marketing bring qualified prospects to your door; automated email funnels and integrated CRMs ensure not a single warm lead slips away.
+            </p>
+            <span class="text-[11px] font-mono text-indigo-400 block pt-1">SEO &bull; Paid Social &bull; CRM Automation</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Define + Express</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Distinct brand identity, visual guidelines, and compelling value propositions engineered directly into modern, mobile-responsive web applications that command high commercial value.
+            </p>
+            <span class="text-[11px] font-mono text-emerald-400 block pt-1">Brand Identity &bull; UI/UX &bull; Mobile Apps</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl">
+              <i class="fas fa-microphone-lines"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Record + Amplify</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              High-impact studio podcasting and cinematic video production transformed into multi-channel thought-leadership clips, engaging audiences and reinforcing technical authority.
+            </p>
+            <span class="text-[11px] font-mono text-purple-400 block pt-1">Podcasts &bull; Video Films &bull; Short-Form Reels</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: VISION & STRATEGIC MISSION -->
+    <section class="py-20 bg-slate-950/40 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+          
+          <!-- VISION CARD -->
+          <div class="p-8 sm:p-10 rounded-3xl bg-slate-900/90 border border-cyan-500/40 glow-cyan flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <span class="px-3.5 py-1.5 rounded-full bg-cyan-950 text-cyan-400 text-xs font-bold border border-cyan-500/30 uppercase tracking-wider inline-flex items-center gap-2">
+                <i class="fas fa-eye"></i> Long-Term Outlook
+              </span>
+              <h2 class="text-3xl font-extrabold text-white">Our Vision</h2>
+              <p class="text-slate-200 text-base leading-relaxed">
+                "To be the trusted single partner that modern enterprises turn to when they refuse to let fragmented agencies compromise their growth, security, and digital presence."
               </p>
-              <div class="text-xs text-slate-200 space-y-2 pt-2">
-                <p><i class="fas fa-location-dot text-cyan-400 mr-2"></i> <strong class="text-white">HQ
-                    Address:</strong> Tech Hub Quarter, Cyber Heights, Sector 62, India</p>
-                <p><i class="fas fa-globe text-indigo-400 mr-2"></i> <strong class="text-white">Global Office:</strong>
-                  Building 4, Dubai Internet City, UAE</p>
-                <p><i class="fas fa-envelope text-cyan-400 mr-2"></i> <strong class="text-white">Official
-                    Email:</strong> contact@nellystech.com</p>
-                <p><i class="fas fa-phone text-emerald-400 mr-2"></i> <strong class="text-white">Phone:</strong> +91
-                  (011) 4890-8800 / +971 4 390 1111</p>
-                <p><i class="fas fa-location-dot text-cyan-400 mr-2"></i> <strong class="text-white">Registered
-                    Address:</strong> J-1A, TC 9/479(1) 23/2773, Jawahar Nagar, Kowdiar, Thiruvananthapuram, Kerala
-                  695003</p>
-                <p><i class="fas fa-phone text-emerald-400 mr-2"></i> <strong class="text-white">Phone:</strong> 0471 -
-                  270004</p>
-                <p><i class="fas fa-envelope text-cyan-400 mr-2"></i> <strong class="text-white">Email:</strong>
-                  nellystechai@gmail.com</p>
-                <p><i class="fas fa-globe text-indigo-400 mr-2"></i> <strong class="text-white">Web:</strong>
-                  nellystech.in</p>
-              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                We believe that by unifying software engineering, cybersecurity, and digital storytelling under one disciplined governance framework, enterprises can scale without friction, technical debt, or vendor finger-pointing.
+              </p>
             </div>
 
-            <!-- COL 2: QUICK LINKS -->
-            <div class="space-y-3">
-              <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
-              <ul class="space-y-2 text-xs text-slate-200">
-                <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
-                <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Firm & Objectives</a></li>
-                <li><a href="services.html" class="hover:text-cyan-400 transition-colors">Services Highlighted</a></li>
-                <li><a href="portfolio.html" class="hover:text-cyan-400 transition-colors">Portfolio & Approvals</a>
-                </li>
-                <li><a href="leadership.html" class="hover:text-cyan-400 transition-colors">Directors & Staff</a></li>
-                <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
-                <li><a href="services.html" class="hover:text-cyan-400 transition-colors">Services (20)</a></li>
-                <li><a href="portfolio.html" class="hover:text-cyan-400 transition-colors">Portfolio</a></li>
-                <li><a href="leadership.html" class="hover:text-cyan-400 transition-colors">Leadership</a></li>
-              </ul>
+            <div class="pt-6 border-t border-slate-800/80 flex items-center gap-3">
+              <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-8 w-auto">
+              <span class="text-xs font-semibold text-slate-300">Nellys Tech Private Limited &bull; Kowdiar, Thiruvananthapuram</span>
             </div>
+          </div>
 
-            <!-- COL 3: ECOSYSTEM -->
-            <div class="space-y-3">
-              <h4 class="text-xs font-bold text-white uppercase tracking-wider">Ecosystem</h4>
-              <h4 class="text-xs font-bold text-white uppercase tracking-wider">Two Strengths</h4>
-              <ul class="space-y-2 text-xs text-slate-200">
-                <li><a href="coworking.html" class="hover:text-cyan-400 transition-colors">Co-Working Space Lease</a>
-                </li>
-                <li><a href="associates.html" class="hover:text-cyan-400 transition-colors">Associate Firms</a></li>
-                <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact & Support</a></li>
-                <li><button onclick="openModal('promo-modal')"
-                    class="text-cyan-400 hover:underline font-semibold">Active Promotions</button></li>
-                <li><a href="services.html#branding" class="hover:text-cyan-400 transition-colors">Digital Branding
-                    (10)</a></li>
-                <li><a href="services.html#tech" class="hover:text-cyan-400 transition-colors">IT & Business (10)</a>
-                </li>
-                <li><a href="coworking.html" class="hover:text-cyan-400 transition-colors">Co-Working Lease</a></li>
-                <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Kowdiar HQ</a></li>
-              </ul>
-            </div>
-
-            <!-- COL 4: ACCREDITATIONS -->
-            <div class="space-y-3">
-              <h4 class="text-xs font-bold text-white uppercase tracking-wider">Accreditations</h4>
-              <div class="space-y-2 text-xs text-slate-200">
-                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
-                  <span class="text-emerald-400 font-bold block">STPI & MeitY India</span>
-                  <span class="text-[10px] text-slate-300">Export EOU Unit #889</span>
+          <!-- MISSION CARD -->
+          <div class="p-8 sm:p-10 rounded-3xl bg-slate-900/90 border border-indigo-500/40 glow-indigo flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <span class="px-3.5 py-1.5 rounded-full bg-indigo-950 text-indigo-400 text-xs font-bold border border-indigo-500/30 uppercase tracking-wider inline-flex items-center gap-2">
+                <i class="fas fa-compass"></i> Practical Purpose
+              </span>
+              <h2 class="text-3xl font-extrabold text-white">Our Mission</h2>
+              <div class="space-y-3.5 text-xs text-slate-300">
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-cyan-400 text-sm mt-0.5 shrink-0"></i>
+                  <div>
+                    <strong class="text-white block font-semibold">1. Engineering Excellence:</strong>
+                    Build reliable, scalable, and maintainable software architectures engineered for 99.99% operational uptime.
+                  </div>
                 </div>
-                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
-                  <span class="text-cyan-400 font-bold block">UAE Cyber Security</span>
-                  <span class="text-[10px] text-slate-300">GCC Clearance #9941</span>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-indigo-400 text-sm mt-0.5 shrink-0"></i>
+                  <div>
+                    <strong class="text-white block font-semibold">2. Creative Precision:</strong>
+                    Craft distinct visual brand identities, high-converting copy, and compelling media that resonate with decision-makers.
+                  </div>
                 </div>
-                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
-                  <span class="text-indigo-400 font-bold block">ISO 27001:2022</span>
-                  <span class="text-[10px] text-slate-300">ISMS Certified Audit</span>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-emerald-400 text-sm mt-0.5 shrink-0"></i>
+                  <div>
+                    <strong class="text-white block font-semibold">3. Security by Default:</strong>
+                    Bake data privacy, encryption, and Zero Trust security controls into every codebase and network architecture from day one.
+                  </div>
                 </div>
-                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Our Standards</h4>
-                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] space-y-2">
-                  <p class="text-cyan-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Six Promises We Live By
-                  </p>
-                  <p class="text-emerald-400 font-bold"><i class="fas fa-shield-halved mr-1"></i> Security by Default
-                  </p>
-                  <p class="text-indigo-400 font-bold"><i class="fas fa-bolt mr-1"></i> Simple. Honest. Perfection.</p>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-amber-400 text-sm mt-0.5 shrink-0"></i>
+                  <div>
+                    <strong class="text-white block font-semibold">4. Partnership Over Transactions:</strong>
+                    Act as invested technical and creative co-founders who stand behind client outcomes over the entire business lifecycle.
+                  </div>
                 </div>
               </div>
-
             </div>
 
-            <!-- COPYRIGHT BAR -->
-            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-200">
-              <p>&copy; 2026 Nellys Technologies Pvt. Ltd. All Rights Reserved.</p>
-              <div class="flex space-x-6">
-                <a href="#" class="hover:text-cyan-400">Privacy Policy</a>
-                <a href="#" class="hover:text-cyan-400">Terms of Service</a>
-                <a href="#" class="hover:text-cyan-400">ISO Compliance</a>
-              </div>
-              <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>&copy; 2026 Nellys Tech Private Limited. All Rights Reserved.</p>
+            <div class="pt-6 border-t border-slate-800/80 text-xs text-slate-400">
+              <i class="fas fa-quote-left text-cyan-400 mr-1.5"></i> Purpose, made practical in every sprint, deployment, and campaign.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: SIX PROMISES WE LIVE BY -->
+    <section class="py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase bg-emerald-950/80 px-3.5 py-1.5 rounded-full border border-emerald-500/30">
+            Operating Principles
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Six Promises We Live By</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Every engagement at Nellys Tech is anchored on six strict non-negotiables extracted directly from our operating charter:
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- PROMISE 1 -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-cyan-400">01 / PROMISE</span>
+              <i class="fas fa-comments text-cyan-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Clarity</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              No buzzwords, no opaque jargon, and no surprise invoices. We explain complex technical architectures in plain business terms and maintain 100% pricing transparency.
+            </p>
+          </div>
+
+          <!-- PROMISE 2 -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 transition-all space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-indigo-400">02 / PROMISE</span>
+              <i class="fas fa-server text-indigo-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Reliability</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Software that stays operational, campaigns that launch on schedule, and code that doesn't crumble under traffic surges. We build resilient systems designed to run unattended.
+            </p>
+          </div>
+
+          <!-- PROMISE 3 -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-all space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-emerald-400">03 / PROMISE</span>
+              <i class="fas fa-shield-halved text-emerald-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Security by Default</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Security is never an afterthought. Every database schema, API gateway, and cloud container is encrypted, monitored, and compliant with ISO and enterprise standards.
+            </p>
+          </div>
+
+          <!-- PROMISE 4 -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 transition-all space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-amber-400">04 / PROMISE</span>
+              <i class="fas fa-chart-line text-amber-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Business First</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Technology exists to drive measurable commercial value. We optimize for revenue impact, cost efficiency, pipeline speed, and tangible return on investment.
+            </p>
+          </div>
+
+          <!-- PROMISE 5 -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 transition-all space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-purple-400">05 / PROMISE</span>
+              <i class="fas fa-wand-magic-sparkles text-purple-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Craft</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              We take deep pride in clean code formatting, intuitive UX ergonomics, typographic rhythm, and cinematic video pacing. The small details determine the lasting impression.
+            </p>
+          </div>
+
+          <!-- PROMISE 6 -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 transition-all space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-rose-400">06 / PROMISE</span>
+              <i class="fas fa-handshake-angle text-rose-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Partnership</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              We don't do quick transactional hand-offs and disappear. We stand shoulder-to-shoulder with leadership teams as their permanent engineering and creative growth arm.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: WHY CHOOSE NELLYS TECH (7 STRATEGIC PILLARS) -->
+    <section class="py-20 bg-slate-950/40 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="text-xs font-bold text-indigo-400 tracking-widest uppercase bg-indigo-950/80 px-3.5 py-1.5 rounded-full border border-indigo-500/30">
+            Competitive Advantage
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Why Choose Nellys Tech?</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Seven structural advantages that make Nellys Tech the preferred technology and branding partner for growing companies:
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
+              <i class="fas fa-user-check"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">1. Single Accountability</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              One contract, one dedicated engagement director, and unified accountability across code, design, media, and cloud operations.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fas fa-shield-virus"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">2. Security Built-In</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Zero Trust architecture, encrypted pipelines, automated vulnerability scans, and strict access controls implemented from Day 1.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
+              <i class="fas fa-hand-holding-hand"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">3. No Vendor Finger-Pointing</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              When software engineers sit in the same room as brand marketers, integration bugs and campaign delays are solved in minutes.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">4. Strategic Cohesion</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Every digital asset, landing page, and CRM automation reflects the exact same visual identity and brand tone of voice.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">5. Predictable Timelines</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Disciplined agile sprint cadences, transparent project boards, weekly demo milestones, and committed release dates.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">6. Modern Tech Stack</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Headless architectures, microservices, containerization, modern CI/CD automation, and enterprise cloud frameworks.
+            </p>
+          </div>
+
+          <div class="sm:col-span-2 lg:col-span-3 p-6 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-indigo-950/40 to-slate-900/80 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="space-y-1 text-center sm:text-left">
+              <h4 class="font-bold text-white text-base">7. Long-Term Dedicated Support</h4>
+              <p class="text-xs text-slate-300">
+                Guaranteed uptime SLAs, 24/7 infrastructure monitoring, routine maintenance, and ongoing campaign optimization.
+              </p>
+            </div>
+            <button onclick="openModal('inquiry-modal')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider shrink-0 transition-colors">
+              Talk to Our Team &rarr;
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: WHO WE SERVE -->
+    <section class="py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/80 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
+            Target Partners
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Who We Serve: Is This You?</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Our dual-division model is intentionally designed for organizations at pivotal moments of transformation:
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <span class="text-[10px] font-bold text-cyan-400 uppercase tracking-wider bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/20">Segment 01</span>
+            <h3 class="text-lg font-bold text-white">Growing Businesses</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Companies that have outgrown fragmented tools, spreadsheets, and freelance contractors, and need enterprise-grade systems to scale without breaking.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-wider bg-indigo-950 px-2.5 py-1 rounded-full border border-indigo-500/20">Segment 02</span>
+            <h3 class="text-lg font-bold text-white">Traditional Businesses</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Established firms transitioning into the digital age requiring modernization of legacy workflows, digital brand reinvention, and automated lead generation.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider bg-emerald-950 px-2.5 py-1 rounded-full border border-emerald-500/20">Segment 03</span>
+            <h3 class="text-lg font-bold text-white">Funded Startups</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              High-velocity ventures that need an immediate, elite technical and marketing department capable of launching MVPs and acquiring enterprise traction fast.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <span class="text-[10px] font-bold text-purple-400 uppercase tracking-wider bg-purple-950 px-2.5 py-1 rounded-full border border-purple-500/20">Segment 04</span>
+            <h3 class="text-lg font-bold text-white">Established Brands</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Corporations that demand high availability, audited cybersecurity posture, seamless systems integration, and professional corporate storytelling.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: INDUSTRIES WE SERVE -->
+    <section class="py-20 bg-slate-950/40 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase bg-emerald-950/80 px-3.5 py-1.5 rounded-full border border-emerald-500/30">
+            Domain Expertise
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Industries We Transform</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Delivering domain-tailored software engineering and high-engagement digital marketing across 9 major sectors:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6">
+          
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-cart-shopping"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Retail & E-Commerce</strong>
+              <span class="text-slate-400 text-[11px]">Omnichannel shopping & CRO</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-heart-pulse"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Healthcare & Health-Tech</strong>
+              <span class="text-slate-400 text-[11px]">HIPAA-ready clinics & portals</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-city"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Real Estate & Construction</strong>
+              <span class="text-slate-400 text-[11px]">PropTech & lead funnels</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-vault"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Financial Services & FinTech</strong>
+              <span class="text-slate-400 text-[11px]">Hardened security & banking</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Education & Ed-Tech</strong>
+              <span class="text-slate-400 text-[11px]">LMS, student portals & apps</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-plane-departure"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Hospitality & Tourism</strong>
+              <span class="text-slate-400 text-[11px]">Booking engines & experiences</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-industry"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Manufacturing & Supply Chain</strong>
+              <span class="text-slate-400 text-[11px]">IoT telemetry & tracking</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Professional Services</strong>
+              <span class="text-slate-400 text-[11px]">B2B consulting & client portals</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-fuchsia-500/10 text-fuchsia-400 flex items-center justify-center text-lg shrink-0">
+              <i class="fas fa-film"></i>
+            </div>
+            <div>
+              <strong class="text-white text-sm block font-semibold">Media & Entertainment</strong>
+              <span class="text-slate-400 text-[11px]">Broadcasting, video & podcasts</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: REGISTERED HEADQUARTERS & CONTACT -->
+    <section class="py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-cyan-500/30 relative overflow-hidden">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 space-y-4">
+              <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest bg-cyan-950 px-3 py-1 rounded-full border border-cyan-500/30">
+                Registered Headquarters
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Nellys Tech Private Limited</h2>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Operating from Kowdiar, Thiruvananthapuram, Kerala, serving high-growth enterprises and ambitious ventures across India and international markets.
+              </p>
+
+              <div class="space-y-2.5 text-xs text-slate-300 pt-2">
+                <p class="flex items-start gap-2">
+                  <i class="fas fa-location-dot text-cyan-400 mt-1 shrink-0"></i>
+                  <span><strong class="text-white">Registered Address:</strong> J-1A, TC 9/479(1) 23/2773, Jawahar Nagar, Kowdiar, Thiruvananthapuram, Kerala 695003</span>
+                </p>
+                <p class="flex items-center gap-2">
+                  <i class="fas fa-phone text-emerald-400 shrink-0"></i>
+                  <span><strong class="text-white">Official Phone:</strong> 0471 - 270004</span>
+                </p>
+                <p class="flex items-center gap-2">
+                  <i class="fas fa-envelope text-cyan-400 shrink-0"></i>
+                  <span><strong class="text-white">Official Email:</strong> nellystechai@gmail.com</span>
+                </p>
+                <p class="flex items-center gap-2">
+                  <i class="fas fa-globe text-indigo-400 shrink-0"></i>
+                  <span><strong class="text-white">Official Web:</strong> nellystech.in</span>
+                </p>
               </div>
             </div>
-    </footer>
 
-    <!-- MODAL: GENERAL INQUIRY -->
-    <div id="inquiry-modal"
-      class="modal-overlay fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
-      <div class="modal-card border border-cyan-500/40 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
-        <div class="bg-[#0B0F19] border border-cyan-500/40 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
-          <button onclick="closeModal('inquiry-modal')"
-            class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-            <i class="fas fa-xmark"></i>
-          </button>
-          <h3 class="text-2xl font-bold text-white mb-1">Submit Inquiry</h3>
-          <p class="text-xs text-slate-400 mb-6">Nellys Technologies Solution Request</p>
-          <p class="text-xs text-slate-400 mb-6">Nellys Tech Pvt. Ltd. &bull; Kowdiar, Thiruvananthapuram</p>
-
-          <form data-form-name="Inquiry" class="space-y-4 text-sm">
-            <form data-form-name="General Inquiry" class="space-y-4 text-sm">
-              <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
-                <input type="text" required placeholder="John Doe" class="w-full border rounded-xl px-4 py-2.5">
-                <input type="text" required placeholder="Your Name"
-                  class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500">
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Work Email</label>
-                <input type="email" required placeholder="john@company.com"
-                  class="w-full border rounded-xl px-4 py-2.5">
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-                <input type="email" required placeholder="your.name@company.com"
-                  class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500">
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Message / Requirements</label>
-                <textarea rows="3" required placeholder="Tell us about your objectives..."
-                  class="w-full border rounded-xl px-4 py-2.5"></textarea>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Project Details</label>
-                <textarea rows="3" required placeholder="Describe your goals..."
-                  class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500"></textarea>
-              </div>
-              <button type="submit"
-                class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-bold py-3 rounded-xl shadow-lg">Submit
-                Request &rarr;</button>
-              <button type="submit"
-                class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold py-3 rounded-xl shadow-lg">
-                Send Inquiry &rarr;
+            <div class="lg:col-span-5 flex flex-col gap-3 sm:flex-row lg:flex-col justify-center">
+              <button onclick="openModal('inquiry-modal')" class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-center text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition-all">
+                Schedule Headquarters Visit &rarr;
               </button>
-            </form>
+              <a href="contact.html" class="w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold py-3.5 px-6 rounded-xl text-center text-xs uppercase tracking-wider transition-colors">
+                Open Contact Page
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: CTA BANNER -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 max-w-2xl">
+        <h2 class="text-3xl font-extrabold text-white">Ready to Build, Protect & Grow?</h2>
+        <p class="text-slate-300 text-sm">
+          Discuss your enterprise technology or digital branding needs with our core team. We respond within 24 business hours.
+        </p>
+        <div class="pt-2 flex flex-wrap justify-center gap-4">
+          <button onclick="openModal('inquiry-modal')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-7 py-3 rounded-xl shadow-lg shadow-cyan-500/20 text-xs uppercase tracking-wider transition-all">
+            Start a Conversation &rarr;
+          </button>
+          <a href="tel:0471270004" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 font-semibold px-7 py-3 rounded-xl text-xs uppercase tracking-wider transition-colors">
+            <i class="fas fa-phone mr-2 text-emerald-400"></i> Call 0471 - 270004
+          </a>
         </div>
       </div>
+    </section>
 
-      <script src="main.js"></script>
-  </body>
+  </main>
 
+  <!-- STANDARDIZED 5-COLUMN CORPORATE FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <!-- COL 1: ORGANISATION INFO -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto">
+            <div>
+              <span class="text-lg font-bold text-white block leading-none">Nellys Tech</span>
+              <span class="text-[9px] text-cyan-400 tracking-wider font-bold">PVT. LTD.</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed max-w-sm">
+            <em class="text-cyan-400 font-semibold">"Technology that runs your business. Visibility that grows it."</em>
+          </p>
+          <div class="text-xs text-slate-200 space-y-2 pt-2">
+            <p><i class="fas fa-location-dot text-cyan-400 mr-2"></i> <strong class="text-white">Registered Address:</strong> J-1A, TC 9/479(1) 23/2773, Jawahar Nagar, Kowdiar, Thiruvananthapuram, Kerala 695003</p>
+            <p><i class="fas fa-phone text-emerald-400 mr-2"></i> <strong class="text-white">Phone:</strong> 0471 - 270004</p>
+            <p><i class="fas fa-envelope text-cyan-400 mr-2"></i> <strong class="text-white">Email:</strong> nellystechai@gmail.com</p>
+            <p><i class="fas fa-globe text-indigo-400 mr-2"></i> <strong class="text-white">Web:</strong> nellystech.in</p>
+          </div>
+        </div>
+
+        <!-- COL 2: QUICK LINKS -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
+          <ul class="space-y-2 text-xs text-slate-200">
+            <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
+            <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+            <li><a href="services.html" class="hover:text-cyan-400 transition-colors">Services (20)</a></li>
+            <li><a href="portfolio.html" class="hover:text-cyan-400 transition-colors">Portfolio</a></li>
+            <li><a href="leadership.html" class="hover:text-cyan-400 transition-colors">Leadership</a></li>
+          </ul>
+        </div>
+
+        <!-- COL 3: TWO STRENGTHS -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Two Strengths</h4>
+          <ul class="space-y-2 text-xs text-slate-200">
+            <li><a href="services.html#branding" class="hover:text-cyan-400 transition-colors">Digital Branding (10)</a></li>
+            <li><a href="services.html#tech" class="hover:text-cyan-400 transition-colors">IT & Business (10)</a></li>
+            <li><a href="coworking.html" class="hover:text-cyan-400 transition-colors">Co-Working Lease</a></li>
+            <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Kowdiar HQ</a></li>
+          </ul>
+        </div>
+
+        <!-- COL 4: STANDARDS -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Our Standards</h4>
+          <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] space-y-2">
+            <p class="text-cyan-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Six Promises We Live By</p>
+            <p class="text-emerald-400 font-bold"><i class="fas fa-shield-halved mr-1"></i> Security by Default</p>
+            <p class="text-indigo-400 font-bold"><i class="fas fa-bolt mr-1"></i> Simple. Honest. Perfection.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COPYRIGHT BAR -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Nellys Tech Private Limited. All Rights Reserved.</p>
+        <div class="flex space-x-6 text-slate-400">
+          <a href="#" class="hover:text-cyan-400">Privacy Policy</a>
+          <a href="#" class="hover:text-cyan-400">Terms of Service</a>
+          <a href="contact.html" class="hover:text-cyan-400">Kowdiar HQ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: SUBMIT INQUIRY -->
+  <div id="inquiry-modal" class="modal-overlay fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-[#0B0F19] border border-cyan-500/40 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeModal('inquiry-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <h3 class="text-2xl font-bold text-white mb-1">Submit Inquiry</h3>
+      <p class="text-xs text-slate-400 mb-6">Nellys Tech Pvt. Ltd. &bull; Kowdiar, Thiruvananthapuram</p>
+      
+      <form data-form-name="General Inquiry" class="space-y-4 text-sm">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+          <input type="text" required placeholder="Your Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+          <input type="email" required placeholder="your.name@company.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Capability / Interest</label>
+          <select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500">
+            <option>Digital Branding & Marketing Strategy</option>
+            <option>Brand Identity & Logo Design</option>
+            <option>SEO, Visibility & Social Media</option>
+            <option>Content, Podcast & Video Production</option>
+            <option>Lead Generation & Email Campaigns</option>
+            <option>IT Consulting & Custom Software</option>
+            <option>Web & Mobile Applications</option>
+            <option>Systems Integration & Databases</option>
+            <option>DevOps, Cloud & Managed IT</option>
+            <option>Cybersecurity & Audits</option>
+            <option>Co-Working Space Lease</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Project Requirements</label>
+          <textarea rows="3" required placeholder="Tell us about your goals and challenges..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold py-3 rounded-xl shadow-lg">
+          Send Message &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN SCRIPT -->
+  <script src="main.js"></script>
+</body>
 </html>
