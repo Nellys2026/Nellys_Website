@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="scroll-smooth" data-theme="dark">
 <head>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Portal Login — Nellys Tech PVT. LTD.</title>
-  <meta name="description" content="Secure Portal Authentication — Nellys Tech Private Limited Enterprise Command Center.">
-  <!-- Tailwind CSS (Local bundle with CDN fallback) -->
+  <title>Leadership & Team - Nellys Tech Pvt. Ltd.</title>
+  <meta name="description" content="Meet the unified team of software engineers, cloud architects, cybersecurity specialists, brand designers, and marketing experts at Nellys Tech Pvt. Ltd. (Thiruvananthapuram, Kerala).">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script src="tailwind.cdn.js"></script>
   <script>
     if (!window.tailwind) {
@@ -15,350 +13,373 @@
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <script>
-    (function() {
-      const activeTheme = localStorage.getItem('nellys_theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', activeTheme);
-    })();
-  </script>
-  <style>
-    * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
-    body { background: #0B0F19; min-height: 100vh; overflow-x: hidden; }
-
-    .login-bg {
-      position: fixed; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 80% at 20% 40%, rgba(6,182,212,0.08) 0%, transparent 60%),
-                  radial-gradient(ellipse 60% 60% at 80% 20%, rgba(99,102,241,0.07) 0%, transparent 50%),
-                  radial-gradient(ellipse 50% 50% at 60% 80%, rgba(16,185,129,0.05) 0%, transparent 50%),
-                  #0B0F19;
-    }
-    @keyframes float-glow {
-      0%,100% { transform: translateY(0) scale(1); opacity: 0.4; }
-      50% { transform: translateY(-30px) scale(1.08); opacity: 0.7; }
-    }
-    .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: float-glow 8s ease-in-out infinite; }
-    .glow-orb-1 { width: 400px; height: 400px; background: rgba(6,182,212,0.12); top: -100px; left: -100px; animation-delay: 0s; }
-    .glow-orb-2 { width: 350px; height: 350px; background: rgba(99,102,241,0.1); bottom: -80px; right: -80px; animation-delay: -3s; }
-    .glow-orb-3 { width: 250px; height: 250px; background: rgba(16,185,129,0.08); top: 50%; right: 30%; animation-delay: -5s; }
-
-    .grid-pattern {
-      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    .glass-card {
-      background: rgba(13, 17, 30, 0.88);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(51, 65, 85, 0.6);
-    }
-
-    .brand-panel {
-      background: linear-gradient(135deg, rgba(6,182,212,0.06) 0%, rgba(99,102,241,0.08) 50%, rgba(16,185,129,0.04) 100%);
-      border-right: 1px solid rgba(51, 65, 85, 0.4);
-    }
-
-    .form-input {
-      width: 100%; background: rgba(15,23,42,0.8); border: 1px solid rgba(51,65,85,0.7);
-      border-radius: 12px; padding: 12px 16px; color: #f1f5f9; font-size: 14px;
-      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
-    }
-    .form-input:focus { border-color: #06b6d4; box-shadow: 0 0 0 3px rgba(6,182,212,0.15); }
-    .form-input::placeholder { color: #475569; }
-
-    .login-btn {
-      width: 100%; padding: 14px; border-radius: 12px;
-      background: linear-gradient(135deg, #06b6d4, #6366f1);
-      color: white; font-weight: 700; font-size: 14px; cursor: pointer;
-      border: none; transition: all 0.2s; position: relative; overflow: hidden;
-    }
-    .login-btn:hover { opacity: 0.94; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(6,182,212,0.3); }
-    .login-btn:active { transform: translateY(0); }
-
-    .divider { display: flex; align-items: center; gap: 12px; color: #475569; font-size: 12px; }
-    .divider::before,.divider::after { content: ''; flex: 1; height: 1px; background: #1e293b; }
-
-    .trust-badge {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 12px; border-radius: 10px;
-      background: rgba(15,23,42,0.6); border: 1px solid rgba(51,65,85,0.5);
-      font-size: 11px; font-weight: 600;
-    }
-
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
-    .live-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
-
-    .alert-box { border-radius: 10px; padding: 12px 14px; font-size: 13px; display: none; }
-    .alert-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
-    .alert-success { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; }
-
-    /* Light theme high contrast overrides */
-    html[data-theme="light"] body { background: #f8fafc; color: #334155; }
-    html[data-theme="light"] .login-bg { background: radial-gradient(ellipse 80% 80% at 20% 40%, rgba(6,182,212,0.05) 0%, transparent 60%), #f8fafc; }
-    html[data-theme="light"] .glass-card { background: rgba(255,255,255,0.96); border-color: #cbd5e1; box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
-    html[data-theme="light"] .brand-panel { background: linear-gradient(135deg, rgba(6,182,212,0.06) 0%, rgba(99,102,241,0.08) 100%); border-right-color: #e2e8f0; }
-    html[data-theme="light"] .form-input { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; }
-    html[data-theme="light"] .form-input::placeholder { color: #94a3b8; }
-    html[data-theme="light"] .trust-badge { background: #f1f5f9; border-color: #cbd5e1; }
-    html[data-theme="light"] .divider { color: #64748b; }
-    html[data-theme="light"] .divider::before, html[data-theme="light"] .divider::after { background: #cbd5e1; }
-    
-    /* Text Color Adaptations in Login Light Theme */
-    html[data-theme="light"] .text-white { color: #0f172a !important; }
-    html[data-theme="light"] .text-slate-300 { color: #334155 !important; }
-    html[data-theme="light"] .text-slate-400 { color: #475569 !important; }
-    html[data-theme="light"] .text-slate-500 { color: #64748b !important; }
-    html[data-theme="light"] .text-cyan-400 { color: #0284c7 !important; }
-    html[data-theme="light"] .text-indigo-400 { color: #4338ca !important; }
-    html[data-theme="light"] .text-emerald-400 { color: #047857 !important; }
-    html[data-theme="light"] .text-amber-400 { color: #b45309 !important; }
-    
-    /* Demo credentials box adaptation */
-    html[data-theme="light"] .bg-slate-900\/60,
-    html[data-theme="light"] .bg-slate-900\/80 { background-color: #f8fafc !important; border-color: #e2e8f0 !important; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
 
-  <div class="login-bg grid-pattern">
-    <div class="glow-orb glow-orb-1"></div>
-    <div class="glow-orb glow-orb-2"></div>
-    <div class="glow-orb glow-orb-3"></div>
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement-bar border-b text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center flex-wrap">
+      <span class="top-announcement-badge font-bold px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider shrink-0">One Unified Team</span>
+      <span class="font-medium">Software Engineers & Marketing Specialists working together in Thiruvananthapuram.</span>
+      <a href="contact.html" class="font-semibold hover:underline flex items-center gap-1 shrink-0">Contact Our Team &rarr;</a>
+    </div>
   </div>
 
-  <div class="glass-card relative z-10 w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl shadow-black/40 flex min-h-[620px]">
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-[#0B0F19]/90 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+        <div class="h-9 w-auto flex items-center">
+          <svg class="h-9 w-auto rounded-lg shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform" viewBox="0 0 102 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="badgeGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284C7"/>
+                <stop offset="100%" stop-color="#0369A1"/>
+              </linearGradient>
+              <linearGradient id="cyanGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#38BDF8"/>
+                <stop offset="100%" stop-color="#00BAFF"/>
+              </linearGradient>
+            </defs>
+            <path d="M 14.841,0.000 L 86.926,0.000 C 95.123,0.000 101.767,6.645 101.767,14.841 L 101.767,52.701 C 101.767,60.898 95.123,67.542 86.926,67.542 L 14.841,67.542 C 6.644,67.542 0.000,60.898 0.000,52.701 L 0.000,14.841 C 0.000,6.645 6.644,0.000 14.841,0.000 Z" fill="url(#badgeGradNav)"/>
+            <path d="M 16.961,19.081 C 24.654,16.597 31.681,14.780 36.224,15.083 C 41.676,15.083 43.796,17.869 45.735,22.352 L 55.851,42.100 L 52.701,51.247 C 52.216,52.701 51.126,53.185 50.338,51.792 L 39.798,29.379 L 33.680,52.216 L 24.715,52.216 L 32.832,25.199 C 34.346,20.293 32.226,19.444 29.682,19.505 Z" fill="url(#cyanGradNav)"/>
+            <path d="M 51.913,21.989 C 54.154,16.658 55.608,15.265 59.364,15.265 L 83.776,15.265 L 82.019,18.597 C 80.808,21.020 79.112,22.050 76.931,22.050 Z" fill="#FFFFFF"/>
+            <path d="M 48.582,23.564 L 61.121,23.564 L 56.033,38.769 Z" fill="#FFFFFF"/>
+            <path d="M 64.029,23.564 L 74.145,23.564 L 66.573,48.885 C 65.907,51.247 64.938,52.338 62.878,52.338 L 54.761,52.338 Z" fill="url(#cyanGradNav)"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg font-bold tracking-tight text-white leading-none">Nellys <span class="text-cyan-400">Tech</span></span>
+          <span class="text-[9px] text-cyan-400 tracking-widest uppercase font-bold mt-0.5">PVT. LTD.</span>
+        </div>
+      </a>
 
-    <!-- LEFT BRAND PANEL -->
-    <div class="brand-panel hidden lg:flex flex-col justify-between p-10 xl:p-12 w-[45%] shrink-0">
-      <div>
-        <a href="index.html" class="flex items-center gap-3 group">
-          <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-10 w-auto group-hover:scale-105 transition-transform">
-          <div>
-            <span class="text-lg font-extrabold text-white tracking-tight leading-none block">Nellys <span class="text-cyan-400">Tech</span></span>
-            <span class="text-[10px] text-cyan-400 tracking-wider font-bold uppercase">PVT. LTD. · Portal</span>
-          </div>
-        </a>
+      <nav class="hidden xl:flex items-center space-x-6 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="about.html" class="nav-link hover:text-white transition-colors">About Us</a>
+        <a href="services.html" class="nav-link hover:text-white transition-colors">Services</a>
+        <!-- <a href="portfolio.html" class="nav-link hover:text-white transition-colors">Portfolio</a> -->
+        <a href="leadership.html" class="nav-link active hover:text-white transition-colors">Leadership</a>
+        <!-- <a href="coworking.html" class="nav-link hover:text-white transition-colors">Co-Working</a> -->
+        <a href="associates.html" class="nav-link hover:text-white transition-colors">Partners</a>
+        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+        <a href="login.html" class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors">Dashboard</a>
+      </nav>
 
-        <div class="mt-10 space-y-3">
-          <div class="flex items-center gap-2">
-            <span class="live-dot w-2 h-2 bg-emerald-400 rounded-full inline-block"></span>
-            <span class="text-xs font-mono text-emerald-400 font-bold">SYSTEMS OPERATIONAL</span>
-          </div>
-          <h1 class="text-3xl xl:text-4xl font-extrabold text-white leading-tight">
-            Enterprise<br/>
-            <span class="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">Command Center</span>
+      <div class="hidden sm:flex items-center gap-3 shrink-0">
+        <button class="theme-toggle-btn w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center justify-center transition-all hover:scale-105" title="Toggle Theme">
+          <i class="fas fa-sun text-amber-400 text-sm"></i>
+        </button>
+        <button onclick="openModal('inquiry-modal')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow-md shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
+          Inquire Now
+        </button>
+      </div>
+
+      <div class="flex xl:hidden items-center gap-2">
+        <button class="theme-toggle-btn w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center" title="Toggle Theme">
+          <i class="fas fa-sun text-amber-400 text-xs"></i>
+        </button>
+        <button id="mobile-menu-btn" class="p-2 text-slate-300 hover:text-white focus:outline-none">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="fixed inset-y-0 right-0 z-50 w-72 bg-[#0B0F19] border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <img src="nellys-logo.svg" alt="Nellys Tech" class="h-7 w-auto">
+          <span class="font-extrabold text-white text-lg">Nellys <span class="text-cyan-400">Tech</span></span>
+        </div>
+        <button id="close-drawer-btn" class="text-slate-400 hover:text-white text-xl"><i class="fas fa-xmark"></i></button>
+      </div>
+      <nav class="mt-6 flex flex-col space-y-4 font-medium text-slate-300">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services (20 Capabilities)</a>
+        <!-- <a href="portfolio.html">Portfolio & Recognition</a> -->
+        <a href="leadership.html" class="text-cyan-400 font-bold">Leadership & Team</a>
+        <!-- <a href="coworking.html">Co-Working Lease</a> -->
+        <a href="associates.html">Associate Firms</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+
+    <!-- PAGE HERO -->
+    <section class="py-16 sm:py-24 border-b border-slate-800/80 relative overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-indigo-500/10 via-cyan-500/10 to-purple-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-3xl mx-auto space-y-6">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+            <i class="fas fa-users"></i> Connected Expertise &bull; One Unified Team
+          </span>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            One Team. <span class="text-gradient">Lasting Value.</span>
           </h1>
-          <p class="text-sm text-slate-400 leading-relaxed max-w-xs">
-            Secure enterprise portal for digital branding analytics, cloud DevOps infrastructure, and client workspace management.
+
+          <p class="text-lg text-cyan-300 font-medium">
+            Software engineers, cloud and security experts working alongside brand, content and marketing specialists.
+          </p>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            We plan together and work together, right here in Thiruvananthapuram. With our unified team on the whole picture, there is no finger-pointing, no repeated explanations, no hidden charges and no gaps between vendors.
           </p>
         </div>
-
-        <div class="mt-8 space-y-4">
-          <div class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
-              <i class="fas fa-brain text-cyan-400 text-xs"></i>
-            </div>
-            <div>
-              <p class="text-xs font-bold text-white">AI & RAG Engine Telemetry</p>
-              <p class="text-[11px] text-slate-400">10.4M daily inference events · 18ms latency</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0 mt-0.5">
-              <i class="fas fa-cubes-stacked text-indigo-400 text-xs"></i>
-            </div>
-            <div>
-              <p class="text-xs font-bold text-white">Cloud Microservices Control</p>
-              <p class="text-[11px] text-slate-400">1,420 active K8s pods · 99.999% SLA</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
-              <i class="fas fa-certificate text-emerald-400 text-xs"></i>
-            </div>
-            <div>
-              <p class="text-xs font-bold text-white">STPI & UAE Clearances</p>
-              <p class="text-[11px] text-slate-400">EOU Unit #889 · GCC Clearance #9941</p>
-            </div>
-          </div>
-        </div>
       </div>
+    </section>
 
-      <div class="space-y-3">
-        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Security Certifications</p>
-        <div class="grid grid-cols-2 gap-2">
-          <div class="trust-badge text-emerald-400"><i class="fas fa-certificate text-[10px]"></i> STPI EOU</div>
-          <div class="trust-badge text-cyan-400"><i class="fas fa-shield-halved text-[10px]"></i> UAE CSC</div>
-          <div class="trust-badge text-indigo-400"><i class="fas fa-lock text-[10px]"></i> ISO 27001</div>
-          <div class="trust-badge text-amber-400"><i class="fas fa-key text-[10px]"></i> AES-256</div>
-        </div>
-      </div>
-    </div>
+    <!-- UNIFIED DIVISIONS OVERVIEW -->
+    <section class="py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- RIGHT LOGIN FORM -->
-    <div class="flex-1 flex flex-col justify-center p-8 sm:p-10 xl:p-12">
-
-      <div class="flex items-center justify-between mb-8">
-        <a href="index.html" class="flex items-center gap-2 text-xs text-slate-400 hover:text-cyan-400 transition-colors font-semibold">
-          <i class="fas fa-arrow-left text-[10px]"></i> Back to Public Portal
-        </a>
-        <button onclick="toggleTheme()" id="theme-btn" class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-400 hover:text-amber-300 transition-all" title="Toggle Theme">
-          <i class="fas fa-sun text-xs"></i>
-        </button>
-      </div>
-
-      <div class="lg:hidden flex items-center gap-3 mb-6">
-        <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-8 w-auto">
-        <span class="text-base font-extrabold text-white">Nellys <span class="text-cyan-400">Tech Portal</span></span>
-      </div>
-
-      <div class="mb-8">
-        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Secure Login</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Sign In to Dashboard</h2>
-        <p class="text-sm text-slate-400 mt-1.5">Enter enterprise credentials to access the command center.</p>
-      </div>
-
-      <div id="alert-box" class="alert-box mb-5"></div>
-
-      <form id="login-form" class="space-y-5" onsubmit="handleLogin(event)">
-
-        <div class="space-y-1.5">
-          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <i class="fas fa-envelope text-slate-500 mr-1.5"></i>Enterprise Email
-          </label>
-          <div class="relative">
-            <input id="email-input" type="email" class="form-input pr-10" placeholder="admin@nellystech.in" required>
-            <i class="fas fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-slate-600 text-xs pointer-events-none"></i>
-          </div>
-        </div>
-
-        <div class="space-y-1.5">
-          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-            <i class="fas fa-lock text-slate-500 mr-1.5"></i>Password
-          </label>
-          <div class="relative">
-            <input id="password-input" type="password" class="form-input pr-10" placeholder="Enter secure password" required minlength="4">
-            <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors p-1">
-              <i id="pw-eye" class="fas fa-eye text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" class="w-4 h-4 rounded border-slate-700 bg-slate-900 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-0" checked>
-            <span class="text-xs text-slate-400 select-none">Remember this device</span>
-          </label>
-          <button type="button" onclick="showForgot()" class="text-xs text-cyan-400 hover:text-cyan-300 font-semibold transition-colors">
-            Forgot password?
-          </button>
-        </div>
-
-        <button type="submit" id="login-btn" class="login-btn mt-2">
-          <span id="btn-text" class="flex items-center justify-center gap-2">
-            <i class="fas fa-lock text-sm"></i> Sign In Securely
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span class="px-3 py-1 bg-cyan-950 text-cyan-400 text-xs font-bold rounded-full border border-cyan-500/30 uppercase tracking-wider">
+            Connected Disciplines
           </span>
-        </button>
+          <h2 class="text-3xl font-extrabold">Our Unified Departments</h2>
+          <p class="text-slate-400 text-sm">Specialists united under one roof to deliver seamless technology and visibility</p>
+        </div>
 
-      </form>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <div class="divider my-6">Demo Quick Access</div>
+          <!-- DIVISION 1 -->
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-cyan-500/50 transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Software Engineering & Apps</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Full-stack software engineers and mobile developers building custom CRM/ERP modules, web applications, and iOS/Android products that fit real business operations.
+            </p>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-cyan-400 font-semibold">
+              Custom Software &bull; Mobile & Web
+            </div>
+          </div>
 
-      <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-xs space-y-1.5">
-        <p class="text-slate-400 font-semibold text-[11px] uppercase tracking-wider mb-2">Demo Credentials</p>
-        <div class="flex items-center gap-2"><i class="fas fa-user-circle text-cyan-400 w-4 text-center"></i><span class="text-slate-300">Email: admin@nellystech.in</span></div>
-        <div class="flex items-center gap-2"><i class="fas fa-key text-indigo-400 w-4 text-center"></i><span class="text-slate-300">Password: NellysTech@2026 (or any)</span></div>
-        <button type="button" onclick="fillDemo()" class="mt-2 w-full text-center text-xs text-cyan-400 hover:text-cyan-300 font-bold transition-colors border border-cyan-500/20 rounded-lg py-1.5 hover:bg-cyan-500/5">
-          <i class="fas fa-bolt text-[10px] mr-1"></i> Auto-fill & Authenticate
-        </button>
+          <!-- DIVISION 2 -->
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-indigo-500/50 transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Cloud, Security & DevOps</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              DevOps practitioners, database architects, and cybersecurity specialists setting up secure cloud infrastructure, CI/CD automation, and 24/7 managed support.
+            </p>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-indigo-400 font-semibold">
+              Security by Default &bull; Cloud & DevOps
+            </div>
+          </div>
+
+          <!-- DIVISION 3 -->
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-emerald-500/50 transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Brand & Creative Media</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Design directors, copywriters, and video producers crafting globally distinctive brand identities, company profiles, 4K video marketing films, and podcast series.
+            </p>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-emerald-400 font-semibold">
+              Brand Identity &bull; Video & Podcasts
+            </div>
+          </div>
+
+          <!-- DIVISION 4 -->
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-amber-500/50 transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Digital Growth & Strategy</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              SEO specialists, content strategists, and lead-generation engineers creating structured funnels, email automation workflows, and clear analytics dashboards.
+            </p>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-amber-400 font-semibold">
+              SEO &bull; Leads &bull; Strategy &bull; Analytics
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CORPORATE GOVERNANCE COMMITMENTS (Page 7) -->
+    <section class="py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span class="px-3 py-1 bg-amber-950 text-amber-400 text-xs font-bold rounded-full border border-amber-500/30 uppercase tracking-wider">
+            Operational Principles
+          </span>
+          <h2 class="text-3xl font-extrabold text-white">How Our Team Operates</h2>
+          <p class="text-slate-400 text-sm">Six fundamental promises governing every line of code, design, and client interaction</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-cyan-400 font-mono font-bold text-xs uppercase">01 Clarity</span>
+            <h3 class="text-lg font-bold text-white">No Guesswork, No Surprises</h3>
+            <p class="text-xs text-slate-300">Plain language, clear scope and no surprises in timelines or costs.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-indigo-400 font-mono font-bold text-xs uppercase">02 Reliability</span>
+            <h3 class="text-lg font-bold text-white">We Do What We Say</h3>
+            <p class="text-xs text-slate-300">We do what we say, when we say it. If something changes, you hear it from us early.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-emerald-400 font-mono font-bold text-xs uppercase">03 Security by Default</span>
+            <h3 class="text-lg font-bold text-white">Built In From Day One</h3>
+            <p class="text-xs text-slate-300">Protection is built into systems from day one, not added as an afterthought.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-amber-400 font-mono font-bold text-xs uppercase">04 Business First</span>
+            <h3 class="text-lg font-bold text-white">Technology Serves Goals</h3>
+            <p class="text-xs text-slate-300">Technology and marketing serve your real business goals, not the other way round.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-rose-400 font-mono font-bold text-xs uppercase">05 Craft</span>
+            <h3 class="text-lg font-bold text-white">Excellence in Every Detail</h3>
+            <p class="text-xs text-slate-300">We care about the quality of every line of code, design, sentence of copy and second of sound.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-cyan-400 font-mono font-bold text-xs uppercase">06 Partnership</span>
+            <h3 class="text-lg font-bold text-white">Part of Your Team</h3>
+            <p class="text-xs text-slate-300">Your success is our reference. We act like an extension of your own organization.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-cyan-500/30 text-center space-y-4 max-w-3xl mx-auto">
+          <h2 class="text-3xl font-extrabold text-white">Work With Our Team</h2>
+          <p class="text-slate-300 text-sm">
+            Reach out to discuss your technology, digital branding, or growth requirements with our specialists in Thiruvananthapuram.
+          </p>
+          <div class="pt-4 flex justify-center gap-4">
+            <a href="contact.html" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-xs uppercase tracking-wider">
+              Contact Team &rarr;
+            </a>
+            <a href="services.html" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-8 py-3.5 rounded-xl border border-slate-700 text-xs uppercase tracking-wider">
+              Explore 20 Services
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- STANDARDIZED CORPORATE FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto">
+            <div>
+              <span class="text-lg font-bold text-white block leading-none">Nellys Tech</span>
+              <span class="text-[9px] text-cyan-400 tracking-wider font-bold">PVT. LTD.</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed max-w-sm">
+            <em class="text-cyan-400 font-semibold">"Technology that runs your business. Visibility that grows it."</em>
+          </p>
+          <div class="text-xs text-slate-200 space-y-2 pt-2">
+            <p><i class="fas fa-location-dot text-cyan-400 mr-2"></i> <strong class="text-white">Registered Address:</strong> J-1A, TC 9/479(1) 23/2773, Jawahar Nagar, Kowdiar, Thiruvananthapuram, Kerala 695003</p>
+            <p><i class="fas fa-phone text-emerald-400 mr-2"></i> <strong class="text-white">Phone:</strong> 0471 - 2720004</p>
+            <p><i class="fas fa-envelope text-cyan-400 mr-2"></i> <strong class="text-white">Email:</strong> nellystechai@gmail.com</p>
+            <p><i class="fas fa-globe text-indigo-400 mr-2"></i> <strong class="text-white">Web:</strong> nellystech.in</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
+          <ul class="space-y-2 text-xs text-slate-200">
+            <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
+            <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+            <li><a href="services.html" class="hover:text-cyan-400 transition-colors">Services (20)</a></li>
+            <!-- <li><a href="portfolio.html" class="hover:text-cyan-400 transition-colors">Portfolio</a></li> -->
+            <li><a href="leadership.html" class="hover:text-cyan-400 transition-colors">Leadership</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Two Strengths</h4>
+          <ul class="space-y-2 text-xs text-slate-200">
+            <li><a href="services.html#branding" class="hover:text-cyan-400 transition-colors">Digital Branding (10)</a></li>
+            <li><a href="services.html#tech" class="hover:text-cyan-400 transition-colors">IT & Business (10)</a></li>
+            <!-- <li><a href="coworking.html" class="hover:text-cyan-400 transition-colors">Co-Working Lease</a></li> -->
+            <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Kowdiar HQ</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Our Standards</h4>
+          <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] space-y-2">
+            <p class="text-cyan-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Six Promises We Live By</p>
+            <p class="text-emerald-400 font-bold"><i class="fas fa-shield-halved mr-1"></i> Security by Default</p>
+            <p class="text-indigo-400 font-bold"><i class="fas fa-bolt mr-1"></i> Simple. Honest. Perfection.</p>
+          </div>
+        </div>
+
       </div>
 
-      <p class="text-[11px] text-slate-600 text-center mt-6">
-        <i class="fas fa-shield-halved text-slate-700 mr-1"></i>
-        AES-256 Encrypted &nbsp;·&nbsp; ISO 27001 Secured &nbsp;·&nbsp; Multi-Factor Ready
-      </p>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Nellys Tech Private Limited. All Rights Reserved.</p>
+      </div>
     </div>
+  </footer>
 
+  <!-- MODAL: GENERAL INQUIRY -->
+  <div id="inquiry-modal" class="modal-overlay fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-[#0B0F19] border border-cyan-500/40 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeModal('inquiry-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <h3 class="text-2xl font-bold text-white mb-1">Submit Inquiry</h3>
+      <p class="text-xs text-slate-400 mb-6">Nellys Tech Pvt. Ltd. &bull; Kowdiar, Thiruvananthapuram</p>
+      
+      <form data-form-name="General Inquiry" class="space-y-4 text-sm">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+          <input type="text" required placeholder="Your Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+          <input type="email" required placeholder="your.name@company.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Project Details</label>
+          <textarea rows="3" required placeholder="Describe your goals..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold py-3 rounded-xl shadow-lg">
+          Send Inquiry &rarr;
+        </button>
+      </form>
+    </div>
   </div>
 
-  <script>
-    function togglePassword() {
-      const input = document.getElementById('password-input');
-      const icon = document.getElementById('pw-eye');
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.className = 'fas fa-eye-slash text-xs';
-      } else {
-        input.type = 'password';
-        icon.className = 'fas fa-eye text-xs';
-      }
-    }
-
-    function fillDemo() {
-      document.getElementById('email-input').value = 'admin@nellystech.in';
-      document.getElementById('password-input').value = 'NellysTech@2026';
-    }
-
-    function handleLogin(e) {
-      e.preventDefault();
-      const email = document.getElementById('email-input').value.trim();
-      const password = document.getElementById('password-input').value;
-      const btn = document.getElementById('login-btn');
-      const btnText = document.getElementById('btn-text');
-
-      if (!email || !password) {
-        showAlert('error', 'Please enter both email and password.');
-        return;
-      }
-
-      btn.classList.add('loading');
-      btnText.innerHTML = '<i class="fas fa-circle-notch fa-spin text-sm"></i> Authenticating...';
-
-      setTimeout(() => {
-        showAlert('success', '✅ Credentials verified! Redirecting to Enterprise Dashboard...');
-        setTimeout(() => {
-          window.location.href = 'dashboard.html';
-        }, 800);
-      }, 1400);
-    }
-
-    function showAlert(type, message) {
-      const alertBox = document.getElementById('alert-box');
-      alertBox.style.display = 'block';
-      alertBox.className = `alert-box mb-5 ${type === 'error' ? 'alert-error' : 'alert-success'}`;
-      alertBox.innerHTML = `<i class="fas fa-${type === 'error' ? 'triangle-exclamation' : 'circle-check'} mr-2"></i>${message}`;
-    }
-
-    function showForgot() {
-      showAlert('success', '📧 Password reset link sent to registered enterprise email.');
-    }
-
-    function syncLoginTheme() {
-      const activeTheme = localStorage.getItem('nellys_theme') || 'dark';
-      applyLoginTheme(activeTheme);
-    }
-
-    function applyLoginTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('nellys_theme', theme);
-      const icon = document.querySelector('#theme-btn i');
-      if (icon) {
-        if (theme === 'dark') {
-          icon.className = 'fas fa-sun text-xs text-amber-400';
-        } else {
-          icon.className = 'fas fa-moon text-xs text-indigo-400';
-        }
-      }
-    }
-
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyLoginTheme(next);
-    }
-
-    document.addEventListener('DOMContentLoaded', syncLoginTheme);
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
