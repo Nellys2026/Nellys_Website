@@ -569,6 +569,76 @@ footer strong { color: #FFFFFF !important; }
   color: var(--text-secondary) !important;
 }
 
+/* ----------------------------------------------------------
+   15. LETTER-BY-LETTER HERO HEADLINE ANIMATION (ATTICUBE-STYLE)
+   ---------------------------------------------------------- */
+.letter-reveal,
+.hero-heading {
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: visible !important;
+  padding-bottom: 0.25em;
+  margin-bottom: -0.25em;
+  padding-top: 0.08em;
+  margin-top: -0.08em;
+}
+
+.split-char {
+  display: inline-block;
+  vertical-align: baseline;
+  overflow: visible !important;
+  padding-bottom: 0.28em;
+  margin-bottom: -0.28em;
+  padding-top: 0.08em;
+  margin-top: -0.08em;
+  opacity: 0;
+  transform: translateY(0.35em);
+  filter: blur(3px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--char-idx, 0) * 42ms);
+  will-change: opacity, transform, filter;
+}
+
+.char-revealed .split-char {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Ensure text-gradient spans have consistent gradient on individual characters with full descenders */
+.text-gradient {
+  display: inline-block;
+  overflow: visible !important;
+}
+.text-gradient .split-char {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-indigo) 60%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-theme="dark"] .text-gradient .split-char {
+  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 60%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-char {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
 .hero-btn-secondary {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -833,6 +903,211 @@ footer strong { color: #FFFFFF !important; }
     min-height: 44px;
     min-width: 44px;
   }
+}
+
+/* ----------------------------------------------------------
+   16. SERVICE CARD GENUINE PHOTO BACKGROUNDS & HIGH-LEGIBILITY TYPOGRAPHY
+   ---------------------------------------------------------- */
+.service-card {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;
+}
+
+.service-card.glass-panel {
+  background: rgba(11, 15, 25, 0.40) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.service-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.72;
+  filter: saturate(1.18) contrast(1.08);
+  transform: scale(1.001);
+  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.service-card:hover .service-card-bg {
+  opacity: 0.88;
+  transform: scale(1.04);
+}
+
+.service-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(7, 10, 19, 0.74) 0%, rgba(9, 13, 24, 0.82) 45%, rgba(11, 15, 28, 0.94) 100%);
+  transition: background 0.4s ease;
+}
+
+.service-card:hover .service-card-overlay {
+  background: linear-gradient(180deg, rgba(7, 10, 19, 0.64) 0%, rgba(9, 13, 24, 0.74) 45%, rgba(11, 15, 28, 0.88) 100%);
+}
+
+/* Typography Enhancements for Maximum Visibility over Background Photos */
+.service-card h3 {
+  font-size: 1.65rem !important; /* ~26px */
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  color: #FFFFFF !important;
+  letter-spacing: -0.02em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+.service-card h4 {
+  font-size: 1.05rem !important; /* ~17px */
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: #38BDF8 !important; /* Vibrant Cyan */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95) !important;
+}
+
+.service-card p:not(.italic) {
+  font-size: 0.95rem !important; /* ~15.2px */
+  font-weight: 500 !important;
+  line-height: 1.65 !important;
+  color: #F8FAFC !important; /* Ultra-bright White-Slate */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+.service-card .p-4.bg-slate-900\/80,
+.service-card [class*="bg-slate-900"] {
+  background-color: rgba(11, 15, 28, 0.92) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+  padding: 1.2rem !important;
+  border-radius: 1.1rem !important;
+}
+
+.service-card [class*="bg-slate-900"] span {
+  font-size: 0.82rem !important; /* ~13px */
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  color: #38BDF8 !important;
+}
+
+.service-card [class*="bg-slate-900"] ul {
+  gap: 0.6rem !important;
+}
+
+.service-card [class*="bg-slate-900"] li {
+  font-size: 0.9rem !important; /* ~14.4px */
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  color: #FFFFFF !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0.6rem !important;
+}
+
+.service-card [class*="bg-slate-900"] li i {
+  font-size: 0.8rem !important;
+  margin-top: 0.25rem !important;
+  color: #38BDF8 !important;
+}
+
+.service-card p.italic,
+.service-card [class*="italic"] {
+  font-size: 0.9rem !important; /* ~14.4px */
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  color: #E2E8F0 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] .service-card.glass-panel,
+.light .service-card.glass-panel {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .service-card-bg,
+.light .service-card-bg {
+  opacity: 0.55;
+  filter: saturate(1.2) contrast(1.05);
+}
+
+[data-theme="light"] .service-card:hover .service-card-bg,
+.light .service-card:hover .service-card-bg {
+  opacity: 0.75;
+}
+
+[data-theme="light"] .service-card-overlay,
+.light .service-card-overlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.82) 45%, rgba(255, 255, 255, 0.94) 100%);
+}
+
+[data-theme="light"] .service-card:hover .service-card-overlay,
+.light .service-card:hover .service-card-overlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.72) 45%, rgba(255, 255, 255, 0.88) 100%);
+}
+
+[data-theme="light"] .service-card h3,
+.light .service-card h3 {
+  color: #0F172A !important;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.95), 0 0 2px #FFFFFF !important;
+}
+
+[data-theme="light"] .service-card h4,
+.light .service-card h4 {
+  color: #0284C7 !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-theme="light"] .service-card p:not(.italic),
+.light .service-card p:not(.italic) {
+  color: #1E293B !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-theme="light"] .service-card .p-4.bg-slate-900\/80,
+[data-theme="light"] .service-card [class*="bg-slate-900"],
+.light .service-card .p-4.bg-slate-900\/80,
+.light .service-card [class*="bg-slate-900"] {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(2, 132, 199, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .service-card [class*="bg-slate-900"] span,
+.light .service-card [class*="bg-slate-900"] span {
+  color: #0369A1 !important;
+}
+
+[data-theme="light"] .service-card [class*="bg-slate-900"] li,
+.light .service-card [class*="bg-slate-900"] li {
+  color: #0F172A !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .service-card [class*="bg-slate-900"] li i,
+.light .service-card [class*="bg-slate-900"] li i {
+  color: #0284C7 !important;
+}
+
+[data-theme="light"] .service-card p.italic,
+[data-theme="light"] .service-card [class*="italic"],
+.light .service-card p.italic,
+.light .service-card [class*="italic"] {
+  color: #334155 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9) !important;
 }
 
 

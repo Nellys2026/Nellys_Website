@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCoworkingCalculator();
   initContactForm();
   initHeroCarousel();
+  initLetterReveal();
   initScrollReveal();
 });
 
@@ -328,6 +329,117 @@ function initHeroCarousel() {
 
   updateDots();
   resetTimer();
+}
+
+/* ── LETTER-BY-LETTER HERO HEADLINE ANIMATION (ATTICUBE-STYLE) ── */
+function initLetterReveal() {
+  if (window.__letterRevealInitialized) return;
+  window.__letterRevealInitialized = true;
+
+  const candidateHeadings = Array.from(document.querySelectorAll(
+    '#hero h1, .hero-heading, .letter-reveal, [data-letter-reveal], main > section:first-of-type h1, h1, h2, h3'
+  ));
+
+  const targetHeadings = candidateHeadings.filter(el => {
+    if (el.classList.contains('letter-reveal') || el.classList.contains('hero-heading') || el.hasAttribute('data-letter-reveal')) return true;
+    if (el.closest('#hero') && el.tagName === 'H1') return true;
+    if (el.closest('main > section:first-of-type') && el.tagName === 'H1') return true;
+    const txt = (el.textContent || '').trim().toLowerCase();
+    if (txt.includes('one partner') || txt.includes('when one team')) return true;
+    return false;
+  });
+
+  if (!targetHeadings.length) return;
+
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  targetHeadings.forEach(heading => {
+    if (heading.dataset.lettersSplit) return;
+    heading.dataset.lettersSplit = 'true';
+    heading.classList.add('letter-reveal');
+    heading.setAttribute('aria-label', heading.textContent.replace(/\s+/g, ' ').trim());
+
+    let charIndex = 0;
+
+    function processNode(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        if (!text) return null;
+
+        const fragment = document.createDocumentFragment();
+        const tokens = text.split(/(\s+)/);
+
+        tokens.forEach(token => {
+          if (!token) return;
+          if (/^\s+$/.test(token)) {
+            fragment.appendChild(document.createTextNode(token));
+          } else {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'split-word';
+            for (let i = 0; i < token.length; i++) {
+              const charSpan = document.createElement('span');
+              charSpan.className = 'split-char';
+              charSpan.textContent = token[i];
+              charSpan.style.setProperty('--char-idx', charIndex);
+              charIndex++;
+              wordSpan.appendChild(charSpan);
+            }
+            fragment.appendChild(wordSpan);
+          }
+        });
+        return fragment;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName.toLowerCase() === 'br') {
+          return node.cloneNode(true);
+        }
+        const clone = node.cloneNode(false);
+        Array.from(node.childNodes).forEach(child => {
+          const res = processNode(child);
+          if (res) clone.appendChild(res);
+        });
+        return clone;
+      }
+      return null;
+    }
+
+    const fragment = document.createDocumentFragment();
+    Array.from(heading.childNodes).forEach(child => {
+      const res = processNode(child);
+      if (res) fragment.appendChild(res);
+    });
+
+    heading.innerHTML = '';
+    heading.appendChild(fragment);
+
+    if (prefersReducedMotion) {
+      heading.classList.add('char-revealed');
+      return;
+    }
+
+    // Bidirectional scroll observer for each heading
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            heading.classList.add('char-revealed');
+          } else {
+            const rect = entry.boundingClientRect;
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            // Only reset if completely offscreen (scrolled past top or below bottom)
+            if (rect.bottom < 10 || rect.top > vh - 10) {
+              heading.classList.remove('char-revealed');
+            }
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -10px 0px'
+      });
+      observer.observe(heading);
+    } else {
+      heading.classList.add('char-revealed');
+    }
+  });
 }
 
 /* ── SCROLL-TRIGGERED REVEAL ANIMATIONS (ALL PAGES - BIDIRECTIONAL) ──────── */
