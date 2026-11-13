@@ -19,50 +19,50 @@ header svg, nav svg, a > div > svg {
    1. THEME VARIABLES
    ---------------------------------------------------------- */
 
-/* Light Theme (default) */
+/* Light Theme (default - Soft Indigo Mist) */
 :root {
-  --bg-page:          #F8FAFC;
-  --bg-surface:       #FFFFFF;
-  --bg-surface-2:     #F1F5F9;
+  --bg-page:          #EEF2FF;
+  --bg-surface:       #F8FAFF;
+  --bg-surface-2:     #E0E7FF;
   --bg-card:          #FFFFFF;
-  --bg-header:        rgba(255,255,255,0.95);
-  --bg-footer:        #0F172A;
+  --bg-header:        rgba(224, 231, 255, 0.96);
+  --bg-footer:        #E0E7FF;
 
   --text-primary:     #0F172A;
   --text-secondary:   #334155;
   --text-muted:       #64748B;
-  --text-inverse:     #F8FAFC;
+  --text-inverse:     #EEF2FF;
 
-  --border-color:     #E2E8F0;
-  --border-header:    #E2E8F0;
-  --header-shadow:    0 2px 12px rgba(0,0,0,0.06);
+  --border-color:     #C7D2FE;
+  --border-header:    #C7D2FE;
+  --header-shadow:    0 2px 14px rgba(79, 70, 229, 0.08);
 
-  --accent:           #0284C7;
-  --accent-hover:     #0369A1;
-  --accent-indigo:    #4F46E5;
+  --accent:           #4F46E5;
+  --accent-hover:     #4338CA;
+  --accent-indigo:    #6366F1;
   --accent-emerald:   #059669;
   --accent-amber:     #D97706;
 
   --input-bg:         #FFFFFF;
   --input-text:       #0F172A;
-  --input-border:     #CBD5E1;
+  --input-border:     #C7D2FE;
   --input-placeholder:#94A3B8;
 
-  --topbar-bg:        #F0F9FF;
-  --topbar-border:    #BAE6FD;
-  --topbar-text:      #0369A1;
-  --topbar-badge-bg:  #0284C7;
+  --topbar-bg:        #E0E7FF;
+  --topbar-border:    #C7D2FE;
+  --topbar-text:      #3730A3;
+  --topbar-badge-bg:  #4F46E5;
   --topbar-badge-text:#FFFFFF;
 
-  --card-shadow:      0 4px 20px rgba(0,0,0,0.06);
+  --card-shadow:      0 4px 20px rgba(79, 70, 229, 0.06);
   --modal-bg:         #FFFFFF;
-  --drawer-bg:        #FFFFFF;
+  --drawer-bg:        #EEF2FF;
 
-  --footer-text:      #CBD5E1;
-  --footer-heading:   #FFFFFF;
-  --footer-border:    #1E293B;
-  --scrollbar-track:  #F1F5F9;
-  --scrollbar-thumb:  #CBD5E1;
+  --footer-text:      #334155;
+  --footer-heading:   #0F172A;
+  --footer-border:    #C7D2FE;
+  --scrollbar-track:  #EEF2FF;
+  --scrollbar-thumb:  #C7D2FE;
 }
 
 /* Dark Theme */
@@ -277,8 +277,8 @@ footer strong { color: #FFFFFF !important; }
 
 /* LIGHT THEME FOOTER HIGH-CONTRAST BLACK TEXT OVERRIDES */
 [data-theme="light"] footer {
-  background-color: #FFFFFF !important;
-  border-top: 1px solid #E2E8F0 !important;
+  background-color: #E0E7FF !important;
+  border-top: 1px solid #C7D2FE !important;
   color: #0F172A !important;
 }
 
@@ -297,7 +297,7 @@ footer strong { color: #FFFFFF !important; }
 }
 
 [data-theme="light"] footer a:hover {
-  color: #0284C7 !important;
+  color: #4F46E5 !important;
 }
 
 [data-theme="light"] footer .text-slate-400,
@@ -311,14 +311,14 @@ footer strong { color: #FFFFFF !important; }
 [data-theme="light"] footer .bg-slate-900,
 [data-theme="light"] footer .bg-slate-950,
 [data-theme="light"] footer .bg-[#0B0F19] {
-  background-color: #F8FAFC !important;
-  border-color: #CBD5E1 !important;
+  background-color: #EEF2FF !important;
+  border-color: #C7D2FE !important;
 }
 
 [data-theme="light"] footer .border-slate-800,
 [data-theme="light"] footer .border-slate-800\/80,
 [data-theme="light"] footer .border-slate-800\/60 {
-  border-color: #E2E8F0 !important;
+  border-color: #C7D2FE !important;
 }
 
 /* ----------------------------------------------------------
@@ -500,6 +500,81 @@ footer strong { color: #FFFFFF !important; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ----------------------------------------------------------
+   15. SCROLL-TRIGGERED REVEAL ANIMATIONS (ATTICUBE-STYLE)
+   ---------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Directional & Scale variations */
+.reveal-from-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-from-left.is-revealed {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.reveal-from-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-from-right.is-revealed {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-scale.is-revealed {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+}
+
+/* Stagger utilities for cards and lists */
+.reveal-delay-1 { transition-delay: 80ms !important; }
+.reveal-delay-2 { transition-delay: 160ms !important; }
+.reveal-delay-3 { transition-delay: 240ms !important; }
+.reveal-delay-4 { transition-delay: 320ms !important; }
+.reveal-delay-5 { transition-delay: 400ms !important; }
+.reveal-delay-6 { transition-delay: 480ms !important; }
+.reveal-delay-7 { transition-delay: 560ms !important; }
+.reveal-delay-8 { transition-delay: 640ms !important; }
+.reveal-delay-9 { transition-delay: 720ms !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .reveal-from-left,
+  .reveal-from-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Dashboard Sidebar Navigation Layout & Alignment */

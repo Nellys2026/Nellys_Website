@@ -33,7 +33,7 @@
     <div class="glow-orb glow-orb-3"></div>
   </div>
 
-  <div class="glass-card relative z-10 w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl shadow-black/40 flex min-h-[620px]">
+  <div class="glass-card relative z-10 w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl shadow-black/40 flex min-h-[620px] reveal-on-scroll reveal-scale">
 
     <!-- LEFT BRAND PANEL -->
     <div class="brand-panel hidden lg:flex flex-col justify-between p-10 xl:p-12 w-[45%] shrink-0">
@@ -256,6 +256,9 @@
           icon.className = 'fas fa-moon text-xs text-indigo-400';
         }
       }
+      document.querySelectorAll('img[src*="nellys-logo"]').forEach(img => {
+        img.src = theme === 'light' ? 'nellys-logo-light.svg' : 'nellys-logo-dark.svg';
+      });
     }
 
     function toggleTheme() {

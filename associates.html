@@ -134,9 +134,9 @@
 
     <!-- PAGE HERO -->
     <section class="py-16 bg-slate-950/60 border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-4 reveal-on-scroll">
         <span
-          class="text-xs font-bold text-purple-400 tracking-widest uppercase bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-500/30">
+          class="text-xs font-bold text-purple-400 tracking-widest uppercase bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-500/30 inline-block">
           Strategic Ecosystem
         </span>
         <h1 class="text-4xl font-extrabold text-white tracking-tight">Associate Firms & Strategic Partners</h1>
@@ -242,9 +242,9 @@
   <!-- STANDARDIZED 5-COLUMN CORPORATE FOOTER -->
   <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80" data-reveal-group>
 
-        <div class="lg:col-span-2 space-y-4">
+        <div class="lg:col-span-2 space-y-4 reveal-on-scroll reveal-delay-1">
           <div class="flex items-center gap-3">
             <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto">
             <div>
@@ -268,7 +268,7 @@
           </div>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 reveal-on-scroll reveal-delay-2">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
           <ul class="space-y-2 text-xs text-slate-200">
             <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
@@ -279,7 +279,7 @@
           </ul>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 reveal-on-scroll reveal-delay-3">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Two Strengths</h4>
           <ul class="space-y-2 text-xs text-slate-200">
             <li><a href="services.html#branding" class="hover:text-cyan-400 transition-colors">Digital Branding </a>
@@ -290,7 +290,7 @@
           </ul>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 reveal-on-scroll reveal-delay-4">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Our Standards</h4>
           <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] space-y-2">
             <p class="text-cyan-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Six Promises We Live By</p>
@@ -339,8 +339,7 @@
     </div>
   </div>
 
-  <script src="main.js"></script>
-<script src="js/global.js"></script>
+  <script src="js/global.js"></script>
 </body>
 
 </html>

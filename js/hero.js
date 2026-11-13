@@ -2,7 +2,7 @@
 // HERO CAROUSEL + MULTI-LINE TYPEWRITER + SCROLL REVEAL
 // -------------------------------------------------
 
-document.addEventListener('DOMContentLoaded', () => {
+function initHero() {
 
   // ---------- Slide captions ----------
   // Each slide has a heading (with a gradient portion), subtitle, and body.
@@ -175,30 +175,175 @@ document.addEventListener('DOMContentLoaded', () => {
   startTypewriter(0);
   resetTimer();
 
-  // ---------- Scroll‑triggered reveal ----------
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('opacity-100', 'translate-y-0');
+  // ---------- Scroll‑triggered reveal (All Index Page Content - Bidirectional) ----------
+  function initScrollReveal() {
+    if (window.__scrollRevealInitialized) return;
+    window.__scrollRevealInitialized = true;
 
-        const words = entry.target.querySelectorAll('#engineer-heading span');
+    // Reduced motion preference check
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Auto-enrich data-reveal-group children with reveal classes and staggered delays
+    document.querySelectorAll('[data-reveal-group]').forEach(group => {
+      const children = group.querySelectorAll(
+        ':scope > div, :scope > article, :scope > .stat-box, :scope > a, :scope > li'
+      );
+      children.forEach((child, i) => {
+        const hasRevealClass = child.classList.contains('reveal-on-scroll') ||
+                               child.classList.contains('reveal-from-left') ||
+                               child.classList.contains('reveal-from-right') ||
+                               child.classList.contains('reveal-scale');
+        if (!hasRevealClass) {
+          child.classList.add('reveal-on-scroll');
+        }
+        if (!child.style.transitionDelay && !child.className.includes('reveal-delay-')) {
+          child.style.transitionDelay = `${(i % 8) * 80}ms`;
+        }
+      });
+    });
+
+    const revealTargets = Array.from(document.querySelectorAll(
+      '[data-observe], .reveal-on-scroll, .reveal-from-left, .reveal-from-right, .reveal-scale, [data-reveal-group]'
+    ));
+
+    if (!revealTargets.length) return;
+
+    function revealElement(target) {
+      if (!target) return;
+      if (target.classList.contains('is-revealed')) return;
+
+      target.classList.add('is-revealed');
+
+      if (target.hasAttribute('data-observe')) {
+        target.classList.add('opacity-100', 'translate-y-0');
+        target.classList.remove('opacity-0', 'translate-y-10');
+      }
+
+      // Stagger child cards if container is a reveal group
+      if (target.hasAttribute('data-reveal-group')) {
+        const childCards = target.querySelectorAll(
+          ':scope > .reveal-on-scroll, :scope > .reveal-from-left, :scope > .reveal-from-right, :scope > .reveal-scale, :scope > div, :scope > article'
+        );
+        childCards.forEach((child, i) => {
+          if (!child.style.transitionDelay && !child.className.includes('reveal-delay-')) {
+            child.style.transitionDelay = `${(i % 8) * 80}ms`;
+          }
+          child.classList.add('is-revealed');
+        });
+      }
+
+      // Special heading word-by-word blur reveal (engineer-heading)
+      const words = target.querySelectorAll('#engineer-heading span');
+      if (words.length) {
         words.forEach((w, i) => {
           w.style.transition = `all 400ms ease ${i * 100}ms`;
-          w.classList.replace('blur-sm', 'blur-0');
-          w.classList.replace('opacity-0', 'opacity-100');
-          w.classList.replace('translate-y-4', 'translate-y-0');
+          w.classList.remove('blur-sm', 'opacity-0', 'translate-y-4');
+          w.classList.add('blur-0', 'opacity-100', 'translate-y-0');
         });
-
-        const p = entry.target.querySelector('p');
-        if (p) {
-          p.style.transition = 'opacity 300ms ease 600ms, transform 300ms ease 600ms';
-          p.classList.replace('opacity-0', 'opacity-100');
-          p.classList.replace('translate-y-4', 'translate-y-0');
-        }
       }
-    });
-  }, { threshold: 0.2 });
 
-  const reveal = document.querySelector('[data-observe]');
-  if (reveal) observer.observe(reveal);
-});
+      // Paragraph inside engineer-section or data-observe
+      const p = target.querySelector('#engineer-section p, [data-observe] p');
+      if (p) {
+        p.style.transition = 'opacity 350ms ease 450ms, transform 350ms ease 450ms';
+        p.classList.remove('opacity-0', 'translate-y-4');
+        p.classList.add('opacity-100', 'translate-y-0');
+      }
+    }
+
+    function hideElement(target) {
+      if (!target || !target.classList.contains('is-revealed')) return;
+
+      // Reset offscreen cleanly with transitions disabled to prevent reverse animation glitches
+      target.style.transition = 'none';
+      target.classList.remove('is-revealed');
+
+      if (target.hasAttribute('data-observe')) {
+        target.classList.remove('opacity-100', 'translate-y-0');
+        target.classList.add('opacity-0', 'translate-y-10');
+      }
+
+      if (target.hasAttribute('data-reveal-group')) {
+        const childCards = target.querySelectorAll(
+          ':scope > .reveal-on-scroll, :scope > .reveal-from-left, :scope > .reveal-from-right, :scope > .reveal-scale, :scope > div, :scope > article'
+        );
+        childCards.forEach(child => {
+          child.style.transition = 'none';
+          child.classList.remove('is-revealed');
+          void child.offsetHeight;
+          child.style.transition = '';
+        });
+      }
+
+      const words = target.querySelectorAll('#engineer-heading span');
+      if (words.length) {
+        words.forEach(w => {
+          w.style.transition = 'none';
+          w.classList.remove('blur-0', 'opacity-100', 'translate-y-0');
+          w.classList.add('blur-sm', 'opacity-0', 'translate-y-4');
+          void w.offsetHeight;
+          w.style.transition = '';
+        });
+      }
+
+      const p = target.querySelector('#engineer-section p, [data-observe] p');
+      if (p) {
+        p.style.transition = 'none';
+        p.classList.remove('opacity-100', 'translate-y-0');
+        p.classList.add('opacity-0', 'translate-y-4');
+        void p.offsetHeight;
+        p.style.transition = '';
+      }
+
+      void target.offsetHeight;
+      target.style.transition = '';
+    }
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealTargets.forEach(el => revealElement(el));
+      return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          revealElement(el);
+        } else {
+          const rect = el.getBoundingClientRect();
+          // Only reset if completely offscreen (either scrolled past top or below bottom)
+          if (rect.bottom < 40 || rect.top > vh - 20) {
+            hideElement(el);
+          }
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+
+    // Check elements already in the initial viewport
+    function checkInitialViewport() {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      revealTargets.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh - 20 && r.bottom > 10) {
+          revealElement(el);
+        }
+      });
+    }
+
+    checkInitialViewport();
+  }
+
+  initScrollReveal();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHero);
+} else {
+  initHero();
+}
