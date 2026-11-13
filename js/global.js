@@ -54,22 +54,58 @@ function applyTheme(theme) {
   });
 }
 
-/* ── MOBILE MENU ─────────────────────────────────────────── */
+/* ── MOBILE MENU & DRAWER ────────────────────────────────── */
 function initMobileMenu() {
   const menuBtn    = document.getElementById('mobile-menu-btn');
   const drawer     = document.getElementById('mobile-drawer');
   const closeBtn   = document.getElementById('close-drawer-btn');
 
-  if (menuBtn && drawer) {
-    menuBtn.addEventListener('click', () => {
-      drawer.classList.remove('translate-x-full');
-      drawer.classList.add('translate-x-0');
+  // Inject backdrop overlay if not already present in DOM
+  let backdrop = document.querySelector('.drawer-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'drawer-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  function openDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove('translate-x-full');
+    drawer.classList.add('translate-x-0');
+    backdrop.classList.add('active');
+    document.body.classList.add('drawer-open');
+  }
+
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.add('translate-x-full');
+    drawer.classList.remove('translate-x-0');
+    backdrop.classList.remove('active');
+    document.body.classList.remove('drawer-open');
+  }
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openDrawer();
     });
   }
-  if (closeBtn && drawer) {
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.add('translate-x-full');
-      drawer.classList.remove('translate-x-0');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDrawer);
+  }
+  backdrop.addEventListener('click', closeDrawer);
+
+  // Close drawer on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('drawer-open')) {
+      closeDrawer();
+    }
+  });
+
+  // Close drawer when any drawer nav link is tapped
+  if (drawer) {
+    drawer.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', closeDrawer);
     });
   }
 }

@@ -169,6 +169,27 @@ function initHero() {
   if (carousel) {
     carousel.onmouseenter = () => clearInterval(timer);
     carousel.onmouseleave = resetTimer;
+
+    // Mobile touch swipe gestures for carousel
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 40) { // minimum swipe distance
+        if (diff < 0) {
+          next(); // swiped left -> next slide
+        } else {
+          prev(); // swiped right -> previous slide
+        }
+        resetTimer();
+      }
+    }, { passive: true });
   }
 
   // Initial kick-off
