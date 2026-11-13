@@ -121,6 +121,18 @@ function setActiveNavLink() {
       link.classList.remove('active');
     }
   });
+
+  // Also highlight active page in mobile drawer
+  document.querySelectorAll('#mobile-drawer nav a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === page || (page === '' && href === 'index.html')) {
+      link.classList.add('text-cyan-400', 'font-bold');
+      link.classList.remove('text-slate-300');
+    } else if (href !== 'login.html') {
+      link.classList.remove('text-cyan-400', 'font-bold');
+      link.classList.add('text-slate-300');
+    }
+  });
 }
 
 /* ── MODALS ──────────────────────────────────────────────── */
