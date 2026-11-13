@@ -13,7 +13,7 @@
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/global.css">
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
 
@@ -30,25 +30,7 @@
   <header class="sticky top-0 z-40 bg-[#0B0F19]/90 backdrop-blur-md border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
       <a href="index.html" class="flex items-center gap-3 shrink-0 group">
-        <div class="h-9 w-auto flex items-center">
-          <svg class="h-9 w-auto rounded-lg shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform" viewBox="0 0 102 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="badgeGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0284C7"/>
-                <stop offset="100%" stop-color="#0369A1"/>
-              </linearGradient>
-              <linearGradient id="cyanGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#38BDF8"/>
-                <stop offset="100%" stop-color="#00BAFF"/>
-              </linearGradient>
-            </defs>
-            <path d="M 14.841,0.000 L 86.926,0.000 C 95.123,0.000 101.767,6.645 101.767,14.841 L 101.767,52.701 C 101.767,60.898 95.123,67.542 86.926,67.542 L 14.841,67.542 C 6.644,67.542 0.000,60.898 0.000,52.701 L 0.000,14.841 C 0.000,6.645 6.644,0.000 14.841,0.000 Z" fill="url(#badgeGradNav)"/>
-            <path d="M 16.961,19.081 C 24.654,16.597 31.681,14.780 36.224,15.083 C 41.676,15.083 43.796,17.869 45.735,22.352 L 55.851,42.100 L 52.701,51.247 C 52.216,52.701 51.126,53.185 50.338,51.792 L 39.798,29.379 L 33.680,52.216 L 24.715,52.216 L 32.832,25.199 C 34.346,20.293 32.226,19.444 29.682,19.505 Z" fill="url(#cyanGradNav)"/>
-            <path d="M 51.913,21.989 C 54.154,16.658 55.608,15.265 59.364,15.265 L 83.776,15.265 L 82.019,18.597 C 80.808,21.020 79.112,22.050 76.931,22.050 Z" fill="#FFFFFF"/>
-            <path d="M 48.582,23.564 L 61.121,23.564 L 56.033,38.769 Z" fill="#FFFFFF"/>
-            <path d="M 64.029,23.564 L 74.145,23.564 L 66.573,48.885 C 65.907,51.247 64.938,52.338 62.878,52.338 L 54.761,52.338 Z" fill="url(#cyanGradNav)"/>
-          </svg>
-        </div>
+        <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto group-hover:scale-105 transition-transform">
         <div class="flex flex-col">
           <span class="text-lg font-bold tracking-tight text-white leading-none">Nellys <span class="text-cyan-400">Tech</span></span>
           <span class="text-[9px] text-cyan-400 tracking-widest uppercase font-bold mt-0.5">PVT. LTD.</span>
@@ -60,7 +42,7 @@
         <a href="about.html" class="nav-link hover:text-white transition-colors">About Us</a>
         <a href="services.html" class="nav-link hover:text-white transition-colors">Services</a>
         <!-- <a href="portfolio.html" class="nav-link hover:text-white transition-colors">Portfolio</a> -->
-        <a href="leadership.html" class="nav-link active hover:text-white transition-colors">Leadership</a>
+        <a href="leadership.html" class="nav-link hover:text-white transition-colors">Leadership</a>
         <!-- <a href="coworking.html" class="nav-link hover:text-white transition-colors">Co-Working</a> -->
         <a href="associates.html" class="nav-link hover:text-white transition-colors">Partners</a>
         <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
@@ -98,14 +80,15 @@
         <button id="close-drawer-btn" class="text-slate-400 hover:text-white text-xl"><i class="fas fa-xmark"></i></button>
       </div>
       <nav class="mt-6 flex flex-col space-y-4 font-medium text-slate-300">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services (20 Capabilities)</a>
-        <!-- <a href="portfolio.html">Portfolio & Recognition</a> -->
-        <a href="leadership.html" class="text-cyan-400 font-bold">Leadership & Team</a>
-        <!-- <a href="coworking.html">Co-Working Lease</a> -->
-        <a href="associates.html">Associate Firms</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="index.html" class="hover:text-cyan-400 py-1 transition-colors">Home</a>
+        <a href="about.html" class="hover:text-cyan-400 py-1 transition-colors">About Us</a>
+        <a href="services.html" class="hover:text-cyan-400 py-1 transition-colors">Services</a>
+        <!-- <a href="portfolio.html" class="hover:text-cyan-400 py-1 transition-colors">Portfolio</a> -->
+        <a href="leadership.html" class="hover:text-cyan-400 py-1 transition-colors">Leadership</a>
+        <!-- <a href="coworking.html" class="hover:text-cyan-400 py-1 transition-colors">Co-Working Lease</a> -->
+        <a href="associates.html" class="hover:text-cyan-400 py-1 transition-colors">Partners</a>
+        <a href="contact.html" class="hover:text-cyan-400 py-1 transition-colors">Contact Us</a>
+        <a href="login.html" class="hover:text-cyan-400 py-1 transition-colors">Dashboard Login</a>
       </nav>
     </div>
   </div>
@@ -113,24 +96,34 @@
   <main class="flex-grow">
 
     <!-- PAGE HERO -->
-    <section class="py-16 sm:py-24 border-b border-slate-800/80 relative overflow-hidden">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-indigo-500/10 via-cyan-500/10 to-purple-500/10 blur-3xl pointer-events-none"></div>
+    <section class="py-16 sm:py-24 border-b border-slate-200/80 dark:border-slate-800/80 relative overflow-hidden" id="hero">
+      <!-- Background Carousel Track -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="carousel">
+        <div class="hero-slides flex flex-nowrap h-full w-full will-change-transform" id="slides">
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide1.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide2.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide3.jpg');"></div>
+        </div>
+      </div>
+
+      <!-- Gradient & Ambient Overlays (ensures crystal clear readability) -->
+      <div class="absolute inset-0 z-[1] hero-bg-overlay-center pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-3xl mx-auto space-y-6">
-          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-wider">
-            <i class="fas fa-users"></i> Connected Expertise &bull; One Unified Team
+        <div class="text-center max-w-3xl mx-auto space-y-6 reveal-on-scroll">
+          <span class="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+            <i class="fas fa-users text-cyan-400"></i> Connected Expertise &bull; One Unified Team
           </span>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+          <h1 class="hero-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
             One Team. <span class="text-gradient">Lasting Value.</span>
           </h1>
 
-          <p class="text-lg text-cyan-300 font-medium">
+          <p class="hero-subtitle text-lg sm:text-xl font-medium">
             Software engineers, cloud and security experts working alongside brand, content and marketing specialists.
           </p>
 
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p class="hero-body text-sm sm:text-base leading-relaxed">
             We plan together and work together, right here in Thiruvananthapuram. With our unified team on the whole picture, there is no finger-pointing, no repeated explanations, no hidden charges and no gaps between vendors.
           </p>
         </div>
@@ -141,18 +134,18 @@
     <section class="py-20 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span class="px-3 py-1 bg-cyan-950 text-cyan-400 text-xs font-bold rounded-full border border-cyan-500/30 uppercase tracking-wider">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+          <span class="px-3 py-1 bg-cyan-950 text-cyan-400 text-xs font-bold rounded-full border border-cyan-500/30 uppercase tracking-wider inline-block">
             Connected Disciplines
           </span>
-          <h2 class="text-3xl font-extrabold">Our Unified Departments</h2>
+          <h2 class="text-3xl font-extrabold text-white">Our Unified Departments</h2>
           <p class="text-slate-400 text-sm">Specialists united under one roof to deliver seamless technology and visibility</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" data-reveal-group>
 
           <!-- DIVISION 1 -->
-          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-cyan-500/50 transition-all">
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-cyan-500/50 transition-all reveal-on-scroll reveal-delay-1 hover:-translate-y-1">
             <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
               <i class="fas fa-code"></i>
             </div>
@@ -166,7 +159,7 @@
           </div>
 
           <!-- DIVISION 2 -->
-          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-indigo-500/50 transition-all">
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-indigo-500/50 transition-all reveal-on-scroll reveal-delay-2 hover:-translate-y-1">
             <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
               <i class="fas fa-shield-halved"></i>
             </div>
@@ -180,7 +173,7 @@
           </div>
 
           <!-- DIVISION 3 -->
-          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-emerald-500/50 transition-all">
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-emerald-500/50 transition-all reveal-on-scroll reveal-delay-3 hover:-translate-y-1">
             <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
               <i class="fas fa-palette"></i>
             </div>
@@ -194,7 +187,7 @@
           </div>
 
           <!-- DIVISION 4 -->
-          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-amber-500/50 transition-all">
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-4 hover:border-amber-500/50 transition-all reveal-on-scroll reveal-delay-4 hover:-translate-y-1">
             <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
               <i class="fas fa-chart-line"></i>
             </div>
@@ -216,47 +209,47 @@
     <section class="py-20 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span class="px-3 py-1 bg-amber-950 text-amber-400 text-xs font-bold rounded-full border border-amber-500/30 uppercase tracking-wider">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+          <span class="px-3 py-1 bg-amber-950 text-amber-400 text-xs font-bold rounded-full border border-amber-500/30 uppercase tracking-wider inline-block">
             Operational Principles
           </span>
           <h2 class="text-3xl font-extrabold text-white">How Our Team Operates</h2>
           <p class="text-slate-400 text-sm">Six fundamental promises governing every line of code, design, and client interaction</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-group>
 
-          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 reveal-on-scroll reveal-delay-1 hover:-translate-y-1 transition-transform">
             <span class="text-cyan-400 font-mono font-bold text-xs uppercase">01 Clarity</span>
             <h3 class="text-lg font-bold text-white">No Guesswork, No Surprises</h3>
             <p class="text-xs text-slate-300">Plain language, clear scope and no surprises in timelines or costs.</p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 reveal-on-scroll reveal-delay-2 hover:-translate-y-1 transition-transform">
             <span class="text-indigo-400 font-mono font-bold text-xs uppercase">02 Reliability</span>
             <h3 class="text-lg font-bold text-white">We Do What We Say</h3>
             <p class="text-xs text-slate-300">We do what we say, when we say it. If something changes, you hear it from us early.</p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 reveal-on-scroll reveal-delay-3 hover:-translate-y-1 transition-transform">
             <span class="text-emerald-400 font-mono font-bold text-xs uppercase">03 Security by Default</span>
             <h3 class="text-lg font-bold text-white">Built In From Day One</h3>
             <p class="text-xs text-slate-300">Protection is built into systems from day one, not added as an afterthought.</p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 reveal-on-scroll reveal-delay-4 hover:-translate-y-1 transition-transform">
             <span class="text-amber-400 font-mono font-bold text-xs uppercase">04 Business First</span>
             <h3 class="text-lg font-bold text-white">Technology Serves Goals</h3>
             <p class="text-xs text-slate-300">Technology and marketing serve your real business goals, not the other way round.</p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 reveal-on-scroll reveal-delay-5 hover:-translate-y-1 transition-transform">
             <span class="text-rose-400 font-mono font-bold text-xs uppercase">05 Craft</span>
             <h3 class="text-lg font-bold text-white">Excellence in Every Detail</h3>
             <p class="text-xs text-slate-300">We care about the quality of every line of code, design, sentence of copy and second of sound.</p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 reveal-on-scroll reveal-delay-6 hover:-translate-y-1 transition-transform">
             <span class="text-cyan-400 font-mono font-bold text-xs uppercase">06 Partnership</span>
             <h3 class="text-lg font-bold text-white">Part of Your Team</h3>
             <p class="text-xs text-slate-300">Your success is our reference. We act like an extension of your own organization.</p>
@@ -270,7 +263,7 @@
     <!-- CONTACT CTA -->
     <section class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-cyan-500/30 text-center space-y-4 max-w-3xl mx-auto">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-cyan-500/30 text-center space-y-4 max-w-3xl mx-auto reveal-on-scroll reveal-scale">
           <h2 class="text-3xl font-extrabold text-white">Work With Our Team</h2>
           <p class="text-slate-300 text-sm">
             Reach out to discuss your technology, digital branding, or growth requirements with our specialists in Thiruvananthapuram.
@@ -292,9 +285,9 @@
   <!-- STANDARDIZED CORPORATE FOOTER -->
   <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80" data-reveal-group>
         
-        <div class="lg:col-span-2 space-y-4">
+        <div class="lg:col-span-2 space-y-4 reveal-on-scroll reveal-delay-1">
           <div class="flex items-center gap-3">
             <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto">
             <div>
@@ -313,7 +306,7 @@
           </div>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 reveal-on-scroll reveal-delay-2">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
           <ul class="space-y-2 text-xs text-slate-200">
             <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
@@ -324,7 +317,7 @@
           </ul>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 reveal-on-scroll reveal-delay-3">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Two Strengths</h4>
           <ul class="space-y-2 text-xs text-slate-200">
             <li><a href="services.html#branding" class="hover:text-cyan-400 transition-colors">Digital Branding (10)</a></li>
@@ -334,7 +327,7 @@
           </ul>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 reveal-on-scroll reveal-delay-4">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Our Standards</h4>
           <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] space-y-2">
             <p class="text-cyan-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Six Promises We Live By</p>
@@ -380,6 +373,6 @@
     </div>
   </div>
 
-  <script src="main.js"></script>
+  <script src="js/global.js"></script>
 </body>
 </html>
