@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth" data-theme="dark">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,9 +38,7 @@
     }
   </script>
   <!-- Slider Styles -->
-
 <body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
-
   <!-- TOP ANNOUNCEMENT BAR -->
   <div class="top-announcement-bar border-b text-xs py-2 px-4">
     <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center flex-wrap">
@@ -55,11 +52,9 @@
       </a>
     </div>
   </div>
-
   <!-- NAVIGATION BAR -->
   <header class="sticky top-0 z-40 bg-[#0B0F19]/90 backdrop-blur-md border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-
       <!-- LOGO & BRAND NAME -->
       <a href="index.html" class="flex items-center gap-3 shrink-0 group">
         <div class="h-9 w-auto flex items-center">
@@ -97,7 +92,6 @@
           <span class="text-[9px] text-cyan-400 tracking-widest uppercase font-bold mt-0.5">PVT. LTD.</span>
         </div>
       </a>
-
       <!-- DESKTOP NAV LINKS -->
       <nav class="hidden xl:flex items-center space-x-6 text-sm font-medium text-slate-300">
         <a href="index.html" class="nav-link active hover:text-white transition-colors">Home</a>
@@ -111,7 +105,6 @@
         <a href="login.html"
           class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors">Dashboard</a>
       </nav>
-
       <!-- RIGHT ACTIONS -->
       <div class="hidden sm:flex items-center gap-3 shrink-0">
         <!-- SINGLE ICON THEME TOGGLE BUTTON -->
@@ -126,7 +119,6 @@
           Inquire Now
         </button>
       </div>
-
       <!-- MOBILE MENU BUTTON -->
       <div class="flex xl:hidden items-center gap-2">
         <button
@@ -140,7 +132,6 @@
       </div>
     </div>
   </header>
-
   <!-- MOBILE DRAWER NAV -->
   <div id="mobile-drawer"
     class="fixed inset-y-0 right-0 z-50 w-72 bg-[#0B0F19] border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between">
@@ -172,18 +163,16 @@
       </button>
     </div>
   </div>
-
   <main class="flex-grow">
-
     <!-- HERO SECTION -->
     <!-- HERO CAROUSEL -->
 <section class="relative overflow-hidden h-screen md:min-h-[600px] bg-slate-900" id="hero">
   <!-- Carousel Track -->
   <div class="relative w-full h-full overflow-hidden" id="carousel">
-    <div class="flex transition-transform duration-700 ease-out will-change-transform" id="slides">
-      <div class="slide w-full h-full bg-cover bg-center" style="background-image:url('assets/slide1.jpg');"></div>
-      <div class="slide w-full h-full bg-cover bg-center" style="background-image:url('assets/slide2.jpg');"></div>
-      <div class="slide w-full h-full bg-cover bg-center" style="background-image:url('assets/slide3.jpg');"></div>
+    <div class="flex flex-nowrap transition-transform duration-700 ease-out will-change-transform h-full" id="slides">
+      <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide1.jpg');"></div>
+      <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide2.jpg');"></div>
+      <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide3.jpg');"></div>
     </div>
     <!-- Gradient overlay for text readability -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
@@ -194,13 +183,12 @@
           <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
           TECHNOLOGY / INNOVATION / BUSINESS
         </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight" id="hero-heading">
-          Engineering tomorrow’s <br class="hidden sm:inline" />
-          <span class="text-gradient">intelligent tech ecosystems.</span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight min-h-[1.2em]" id="hero-heading">
+          <span id="tw-heading"></span>
         </h1>
-        <p class="text-xl font-medium text-cyan-300">Technology that runs your business. Visibility that grows it.</p>
-        <p class="max-w-2xl text-base text-slate-300 font-normal leading-relaxed">
-          At Nellys Tech, software engineers, cloud and security specialists work alongside brand, content, and marketing experts. One unified team in Thiruvananthapuram delivering your complete growth infrastructure.
+        <p class="text-xl font-medium text-cyan-300 min-h-[1.6em]" id="tw-subtitle"></p>
+        <p class="max-w-2xl text-base text-slate-300 font-normal leading-relaxed min-h-[3em]" id="hero-body-paragraph">
+          <span id="tw-body"></span><span id="typewriter-cursor" class="text-cyan-400 font-normal inline-block ml-0.5">|</span>
         </p>
         <div class="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
           <a href="services.html" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-cyan-500/20 transform transition hover:-translate-y-0.5">
@@ -223,7 +211,6 @@
     </div>
   </div>
 </section>
-
 <!-- SCROLL‑TRIGGERED REVEAL SECTION -->
 <section class="py-20 border-b border-slate-800/60" id="engineer-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center opacity-0 translate-y-10 transition-all duration-700" data-observe>
@@ -236,7 +223,6 @@
     </p>
   </div>
 </section>
-
     <!-- <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-800/60"> -->
       <!-- Hero background slider -->
       <!-- <div class="hero-slider absolute inset-0 overflow-hidden">
@@ -249,31 +235,25 @@
       <!-- <div
         class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/15 to-indigo-500/15 rounded-full blur-3xl pointer-events-none">
       </div>
-
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid lg:grid-cols-12 gap-12 items-center">
-
           <div class="lg:col-span-7 text-center lg:text-left space-y-6">
             <div
               class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-cyan-400 text-xs font-semibold uppercase tracking-wider shadow-sm">
               <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
               TECHNOLOGY / INNOVATION / BUSINESS &bull; BUILD / CONNECT / GROW
             </div>
-
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
               Engineering tomorrow’s <br class="hidden sm:inline">
               <span class="text-gradient">intelligent tech ecosystems.</span>
             </h1>
-
             <p class="text-xl font-medium text-cyan-300">
               Technology that runs your business. Visibility that grows it.
             </p>
-
             <p class="text-base text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
               At Nellys Tech, software engineers, cloud and security specialists work alongside brand, content, and
               marketing experts. One unified team in Thiruvananthapuram delivering your complete growth infrastructure.
             </p>
-
             <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <a href="services.html"
                 class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-cyan-500/20 text-center transition-transform hover:-translate-y-0.5">
@@ -284,9 +264,7 @@
                 Contact Our Team
               </a>
             </div> -->
-
           </div>
-
           <!-- HERO VISUAL / TWO-PILLAR DISPLAY CARD -->
           <!-- <div class="lg:col-span-5 relative"> -->
           <!-- <div class="relative rounded-2xl glass-panel-accent p-6 shadow-2xl overflow-hidden border border-cyan-500/30 glow-cyan"> -->
@@ -299,7 +277,6 @@
                 </div>
                 <span class="text-xs font-mono text-cyan-400">nellys-ecosystem.v26</span>
               </div> -->
-
           <!-- Terminal / Architecture Content -->
           <!-- <div class="font-mono text-xs text-slate-300 space-y-3">
                 <p class="text-slate-400"><span class="text-cyan-400">&gt;</span> nellys.init("Connected Expertise")</p>
@@ -319,7 +296,6 @@
                   <p class="text-slate-400 text-[10px]">Consulting &bull; Custom Software &bull; Web & Mobile &bull; Integrations &bull; DB &bull; Networks &bull; Training &bull; Managed IT &bull; DevOps &bull; Security</p>
                 </div>
               </div> -->
-
           <!-- Value Guarantee Stamp -->
           <!-- <div class="mt-4 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
                 <div class="flex items-center gap-2 text-slate-300">
@@ -330,9 +306,7 @@
               </div> -->
           <!-- </div> -->
           <!-- </div> -->
-
         </div>
-
         <!-- KEY STATS BAR -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-14 pt-8 border-t border-slate-800/80">
           <!-- <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 pt-8 border-t border-slate-800/80"> -->
@@ -353,14 +327,11 @@
             <p class="text-xs font-medium text-slate-400">Unified Growth Infrastructure</p>
           </div> -->
         </div>
-
       </div>
     </section>
-
     <!-- SECTION 2: WELCOME & THE UNIFIED VALUE PROPOSITION (Page 2 & 8) -->
     <section class="py-20 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
           <span
             class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/60 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
@@ -382,7 +353,6 @@
             Thiruvananthapuram.
           </p>
         </div>
-
         <!-- WHEN ONE TEAM DOES IT ALL, NOTHING FALLS THROUGH (Page 8) -->
         <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-cyan-500/30 space-y-8">
           <div class="text-center max-w-2xl mx-auto space-y-2">
@@ -390,7 +360,6 @@
             <h3 class="text-2xl sm:text-3xl font-extrabold text-white">When One Team Does It All, Nothing Falls Through
             </h3>
           </div>
-
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
               <div
@@ -403,7 +372,6 @@
                 it, or it will be slow or unsafe.
               </p>
             </div>
-
             <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
               <div
                 class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-sm">
@@ -415,7 +383,6 @@
                 follow ups and monthly statements or the leads you paid for are lost.
               </p>
             </div>
-
             <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
               <div
                 class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm">
@@ -427,7 +394,6 @@
                 single touchpoint.
               </p>
             </div>
-
             <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
               <div
                 class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm">
@@ -440,7 +406,6 @@
               </p>
             </div>
           </div>
-
           <div
             class="p-4 bg-gradient-to-r from-cyan-950/60 to-indigo-950/60 rounded-xl border border-cyan-500/40 text-center">
             <p class="text-sm font-semibold text-cyan-200">
@@ -450,14 +415,11 @@
             </p>
           </div>
         </div>
-
       </div>
     </section>
-
     <!-- SECTION 3: TWO STRENGTHS. ONE DIRECTION. (Page 9 & 3) -->
     <section class="py-20 bg-slate-950/50 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span
             class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/60 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
@@ -470,9 +432,7 @@
             Connected expertise. Your business. One team. Twenty ways forward.
           </p>
         </div>
-
         <div class="grid md:grid-cols-2 gap-8">
-
           <!-- PILLAR I: DIGITAL BRANDING -->
           <div
             class="glass-panel rounded-3xl p-8 border border-cyan-500/40 hover:border-cyan-500/70 transition-all group relative overflow-hidden flex flex-col justify-between">
@@ -483,17 +443,14 @@
                   I</span>
                 <span class="text-xs font-mono text-slate-400">Services 10 – 19</span>
               </div>
-
               <div
                 class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl group-hover:scale-110 transition-transform">
                 <i class="fas fa-bullhorn"></i>
               </div>
-
               <div>
                 <h3 class="text-2xl font-bold text-white">Executive visibility & digital growth</h3>
                 <p class="text-sm text-cyan-300 mt-1">To shape, publish and grow your brand and reach.</p>
               </div>
-
               <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
                 <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-2"><i
                     class="fas fa-check text-cyan-400 text-[10px]"></i> Brand Identity & Logo</div>
@@ -517,7 +474,6 @@
                     class="fas fa-check text-cyan-400 text-[10px]"></i> Analytics & Reporting</div>
               </div>
             </div>
-
             <div class="pt-6 mt-6 border-t border-slate-800">
               <a href="services.html#branding"
                 class="inline-flex items-center text-cyan-400 font-semibold text-sm hover:text-cyan-300 gap-2">
@@ -525,7 +481,6 @@
               </a>
             </div>
           </div>
-
           <!-- PILLAR II: IT & BUSINESS SOLUTIONS -->
           <div
             class="glass-panel rounded-3xl p-8 border border-indigo-500/40 hover:border-indigo-500/70 transition-all group relative overflow-hidden flex flex-col justify-between">
@@ -536,18 +491,15 @@
                   II</span>
                 <span class="text-xs font-mono text-slate-400">Services 20 – 29</span>
               </div>
-
               <div
                 class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl group-hover:scale-110 transition-transform">
                 <i class="fas fa-laptop-code"></i>
               </div>
-
               <div>
                 <h3 class="text-2xl font-bold text-white">360 degree IT & business solutions</h3>
                 <p class="text-sm text-indigo-300 mt-1">To build, secure, deploy and support the technology you depend
                   on.</p>
               </div>
-
               <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
                 <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-2"><i
                     class="fas fa-check text-indigo-400 text-[10px]"></i> IT Consulting</div>
@@ -571,7 +523,6 @@
                     class="fas fa-check text-indigo-400 text-[10px]"></i> Practical Cybersecurity</div>
               </div>
             </div>
-
             <div class="pt-6 mt-6 border-t border-slate-800">
               <a href="services.html#tech"
                 class="inline-flex items-center text-indigo-400 font-semibold text-sm hover:text-indigo-300 gap-2">
@@ -579,16 +530,12 @@
               </a>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
-
     <!-- SECTION 4: WHO WE SERVE ("Is this you?" - Page 4) -->
     <section class="py-20 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span
             class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/60 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
@@ -601,7 +548,6 @@
             Tailored solutions designed around where your business is today and where it needs to go.
           </p>
         </div>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
             class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3 hover:border-cyan-500/50 transition-all">
@@ -611,7 +557,6 @@
               You need a website, a brand and a solid base to build on.
             </p>
           </div>
-
           <div
             class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3 hover:border-cyan-500/50 transition-all">
             <span class="text-2xl font-extrabold text-indigo-400 block font-mono">02</span>
@@ -620,7 +565,6 @@
               Spreadsheets and scattered tools are holding you back.
             </p>
           </div>
-
           <div
             class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3 hover:border-cyan-500/50 transition-all">
             <span class="text-2xl font-extrabold text-emerald-400 block font-mono">03</span>
@@ -629,7 +573,6 @@
               You want your name to be known and trusted across your industry.
             </p>
           </div>
-
           <div
             class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3 hover:border-cyan-500/50 transition-all">
             <span class="text-2xl font-extrabold text-amber-400 block font-mono">04</span>
@@ -640,7 +583,6 @@
             </p>
           </div>
         </div>
-
         <div class="mt-8 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 text-center max-w-4xl mx-auto">
           <p class="text-sm text-slate-300 leading-relaxed">
             Whichever describes you, you probably want the same thing: <strong class="text-white">technology that works
@@ -648,14 +590,11 @@
             vendors in a cost-effective and high-quality manner.
           </p>
         </div>
-
       </div>
     </section>
-
     <!-- SECTION 5: HOW WE DELIVER ("Simple. Honest. Perfection." - Page 5) -->
     <section class="py-20 bg-slate-950/40 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span
             class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/60 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
@@ -668,7 +607,6 @@
             Great technology doesn't need to be complicated.
           </p>
         </div>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3">
             <span class="text-xl font-bold font-mono text-cyan-400">01</span>
@@ -677,7 +615,6 @@
               Before we talk about tools, we talk about your goals, your customers and your challenges.
             </p>
           </div>
-
           <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3">
             <span class="text-xl font-bold font-mono text-indigo-400">02</span>
             <h3 class="text-lg font-bold text-white">Keep it simple</h3>
@@ -685,7 +622,6 @@
               We won't sell you something big and expensive when something small and smart will do.
             </p>
           </div>
-
           <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3">
             <span class="text-xl font-bold font-mono text-emerald-400">03</span>
             <h3 class="text-lg font-bold text-white">Be clear</h3>
@@ -693,7 +629,6 @@
               You will always know what is being built, when it will be ready and what it will cost.
             </p>
           </div>
-
           <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3">
             <span class="text-xl font-bold font-mono text-amber-400">04</span>
             <h3 class="text-lg font-bold text-white">Stay around</h3>
@@ -702,14 +637,11 @@
             </p>
           </div>
         </div>
-
       </div>
     </section>
-
     <!-- SECTION 6: SIX PROMISES WE LIVE BY (Page 7) -->
     <section class="py-20 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span
             class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/60 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
@@ -722,7 +654,6 @@
             Built on clear promises that ensure mutual success and absolute peace of mind.
           </p>
         </div>
-
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
             <span class="text-xs font-bold font-mono text-cyan-400 uppercase">01 Promise</span>
@@ -731,7 +662,6 @@
               Plain language, clear scope and no surprises in timelines or costs.
             </p>
           </div>
-
           <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
             <span class="text-xs font-bold font-mono text-indigo-400 uppercase">02 Promise</span>
             <h3 class="text-xl font-bold text-white">Reliability</h3>
@@ -739,7 +669,6 @@
               We do what we say, when we say it. If something changes, you hear it from us early.
             </p>
           </div>
-
           <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
             <span class="text-xs font-bold font-mono text-emerald-400 uppercase">03 Promise</span>
             <h3 class="text-xl font-bold text-white">Security by default</h3>
@@ -747,7 +676,6 @@
               Protection is built in from day one, not added at the end.
             </p>
           </div>
-
           <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
             <span class="text-xs font-bold font-mono text-amber-400 uppercase">04 Promise</span>
             <h3 class="text-xl font-bold text-white">Business first</h3>
@@ -755,7 +683,6 @@
               Technology and marketing serve your goals, not the other way round.
             </p>
           </div>
-
           <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
             <span class="text-xs font-bold font-mono text-cyan-400 uppercase">05 Promise</span>
             <h3 class="text-xl font-bold text-white">Craft</h3>
@@ -763,7 +690,6 @@
               We care about the quality of every line of code, design, sentence of copy and second of sound.
             </p>
           </div>
-
           <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
             <span class="text-xs font-bold font-mono text-indigo-400 uppercase">06 Promise</span>
             <h3 class="text-xl font-bold text-white">Partnership</h3>
@@ -772,14 +698,11 @@
             </p>
           </div>
         </div>
-
       </div>
     </section>
-
     <!-- SECTION 7: INDUSTRIES WE SERVE (Page 30) -->
     <section class="py-20 bg-slate-950/40 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span
             class="text-xs font-bold text-cyan-400 tracking-widest uppercase bg-cyan-950/60 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
@@ -792,7 +715,6 @@
             Different sectors. Shared ambition.
           </p>
         </div>
-
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
           <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
             <i class="fas fa-building text-cyan-400 text-lg"></i>
@@ -831,10 +753,8 @@
             <span class="text-xs sm:text-sm font-semibold text-slate-200">Founders, executives & thought leaders</span>
           </div>
         </div>
-
       </div>
     </section>
-
     <!-- SECTION 8: LET'S BUILD SOMETHING TOGETHER (Page 32) -->
     <section class="py-16 bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 border-b border-slate-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -869,14 +789,11 @@
         </div>
       </div>
     </section>
-
   </main>
-
   <!-- STANDARDIZED CORPORATE FOOTER -->
   <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
-
         <!-- COL 1: ORGANISATION INFO -->
         <div class="lg:col-span-2 space-y-4">
           <div class="flex items-center gap-3">
@@ -904,7 +821,6 @@
             </p>
           </div>
         </div>
-
         <!-- COL 2: QUICK LINKS -->
         <div class="space-y-3">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
@@ -916,7 +832,6 @@
             <li><a href="leadership.html" class="hover:text-cyan-400 transition-colors">Leadership</a></li>
           </ul>
         </div>
-
         <!-- COL 3: TWO PILLARS -->
         <div class="space-y-3">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Two Strengths</h4>
@@ -930,7 +845,6 @@
             <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Kowdiar HQ</a></li>
           </ul>
         </div>
-
         <!-- COL 4: PROMISES & QUALITY -->
         <div class="space-y-3">
           <h4 class="text-xs font-bold text-white uppercase tracking-wider">Our Standards</h4>
@@ -940,9 +854,7 @@
             <p class="text-indigo-400 font-bold"><i class="fas fa-bolt mr-1"></i> Simple. Honest. Perfection.</p>
           </div>
         </div>
-
       </div>
-
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
         <p>&copy; 2026 Nellys Tech Private Limited. All Rights Reserved.</p>
         <div class="flex space-x-6">
@@ -953,7 +865,6 @@
       </div>
     </div>
   </footer>
-
   <!-- MODAL: GENERAL INQUIRY -->
   <div id="inquiry-modal"
     class="modal-overlay fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
@@ -964,7 +875,6 @@
       </button>
       <h3 class="text-2xl font-bold text-white mb-1">Submit Inquiry</h3>
       <p class="text-xs text-slate-400 mb-6">Nellys Tech Pvt. Ltd. &bull; Kowdiar, Thiruvananthapuram</p>
-
       <form data-form-name="General Inquiry" class="space-y-4 text-sm">
         <div>
           <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
@@ -1005,33 +915,10 @@
       </form>
     </div>
   </div>
-
   <!-- JS SCRIPT -->
   <script src="js/global.js"></script>
   <script src="js/index.js"></script>
   <script src="js/hero.js"></script>
-  <!-- Slider JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const slides = [
-        { img: 'assets/slide1.jpg', text: 'Engineering tomorrow’s' },
-        { img: 'assets/slide2.jpg', text: 'Innovate with AI' },
-        { img: 'assets/slide3.jpg', text: 'Transform your business' }
-      ];
-      let idx = 0;
-      const slideEl = document.querySelector('.hero-slider .slide');
-      const captionEl = document.querySelector('.hero-slider .caption h1');
-      function showSlide(i) {
-        slideEl.style.backgroundImage = `url(${slides[i].img})`;
-        captionEl.textContent = slides[i].text;
-      }
-      showSlide(idx);
-      setInterval(() => {
-        idx = (idx + 1) % slides.length;
-        showSlide(idx);
-      }, 5000);
-    });
-  </script>
+  <!-- Slider JavaScript (disabled - hero.js handles the carousel) -->
   
-
 </html>
