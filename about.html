@@ -124,28 +124,38 @@
   <main class="flex-grow">
     
     <!-- PAGE HERO: PURPOSE, MADE PRACTICAL -->
-    <section class="py-16 sm:py-24 border-b border-slate-800/80 relative overflow-hidden">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-emerald-500/10 blur-3xl pointer-events-none"></div>
+    <section class="py-16 sm:py-24 border-b border-slate-200/80 dark:border-slate-800/80 relative overflow-hidden" id="hero">
+      <!-- Background Carousel Track -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="carousel">
+        <div class="hero-slides flex flex-nowrap h-full w-full will-change-transform" id="slides">
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide1.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide2.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide3.jpg');"></div>
+        </div>
+      </div>
+
+      <!-- Gradient & Ambient Overlays (ensures crystal clear readability) -->
+      <div class="absolute inset-0 z-[1] hero-bg-overlay-center pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6 max-w-4xl reveal-on-scroll">
-        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+        <span class="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
           <i class="fas fa-shield-halved text-cyan-400"></i> Corporate Profile & Identity
         </span>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        <h1 class="hero-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
           Purpose, Made Practical.<br>
-          <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">One Partner. Every Possibility.</span>
+          <span class="text-gradient">One Partner. Every Possibility.</span>
         </h1>
 
-        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
-          Most businesses do not need another software vendor or another creative agency. They need one accountable, battle-tested partner that understands how <strong class="text-white">engineering runs the business</strong> and <strong class="text-white">visibility grows it</strong>.
+        <p class="hero-body text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+          Most businesses do not need another software vendor or another creative agency. They need one accountable, battle-tested partner that understands how <strong class="text-white dark:text-white">engineering runs the business</strong> and <strong class="text-white dark:text-white">visibility grows it</strong>.
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
           <button onclick="openModal('inquiry-modal')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-cyan-500/20 text-xs uppercase tracking-wider transition-all transform hover:-translate-y-0.5">
             Schedule Strategy Call &rarr;
           </button>
-          <a href="services.html" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold px-7 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors">
+          <a href="services.html" class="hero-btn-secondary font-semibold px-7 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all transform hover:-translate-y-0.5">
             Explore 20 Services
           </a>
         </div>

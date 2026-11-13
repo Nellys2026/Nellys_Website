@@ -132,14 +132,25 @@
   <main class="flex-grow">
 
     <!-- PAGE HERO -->
-    <section class="py-16 bg-slate-950/60 border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-4 reveal-on-scroll">
-        <span
-          class="text-xs font-bold text-purple-400 tracking-widest uppercase bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-500/30 inline-block">
+    <section class="py-16 sm:py-24 border-b border-slate-200/80 dark:border-slate-800/80 relative overflow-hidden" id="hero">
+      <!-- Background Carousel Track -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="carousel">
+        <div class="hero-slides flex flex-nowrap h-full w-full will-change-transform" id="slides">
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide1.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide2.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide3.jpg');"></div>
+        </div>
+      </div>
+
+      <!-- Gradient & Ambient Overlays (ensures crystal clear readability) -->
+      <div class="absolute inset-0 z-[1] hero-bg-overlay-center pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl space-y-4 reveal-on-scroll">
+        <span class="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
           Strategic Ecosystem
         </span>
-        <h1 class="text-4xl font-extrabold text-white tracking-tight">Associate Firms & Strategic Partners</h1>
-        <p class="text-slate-300 text-sm leading-relaxed">
+        <h1 class="hero-heading text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">Associate Firms & Strategic Partners</h1>
+        <p class="hero-body text-sm sm:text-base leading-relaxed">
           Nellys Tech Private Limited collaborates with specialized technology partners, production studios, cloud
           providers, and digital branding specialists to deliver seamless, unified enterprise solutions across both our
           IT & Business and Digital Branding divisions.

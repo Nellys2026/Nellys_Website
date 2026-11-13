@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilters();
   initCoworkingCalculator();
   initContactForm();
+  initHeroCarousel();
   initScrollReveal();
 });
 
 /* ── THEME ───────────────────────────────────────────────── */
 function initTheme() {
-  const saved = localStorage.getItem('nellys_theme') || 'dark';
+  const saved = localStorage.getItem('nellys_theme') || document.documentElement.getAttribute('data-theme') || 'light';
   applyTheme(saved);
 
   document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
@@ -244,6 +245,89 @@ function showToast(message, type = 'info') {
     toast.classList.add('opacity-0', 'translate-y-4');
     setTimeout(() => toast.remove(), 300);
   }, 4000);
+}
+
+/* ── HERO BACKGROUND CAROUSEL (ALL PAGES) ───────────────── */
+function initHeroCarousel() {
+  if (window.__heroCarouselInitialized) return;
+  const slidesEl = document.getElementById('slides');
+  if (!slidesEl) return;
+  const total = slidesEl.children.length;
+  if (!total) return;
+
+  window.__heroCarouselInitialized = true;
+  let idx = 0;
+  const interval = 6000;
+  let timer;
+
+  const updateDots = () => {
+    const dots = document.querySelectorAll('#heroDots .dot, .dot');
+    dots.forEach((d, i) => {
+      if (i === idx) {
+        d.classList.add('bg-cyan-500');
+        d.classList.remove('bg-slate-300', 'dark:bg-slate-600');
+      } else {
+        d.classList.remove('bg-cyan-500');
+        d.classList.add('bg-slate-300', 'dark:bg-slate-600');
+      }
+    });
+  };
+
+  const update = (i) => {
+    idx = (i + total) % total;
+    slidesEl.style.transform = `translateX(-${idx * 100}%)`;
+    updateDots();
+    resetTimer();
+  };
+
+  const next = () => update(idx + 1);
+  const prev = () => update(idx - 1);
+
+  const resetTimer = () => {
+    clearInterval(timer);
+    if (total > 1) {
+      timer = setInterval(next, interval);
+    }
+  };
+
+  const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  if (nextBtn) nextBtn.onclick = (e) => { e.preventDefault(); next(); };
+  if (prevBtn) prevBtn.onclick = (e) => { e.preventDefault(); prev(); };
+
+  const dots = document.querySelectorAll('#heroDots .dot, .dot');
+  dots.forEach(d => {
+    d.onclick = () => {
+      const targetIdx = Number(d.dataset.index);
+      if (!isNaN(targetIdx)) update(targetIdx);
+    };
+  });
+
+  const heroSection = document.getElementById('hero') || slidesEl.closest('section');
+  if (heroSection) {
+    heroSection.onmouseenter = () => clearInterval(timer);
+    heroSection.onmouseleave = resetTimer;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    heroSection.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    heroSection.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 40) {
+        if (diff < 0) next();
+        else prev();
+        resetTimer();
+      }
+    }, { passive: true });
+  }
+
+  updateDots();
+  resetTimer();
 }
 
 /* ── SCROLL-TRIGGERED REVEAL ANIMATIONS (ALL PAGES - BIDIRECTIONAL) ──────── */

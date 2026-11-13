@@ -112,27 +112,35 @@
   <main class="flex-grow">
 
     <!-- PAGE HERO -->
-    <section class="py-16 sm:py-24 border-b border-slate-800/80 relative overflow-hidden">
-      <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-indigo-500/10 blur-3xl pointer-events-none">
+    <section class="py-16 sm:py-24 border-b border-slate-200/80 dark:border-slate-800/80 relative overflow-hidden" id="hero">
+      <!-- Background Carousel Track -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="carousel">
+        <div class="hero-slides flex flex-nowrap h-full w-full will-change-transform" id="slides">
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide1.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide2.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide3.jpg');"></div>
+        </div>
       </div>
+
+      <!-- Gradient & Ambient Overlays (ensures crystal clear readability) -->
+      <div class="absolute inset-0 z-[1] hero-bg-overlay-center pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-3xl mx-auto space-y-6 reveal-on-scroll">
           <span
-            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider">
-            <i class="fas fa-briefcase"></i> Project Highlights & Proof of Execution
+            class="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+            <i class="fas fa-briefcase text-cyan-400"></i> Project Highlights & Proof of Execution
           </span>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+          <h1 class="hero-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
             Proven Results. <span class="text-gradient">End-to-End Delivery.</span>
           </h1>
 
-          <p class="text-lg text-cyan-300 font-medium">
+          <p class="hero-subtitle text-lg sm:text-xl font-medium">
             When One Team Does It All, Nothing Falls Through.
           </p>
 
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p class="hero-body text-sm sm:text-base leading-relaxed">
             From custom software and cloud infrastructure to full brand identity, podcast production, and
             lead-generation systems — see how our unified team in Thiruvananthapuram turns complex challenges into
             high-performing digital realities.
