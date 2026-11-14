@@ -175,9 +175,14 @@
         <p class="text-slate-400 font-semibold text-[11px] uppercase tracking-wider mb-2">Demo Credentials</p>
         <div class="flex items-center gap-2"><i class="fas fa-user-circle text-cyan-400 w-4 text-center"></i><span class="text-slate-300">Email: admin@nellystech.in</span></div>
         <div class="flex items-center gap-2"><i class="fas fa-key text-indigo-400 w-4 text-center"></i><span class="text-slate-300">Password: NellysTech@2026 (or any)</span></div>
-        <button type="button" onclick="fillDemo()" class="mt-2 w-full text-center text-xs text-cyan-400 hover:text-cyan-300 font-bold transition-colors border border-cyan-500/20 rounded-lg py-1.5 hover:bg-cyan-500/5">
-          <i class="fas fa-bolt text-[10px] mr-1"></i> Auto-fill & Authenticate
-        </button>
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button type="button" onclick="fillDemo()" class="text-center text-xs text-cyan-400 hover:text-cyan-300 font-bold transition-colors border border-cyan-500/20 rounded-lg py-1.5 hover:bg-cyan-500/5">
+            <i class="fas fa-bolt text-[10px] mr-1"></i> Auto-fill &amp; Login
+          </button>
+          <a href="dashboard.html" class="text-center text-xs text-indigo-400 hover:text-indigo-300 font-bold transition-colors border border-indigo-500/20 rounded-lg py-1.5 hover:bg-indigo-500/5">
+            <i class="fas fa-gauge-high text-[10px] mr-1"></i> Open Dashboard
+          </a>
+        </div>
       </div>
 
       <p class="text-[11px] text-slate-600 text-center mt-6">
@@ -204,6 +209,7 @@
     function fillDemo() {
       document.getElementById('email-input').value = 'admin@nellystech.in';
       document.getElementById('password-input').value = 'NellysTech@2026';
+      document.getElementById('login-form').requestSubmit();
     }
 
     function handleLogin(e) {
