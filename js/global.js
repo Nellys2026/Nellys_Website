@@ -340,13 +340,44 @@ function initLetterReveal() {
     '#hero h1, .hero-heading, .letter-reveal, [data-letter-reveal], main > section:first-of-type h1, h1, h2, h3'
   ));
 
+  const targetPhrases = [
+    'one partner',
+    'when one',
+    'two strength',
+    'is this you',
+    'simple. honest',
+    'simple honest',
+    'six promise',
+    'built around',
+    'next chapter',
+    'next step',
+    'why choose',
+    'industries we',
+    'our unified',
+    'how our team',
+    'work with our',
+    'calculate co-working',
+    'why lease',
+    'co-working workspace',
+    'ready to move',
+    'executed project',
+    'ready to build',
+    'official contact',
+    'send us a direct',
+    'digital branding',
+    'it & business solutions',
+    'need a tailored',
+    'engineering tomorrow',
+    'executive visibility & digital growth',
+    '360 degree it'
+  ];
+
   const targetHeadings = candidateHeadings.filter(el => {
     if (el.classList.contains('letter-reveal') || el.classList.contains('hero-heading') || el.hasAttribute('data-letter-reveal')) return true;
     if (el.closest('#hero') && el.tagName === 'H1') return true;
     if (el.closest('main > section:first-of-type') && el.tagName === 'H1') return true;
     const txt = (el.textContent || '').trim().toLowerCase();
-    if (txt.includes('one partner') || txt.includes('when one team')) return true;
-    return false;
+    return targetPhrases.some(phrase => txt.includes(phrase));
   });
 
   if (!targetHeadings.length) return;
