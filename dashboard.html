@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Command Center | Nellys Tech Pvt. Ltd.</title>
+  <meta name="description" content="Nellys Tech Pvt. Ltd. Enterprise Command Center — Unified monitoring and management across Digital Branding, 360° IT & Business Solutions, Cybersecurity, and Kowdiar HQ Operations.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="tailwind.cdn.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ── DASHBOARD LAYOUT ─────────────────────────────────────── */
+    .dash-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    #db-sidebar {
+      width: 268px;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    /* Main Content */
+    #db-main {
+      flex: 1;
+      margin-left: 268px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Mobile: Sidebar collapsed by default */
+    @media (max-width: 1023px) {
+      #db-sidebar {
+        transform: translateX(-100%);
+      }
+      #db-sidebar.open {
+        transform: translateX(0);
+      }
+      #db-main {
+        margin-left: 0 !important;
+      }
+      #sidebar-overlay.open {
+        display: block !important;
+      }
+    }
+
+    /* Desktop collapsed state */
+    body.sidebar-collapsed #db-sidebar {
+      transform: translateX(-100%);
+    }
+    body.sidebar-collapsed #db-main {
+      margin-left: 0;
+    }
+
+    /* Tab content panels */
+    .dash-page-view {
+      display: none;
+    }
+    .dash-page-view.active {
+      display: block;
+      animation: dashFadeIn 0.28s ease-out;
+    }
+
+    @keyframes dashFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Sidebar nav active item */
+    .db-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      width: 100%;
+      text-align: left;
+      transition: all 0.18s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: none;
+    }
+    html[data-theme="dark"] .db-nav-btn {
+      color: #94A3B8;
+    }
+    html[data-theme="light"] .db-nav-btn {
+      color: #475569;
+    }
+    html[data-theme="dark"] .db-nav-btn:hover {
+      background: rgba(30, 41, 59, 0.85);
+      color: #F8FAFC;
+    }
+    html[data-theme="light"] .db-nav-btn:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+    }
+    html[data-theme="dark"] .db-nav-btn.active {
+      background: rgba(6, 182, 212, 0.12);
+      color: #22D3EE;
+      border-color: rgba(6, 182, 212, 0.32);
+      font-weight: 600;
+    }
+    html[data-theme="light"] .db-nav-btn.active {
+      background: rgba(79, 70, 229, 0.08);
+      color: #4F46E5;
+      border-color: rgba(79, 70, 229, 0.25);
+      font-weight: 600;
+    }
+
+    /* Sidebar quick link styling */
+    .db-quick-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      transition: all 0.18s ease;
+    }
+    html[data-theme="dark"] .db-quick-link {
+      color: #94A3B8;
+    }
+    html[data-theme="dark"] .db-quick-link:hover {
+      background: rgba(30, 41, 59, 0.7);
+      color: #22D3EE;
+    }
+    html[data-theme="light"] .db-quick-link {
+      color: #475569;
+    }
+    html[data-theme="light"] .db-quick-link:hover {
+      background: #F1F5F9;
+      color: #4F46E5;
+    }
+
+    /* Dark/light adaptive surfaces */
+    html[data-theme="dark"] #db-sidebar {
+      background: #0B1120;
+      border-right: 1px solid #1E293B;
+    }
+    html[data-theme="light"] #db-sidebar {
+      background: #FFFFFF;
+      border-right: 1px solid #E2E8F0;
+    }
+
+    html[data-theme="dark"] #db-top-bar {
+      background: rgba(11, 17, 32, 0.92);
+      border-bottom: 1px solid #1E293B;
+    }
+    html[data-theme="light"] #db-top-bar {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    html[data-theme="dark"] .db-card {
+      background: #131C31;
+      border: 1px solid #1E293B;
+    }
+    html[data-theme="light"] .db-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    html[data-theme="dark"] .db-subcard {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid #1E293B;
+    }
+    html[data-theme="light"] .db-subcard {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+    }
+
+    html[data-theme="dark"] .db-table-head {
+      background: #0F172A;
+      color: #64748B;
+      border-bottom: 1px solid #1E293B;
+    }
+    html[data-theme="light"] .db-table-head {
+      background: #F8FAFC;
+      color: #64748B;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    html[data-theme="dark"] .db-table-row {
+      border-bottom: 1px solid #1E293B;
+    }
+    html[data-theme="light"] .db-table-row {
+      border-bottom: 1px solid #F1F5F9;
+    }
+
+    html[data-theme="dark"] .db-table-row:hover {
+      background: rgba(30, 41, 59, 0.45);
+    }
+    html[data-theme="light"] .db-table-row:hover {
+      background: #F8FAFC;
+    }
+
+    html[data-theme="dark"] .db-text-primary { color: #F8FAFC; }
+    html[data-theme="light"] .db-text-primary { color: #0F172A; }
+
+    html[data-theme="dark"] .db-text-secondary { color: #94A3B8; }
+    html[data-theme="light"] .db-text-secondary { color: #475569; }
+
+    html[data-theme="dark"] .db-text-muted { color: #64748B; }
+    html[data-theme="light"] .db-text-muted { color: #94A3B8; }
+
+    html[data-theme="dark"] .db-border { border-color: #1E293B; }
+    html[data-theme="light"] .db-border { border-color: #E2E8F0; }
+
+    html[data-theme="dark"] .db-bar-bg { background: #1E293B; }
+    html[data-theme="light"] .db-bar-bg { background: #E2E8F0; }
+
+    html[data-theme="dark"] #db-footer {
+      background: #0B1120;
+      border-top: 1px solid #1E293B;
+      color: #475569;
+    }
+    html[data-theme="light"] #db-footer {
+      background: #F8FAFC;
+      border-top: 1px solid #E2E8F0;
+      color: #64748B;
+    }
+
+    /* Offcanvas Right Drawer */
+    #offcanvas-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 340px;
+      z-index: 60;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    #offcanvas-drawer.open {
+      transform: translateX(0);
+    }
+    html[data-theme="dark"] #offcanvas-drawer {
+      background: #0F172A;
+      border-left: 1px solid #1E293B;
+    }
+    html[data-theme="light"] #offcanvas-drawer {
+      background: #FFFFFF;
+      border-left: 1px solid #E2E8F0;
+      box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+    }
+    #offcanvas-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 55;
+      display: none;
+    }
+    #offcanvas-backdrop.open {
+      display: block;
+    }
+
+    /* Progress Bar fill animation */
+    .progress-fill {
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('nellys_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+<div class="dash-wrapper">
+
+  <!-- ══ MOBILE SIDEBAR BACKDROP ══════════════════════════════════ -->
+  <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 hidden"></div>
+
+  <!-- ══ SIDEBAR ══════════════════════════════════════════════════ -->
+  <aside id="db-sidebar">
+
+    <!-- Brand Header -->
+    <div class="h-16 flex items-center justify-between px-5 db-border border-b shrink-0">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="w-9 h-9 rounded-lg shadow-md transition-transform group-hover:scale-105">
+        <div class="flex flex-col">
+          <span class="font-bold text-sm tracking-tight db-text-primary leading-none">NELLYS<span class="text-cyan-400 font-light">TECH</span></span>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-cyan-500 mt-0.5">Command Center</span>
+        </div>
+      </a>
+      <button onclick="toggleSidebar()" class="lg:hidden db-text-secondary hover:text-cyan-400 p-1 rounded-lg">
+        <i class="fas fa-times text-base"></i>
+      </button>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="flex-1 px-3 py-5 space-y-6 overflow-y-auto">
+
+      <!-- Core Views -->
+      <div>
+        <p class="px-3 text-[10px] font-mono uppercase tracking-widest db-text-muted mb-2">Command Modules</p>
+        <div class="space-y-1">
+          <button onclick="switchTab('overview')" id="tab-overview" class="db-nav-btn active">
+            <i class="fas fa-chart-pie w-4 text-center text-cyan-400"></i>
+            <span>Overview &amp; Metrics</span>
+          </button>
+          <button onclick="switchTab('ai-pipelines')" id="tab-ai-pipelines" class="db-nav-btn">
+            <i class="fas fa-bullhorn w-4 text-center text-indigo-400"></i>
+            <span>Digital Branding</span>
+            <span class="ml-auto px-1.5 py-0.5 text-[10px] font-bold bg-indigo-500/20 text-indigo-400 rounded-md">10</span>
+          </button>
+          <button onclick="switchTab('cloud-nodes')" id="tab-cloud-nodes" class="db-nav-btn">
+            <i class="fas fa-server w-4 text-center text-cyan-400"></i>
+            <span>360° IT &amp; Cloud</span>
+            <span class="ml-auto px-1.5 py-0.5 text-[10px] font-bold bg-cyan-500/20 text-cyan-400 rounded-md">10</span>
+          </button>
+          <button onclick="switchTab('stpi-logs')" id="tab-stpi-logs" class="db-nav-btn">
+            <i class="fas fa-shield-halved w-4 text-center text-emerald-400"></i>
+            <span>Security &amp; Promises</span>
+          </button>
+          <button onclick="switchTab('coworking-os')" id="tab-coworking-os" class="db-nav-btn">
+            <i class="fas fa-building-user w-4 text-center text-purple-400"></i>
+            <span>Kowdiar HQ &amp; Hub</span>
+          </button>
+          <button onclick="switchTab('inquiries')" id="tab-inquiries" class="db-nav-btn">
+            <i class="fas fa-inbox w-4 text-center text-amber-400"></i>
+            <span>Client Inquiries</span>
+            <span class="ml-auto px-1.5 py-0.5 text-[10px] font-bold bg-amber-500/20 text-amber-400 rounded-full">4</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Website Pages Navigation (Connects all pages) -->
+      <div>
+        <p class="px-3 text-[10px] font-mono uppercase tracking-widest db-text-muted mb-2">Website Pages</p>
+        <div class="space-y-0.5">
+          <a href="index.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-house w-4 text-center text-cyan-400"></i> Home Page</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+          <a href="about.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-circle-info w-4 text-center text-indigo-400"></i> About Nellys Tech</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+          <a href="services.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-layer-group w-4 text-center text-cyan-400"></i> All 20 Services</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+          <a href="leadership.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-users-gear w-4 text-center text-purple-400"></i> Leadership &amp; Team</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+          <a href="associates.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-handshake w-4 text-center text-emerald-400"></i> Strategic Partners</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+          <a href="portfolio.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-briefcase w-4 text-center text-amber-400"></i> Case Studies</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+          <a href="coworking.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-chair w-4 text-center text-pink-400"></i> Co-Working Hub</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+          <a href="contact.html" class="db-quick-link">
+            <span class="flex items-center gap-2.5"><i class="fas fa-headset w-4 text-center text-cyan-400"></i> Contact &amp; Support</span>
+            <i class="fas fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- System Health Pill -->
+      <div class="mx-1 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-xs font-bold text-emerald-400">Kowdiar Core Operational</span>
+        </div>
+        <p class="text-[11px] db-text-secondary">TVM-HQ-01 · 99.98% Uptime</p>
+        <a href="tel:04712720004" class="mt-2 inline-flex items-center gap-1.5 text-[11px] font-mono text-cyan-400 hover:underline">
+          <i class="fas fa-phone text-[9px]"></i> 0471 2720004
+        </a>
+      </div>
+    </div>
+
+    <!-- User Profile Footer -->
+    <div class="p-3 db-border border-t shrink-0">
+      <div class="flex items-center gap-3 p-2 rounded-xl">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shrink-0 shadow">
+          NT
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-bold db-text-primary truncate">Executive Admin</p>
+          <p class="text-[11px] db-text-muted truncate">admin@nellystech.com</p>
+        </div>
+        <a href="login.html" title="Sign Out" class="db-text-muted hover:text-rose-400 transition-colors p-1.5 rounded-lg">
+          <i class="fas fa-sign-out-alt text-sm"></i>
+        </a>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══ MAIN CONTENT AREA ════════════════════════════════════════ -->
+  <div id="db-main">
+
+    <!-- Top Header Bar -->
+    <header id="db-top-bar" class="h-16 sticky top-0 z-20 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between gap-3 shrink-0">
+
+      <!-- Left: Sidebar Toggle + Breadcrumb -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="w-9 h-9 rounded-xl db-card flex items-center justify-center db-text-secondary hover:text-cyan-400 transition-colors" title="Toggle Sidebar">
+          <i class="fas fa-bars text-sm"></i>
+        </button>
+        <div class="hidden sm:flex items-center gap-2 text-xs db-text-muted font-mono">
+          <span>NELLYS-OS</span>
+          <i class="fas fa-chevron-right text-[9px]"></i>
+          <span id="breadcrumb-label" class="text-cyan-400 font-semibold">Overview &amp; Metrics</span>
+        </div>
+      </div>
+
+      <!-- Center: Search Bar -->
+      <div class="relative flex-1 max-w-xs hidden md:block">
+        <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 db-text-muted text-xs"></i>
+        <input id="dash-search" type="text" placeholder="Jump to module (e.g. branding, cloud, security)..."
+          onkeydown="if(event.key==='Enter') handleDashSearch(this.value)"
+          class="w-full db-card rounded-xl pl-9 pr-4 py-2 text-xs db-text-primary placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+      </div>
+
+      <!-- Right: Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+
+        <!-- Live Console Offcanvas Trigger -->
+        <button onclick="toggleOffcanvas()" class="px-3 py-2 rounded-xl db-card text-xs font-medium db-text-secondary hover:text-cyan-400 hover:border-cyan-500/40 flex items-center gap-2 transition-all" title="Open Live Telemetry Console">
+          <i class="fas fa-sliders text-cyan-400"></i>
+          <span class="hidden sm:inline">Live Console</span>
+        </button>
+
+        <!-- Notification Bell -->
+        <button onclick="switchTab('inquiries')" class="relative w-9 h-9 rounded-xl db-card flex items-center justify-center db-text-secondary hover:text-cyan-400 transition-colors" title="View Client Inquiries">
+          <i class="fas fa-bell text-sm"></i>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full animate-ping"></span>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full"></span>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button id="dash-theme-btn" onclick="toggleDashTheme()" class="w-9 h-9 rounded-xl db-card flex items-center justify-center transition-all hover:border-amber-400/60 shadow-sm" title="Switch Theme">
+          <i id="dash-theme-icon" class="fas fa-sun text-amber-400 text-sm"></i>
+        </button>
+
+        <!-- New Project / Provision CTA -->
+        <button onclick="openModal('inquiry-modal')" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold text-xs shadow-md shadow-cyan-500/20 flex items-center gap-1.5 transition-all">
+          <i class="fas fa-plus text-[10px]"></i>
+          <span class="hidden sm:inline">New Deployment</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- ══ SCROLLABLE VIEWPORT ══════════════════════════════════════ -->
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-[1600px] w-full mx-auto space-y-8">
+
+
+      <!-- ════════════════════════════════════════════════════════════
+           VIEW 1: OVERVIEW & METRICS
+           ════════════════════════════════════════════════════════════ -->
+      <div id="view-overview" class="dash-page-view active space-y-6">
+
+        <!-- Page Title + Actions -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-cyan-400 block mb-1">Nellys Tech Pvt. Ltd. · Thiruvananthapuram HQ</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold db-text-primary tracking-tight letter-reveal">Executive Command Overview</h1>
+          </div>
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <span class="px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> All 20 Capabilities Active
+            </span>
+            <a href="services.html" class="px-3 py-1.5 rounded-xl db-card text-xs font-semibold db-text-secondary hover:text-cyan-400 transition-colors">
+              Explore Services <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
+
+          <div onclick="switchTab('ai-pipelines')" class="db-card p-5 rounded-2xl relative overflow-hidden group cursor-pointer hover:border-indigo-500/50 transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-lg">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full">+24.8% ROI</span>
+            </div>
+            <p class="db-text-secondary text-xs font-medium uppercase tracking-wider">Pillar I: Digital Branding</p>
+            <h2 class="text-3xl font-extrabold db-text-primary mt-1">18 Campaigns</h2>
+            <p class="text-[11px] db-text-muted mt-2">SEO, Podcasting, PR &amp; Lead Gen active</p>
+          </div>
+
+          <div onclick="switchTab('cloud-nodes')" class="db-card p-5 rounded-2xl relative overflow-hidden group cursor-pointer hover:border-cyan-500/50 transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-lg">
+                <i class="fas fa-server"></i>
+              </div>
+              <span class="px-2 py-0.5 bg-cyan-500/10 text-cyan-400 text-xs font-bold rounded-full">99.98% SLA</span>
+            </div>
+            <p class="db-text-secondary text-xs font-medium uppercase tracking-wider">Pillar II: 360° IT &amp; Cloud</p>
+            <h2 class="text-3xl font-extrabold db-text-primary mt-1">24 Systems</h2>
+            <p class="text-[11px] db-text-muted mt-2">Custom ERP, Web/Mobile Apps &amp; DevOps</p>
+          </div>
+
+          <div onclick="switchTab('stpi-logs')" class="db-card p-5 rounded-2xl relative overflow-hidden group cursor-pointer hover:border-emerald-500/50 transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-lg">
+                <i class="fas fa-shield-halved"></i>
+              </div>
+              <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full">Zero Breaches</span>
+            </div>
+            <p class="db-text-secondary text-xs font-medium uppercase tracking-wider">Security by Default</p>
+            <h2 class="text-3xl font-extrabold db-text-primary mt-1">100%</h2>
+            <p class="text-[11px] db-text-muted mt-2">SOC Monitoring &amp; Data Protection</p>
+          </div>
+
+          <div onclick="switchTab('coworking-os')" class="db-card p-5 rounded-2xl relative overflow-hidden group cursor-pointer hover:border-purple-500/50 transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-lg">
+                <i class="fas fa-users-gear"></i>
+              </div>
+              <span class="px-2 py-0.5 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full">4 Depts Unified</span>
+            </div>
+            <p class="db-text-secondary text-xs font-medium uppercase tracking-wider">Kowdiar HQ Operations</p>
+            <h2 class="text-3xl font-extrabold db-text-primary mt-1">88% Capacity</h2>
+            <p class="text-[11px] db-text-muted mt-2">Jawahar Nagar, Kowdiar, Trivandrum</p>
+          </div>
+
+        </div>
+
+        <!-- Middle Grid: Telemetry Bars + Quick Actions -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- System Telemetry Panel -->
+          <div class="lg:col-span-2 db-card rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h3 class="font-bold db-text-primary text-base">Real-Time Delivery &amp; Infrastructure Telemetry</h3>
+                <p class="text-xs db-text-muted">Live utilization across Nellys Tech's Two Pillars &amp; Four Unified Departments</p>
+              </div>
+              <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-500/20">Auto-Sync: 5s</span>
+            </div>
+
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between text-xs mb-2">
+                  <span class="db-text-secondary font-medium"><i class="fas fa-bullhorn text-indigo-400 mr-1.5"></i>Brand &amp; Creative Studio Pipeline (Podcasting, Video, PR)</span>
+                  <span class="text-indigo-400 font-mono font-bold">84% Active</span>
+                </div>
+                <div class="w-full h-2.5 db-bar-bg rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full progress-fill" style="width: 84%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-2">
+                  <span class="db-text-secondary font-medium"><i class="fas fa-code text-cyan-400 mr-1.5"></i>Engineering &amp; Cloud Clusters (Web, Mobile, Custom Software)</span>
+                  <span class="text-cyan-400 font-mono font-bold">78% Load</span>
+                </div>
+                <div class="w-full h-2.5 db-bar-bg rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full progress-fill" style="width: 78%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-2">
+                  <span class="db-text-secondary font-medium"><i class="fas fa-chart-line text-emerald-400 mr-1.5"></i>Digital Growth &amp; SEO Analytics Engine</span>
+                  <span class="text-emerald-400 font-mono font-bold">92% Efficiency</span>
+                </div>
+                <div class="w-full h-2.5 db-bar-bg rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full progress-fill" style="width: 92%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-2">
+                  <span class="db-text-secondary font-medium"><i class="fas fa-shield-virus text-amber-400 mr-1.5"></i>Managed IT &amp; Cybersecurity Threat Shield</span>
+                  <span class="text-amber-400 font-mono font-bold">100% Protected</span>
+                </div>
+                <div class="w-full h-2.5 db-bar-bg rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-amber-500 to-emerald-400 rounded-full progress-fill" style="width: 100%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-metrics row -->
+            <div class="grid grid-cols-3 gap-4 mt-6 pt-6 db-border border-t text-center">
+              <div>
+                <p class="text-[11px] db-text-muted uppercase font-mono">Avg Response</p>
+                <p class="text-lg font-extrabold db-text-primary mt-0.5">18.4 ms</p>
+              </div>
+              <div>
+                <p class="text-[11px] db-text-muted uppercase font-mono">On-Time Delivery</p>
+                <p class="text-lg font-extrabold text-emerald-400 mt-0.5">98.7%</p>
+              </div>
+              <div>
+                <p class="text-[11px] db-text-muted uppercase font-mono">Client Retention</p>
+                <p class="text-lg font-extrabold text-cyan-400 mt-0.5">96.4%</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Launch & Page Connections -->
+          <div class="db-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold db-text-primary text-base mb-1">Quick Command &amp; Portal Links</h3>
+              <p class="text-xs db-text-muted mb-5">Jump to modules or public site sections</p>
+
+              <div class="space-y-2.5">
+                <button onclick="openModal('inquiry-modal')" class="w-full p-3 rounded-xl db-border border hover:border-cyan-500/50 flex items-center gap-3 text-left transition-all group">
+                  <div class="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-rocket text-sm"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold db-text-primary">Launch New Client Project</p>
+                    <p class="text-[11px] db-text-muted">Assign across Brand or IT teams</p>
+                  </div>
+                </button>
+
+                <a href="services.html#branding" class="w-full p-3 rounded-xl db-border border hover:border-indigo-500/50 flex items-center gap-3 text-left transition-all group">
+                  <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-gem text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-xs font-bold db-text-primary">Pillar I: Digital Branding</p>
+                    <p class="text-[11px] db-text-muted">View 10 branding services on site</p>
+                  </div>
+                  <i class="fas fa-arrow-right text-xs db-text-muted group-hover:text-indigo-400"></i>
+                </a>
+
+                <a href="services.html#it-solutions" class="w-full p-3 rounded-xl db-border border hover:border-emerald-500/50 flex items-center gap-3 text-left transition-all group">
+                  <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-microchip text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-xs font-bold db-text-primary">Pillar II: 360° IT Solutions</p>
+                    <p class="text-[11px] db-text-muted">View 10 engineering services on site</p>
+                  </div>
+                  <i class="fas fa-arrow-right text-xs db-text-muted group-hover:text-emerald-400"></i>
+                </a>
+
+                <a href="contact.html" class="w-full p-3 rounded-xl db-border border hover:border-amber-500/50 flex items-center gap-3 text-left transition-all group">
+                  <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-location-dot text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-xs font-bold db-text-primary">Kowdiar HQ &amp; Contact</p>
+                    <p class="text-[11px] db-text-muted">Jawahar Nagar, Trivandrum · 0471 2720004</p>
+                  </div>
+                  <i class="fas fa-arrow-right text-xs db-text-muted group-hover:text-amber-400"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 db-border border-t flex items-center justify-between text-xs">
+              <span class="db-text-muted">Single-Point Accountability</span>
+              <a href="leadership.html" class="text-cyan-400 font-mono hover:underline">View 4 Departments →</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Connected Site Ecosystem Hub (Links all website pages clearly) -->
+        <div class="db-card rounded-2xl p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+            <div>
+              <h3 class="font-bold db-text-primary text-base">Connected Website Ecosystem</h3>
+              <p class="text-xs db-text-muted">Direct navigation and live status for every page of the Nellys Tech portal</p>
+            </div>
+            <span class="text-xs font-mono text-emerald-400"><i class="fas fa-link mr-1"></i> All Pages Linked &amp; Synced</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a href="index.html" class="db-subcard p-4 rounded-xl hover:border-cyan-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-cyan-400">01 / HOME</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-cyan-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">Executive Landing</h4>
+              <p class="text-xs db-text-secondary mt-1">Two Strengths, One Direction &amp; Client Fit</p>
+            </a>
+
+            <a href="about.html" class="db-subcard p-4 rounded-xl hover:border-indigo-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-indigo-400">02 / ABOUT US</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-indigo-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">Vision, Mission &amp; 4-Step Flow</h4>
+              <p class="text-xs db-text-secondary mt-1">Understand, Plan, Build &amp; Launch, Support</p>
+            </a>
+
+            <a href="services.html" class="db-subcard p-4 rounded-xl hover:border-cyan-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-cyan-400">03 / SERVICES</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-cyan-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">20 Core Capabilities</h4>
+              <p class="text-xs db-text-secondary mt-1">10 Digital Branding + 10 IT Solutions</p>
+            </a>
+
+            <a href="leadership.html" class="db-subcard p-4 rounded-xl hover:border-purple-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-purple-400">04 / LEADERSHIP</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-purple-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">One Unified Team</h4>
+              <p class="text-xs db-text-secondary mt-1">4 Core Departments &amp; Six Promises</p>
+            </a>
+
+            <a href="associates.html" class="db-subcard p-4 rounded-xl hover:border-emerald-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-emerald-400">05 / ASSOCIATES</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-emerald-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">Strategic Alliances</h4>
+              <p class="text-xs db-text-secondary mt-1">Cloud, Media &amp; Enterprise Partners</p>
+            </a>
+
+            <a href="portfolio.html" class="db-subcard p-4 rounded-xl hover:border-amber-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-amber-400">06 / PORTFOLIO</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-amber-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">Enterprise Case Studies</h4>
+              <p class="text-xs db-text-secondary mt-1">Proven deliveries across industries</p>
+            </a>
+
+            <a href="coworking.html" class="db-subcard p-4 rounded-xl hover:border-pink-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-pink-400">07 / CO-WORKING</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-pink-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">Trivandrum Workspace</h4>
+              <p class="text-xs db-text-secondary mt-1">Managed desks, studios &amp; private suites</p>
+            </a>
+
+            <a href="contact.html" class="db-subcard p-4 rounded-xl hover:border-cyan-500/50 transition-all group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-cyan-400">08 / CONTACT</span>
+                <i class="fas fa-arrow-up-right-from-square text-xs db-text-muted group-hover:text-cyan-400"></i>
+              </div>
+              <h4 class="font-bold db-text-primary text-sm">Start Your Next Chapter</h4>
+              <p class="text-xs db-text-secondary mt-1">Direct consultation &amp; Kowdiar desk</p>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ════════════════════════════════════════════════════════════
+           VIEW 2: DIGITAL BRANDING & EXECUTIVE VISIBILITY (PILLAR I)
+           ════════════════════════════════════════════════════════════ -->
+      <div id="view-ai-pipelines" class="dash-page-view space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-indigo-400 block mb-1">Pillar I · 10 Capabilities (Services 01–10)</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold db-text-primary tracking-tight letter-reveal">Executive Visibility &amp; Digital Growth</h1>
+          </div>
+          <div class="flex items-center gap-2 self-start">
+            <a href="services.html#branding" class="px-4 py-2 rounded-xl db-card text-xs font-semibold db-text-secondary hover:text-indigo-400 transition-colors">
+              <i class="fas fa-external-link-alt mr-1.5"></i> Open Branding Services Page
+            </a>
+            <button onclick="openModal('inquiry-modal')" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all">
+              <i class="fas fa-plus mr-1.5"></i> New Campaign
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Capability 01-02 -->
+          <div class="db-card rounded-2xl p-6 border-t-4 border-t-indigo-500">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full">01–02 · Active</span>
+              <span class="text-xs font-mono db-text-muted">BRAND-CORE</span>
+            </div>
+            <h3 class="text-lg font-bold db-text-primary mb-1">Personal Branding &amp; Brand Identity</h3>
+            <p class="text-xs db-text-secondary mb-5">Executive positioning for founders, C-suite leaders, visual guidelines, and brand voice systems.</p>
+            <div class="space-y-2 text-xs db-border border-t pt-4">
+              <div class="flex justify-between"><span class="db-text-muted">Active Executive Profiles</span><span class="db-text-primary font-mono">14 Leaders</span></div>
+              <div class="flex justify-between"><span class="db-text-muted">Authority Growth</span><span class="text-emerald-400 font-mono">+38% QoQ</span></div>
+              <div class="flex justify-between"><span class="db-text-muted">Lead Department</span><span class="text-indigo-400 font-mono">Brand &amp; Creative</span></div>
+            </div>
+          </div>
+
+          <!-- Capability 06-07 -->
+          <div class="db-card rounded-2xl p-6 border-t-4 border-t-cyan-500">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 bg-cyan-500/10 text-cyan-400 text-xs font-bold rounded-full">06–07 · Studio Live</span>
+              <span class="text-xs font-mono db-text-muted">MEDIA-PROD</span>
+            </div>
+            <h3 class="text-lg font-bold db-text-primary mb-1">Podcasting &amp; Video Production</h3>
+            <p class="text-xs db-text-secondary mb-5">End-to-end podcast production, executive interviews, corporate films, and social video reels.</p>
+            <div class="space-y-2 text-xs db-border border-t pt-4">
+              <div class="flex justify-between"><span class="db-text-muted">Episodes Published</span><span class="db-text-primary font-mono">42 Episodes</span></div>
+              <div class="flex justify-between"><span class="db-text-muted">Studio Utilization</span><span class="text-cyan-400 font-mono">86% Booked</span></div>
+              <div class="flex justify-between"><span class="db-text-muted">Audio/Video Quality</span><span class="text-emerald-400 font-mono">4K / 48kHz Master</span></div>
+            </div>
+          </div>
+
+          <!-- Capability 03, 04, 05, 08, 09, 10 -->
+          <div class="db-card rounded-2xl p-6 border-t-4 border-t-purple-500">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full">03–10 · Scaling</span>
+              <span class="text-xs font-mono db-text-muted">GROWTH-ENG</span>
+            </div>
+            <h3 class="text-lg font-bold db-text-primary mb-1">SEO, Content, PR &amp; Lead Generation</h3>
+            <p class="text-xs db-text-secondary mb-5">Social media management, search rankings, media coverage, reputation management, and paid performance funnels.</p>
+            <div class="space-y-2 text-xs db-border border-t pt-4">
+              <div class="flex justify-between"><span class="db-text-muted">Qualified Leads (30d)</span><span class="db-text-primary font-mono">1,280 MQLs</span></div>
+              <div class="flex justify-between"><span class="db-text-muted">Avg Search Visibility</span><span class="text-emerald-400 font-mono">Top 3 Rankings</span></div>
+              <div class="flex justify-between"><span class="db-text-muted">Lead Department</span><span class="text-purple-400 font-mono">Digital Growth</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- All 10 Digital Branding Services Status Grid -->
+        <div class="db-card rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold db-text-primary text-base">All 10 Digital Branding Capabilities</h3>
+            <a href="services.html#branding" class="text-xs text-cyan-400 font-mono hover:underline">Inspect Full Deliverables →</a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">01 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Personal Branding</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">02 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Brand Identity &amp; Design</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">03 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Social Media Management</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">04 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Content Creation &amp; Copy</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">05 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">SEO &amp; Search Visibility</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">06 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Podcasting &amp; Audio</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">07 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Video Production</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">08 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">PR &amp; Media Outreach</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">09 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Online Reputation (ORM)</p>
+            </a>
+            <a href="services.html#branding" class="db-subcard p-3.5 rounded-xl hover:border-indigo-500/40 transition-all">
+              <span class="text-[10px] font-mono text-indigo-400">10 / BRANDING</span>
+              <p class="font-bold db-text-primary mt-1">Paid Ads &amp; Lead Gen</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ════════════════════════════════════════════════════════════
+           VIEW 3: 360° IT & CLOUD INFRASTRUCTURE (PILLAR II)
+           ════════════════════════════════════════════════════════════ -->
+      <div id="view-cloud-nodes" class="dash-page-view space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-cyan-400 block mb-1">Pillar II · 10 Capabilities (Services 11–20)</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold db-text-primary tracking-tight letter-reveal">360° IT &amp; Cloud Infrastructure</h1>
+          </div>
+          <div class="flex items-center gap-2 self-start">
+            <a href="services.html#it-solutions" class="px-4 py-2 rounded-xl db-card text-xs font-semibold db-text-secondary hover:text-cyan-400 transition-colors">
+              <i class="fas fa-external-link-alt mr-1.5"></i> Open IT Solutions Page
+            </a>
+          </div>
+        </div>
+
+        <div class="db-card rounded-2xl overflow-hidden">
+          <div class="p-5 db-border border-b flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <h3 class="font-bold db-text-primary text-sm">Active Engineering &amp; Cloud Systems (Services 11–20)</h3>
+            <span class="text-xs font-mono text-emerald-400"><i class="fas fa-circle text-[8px] mr-1"></i> 10/10 Capabilities Online</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="db-table-head text-[11px] font-mono uppercase">
+                  <th class="py-3.5 px-5">Service Code</th>
+                  <th class="py-3.5 px-5">Capability &amp; Stack</th>
+                  <th class="py-3.5 px-5">Lead Department</th>
+                  <th class="py-3.5 px-5">SLA / Uptime</th>
+                  <th class="py-3.5 px-5">Status</th>
+                </tr>
+              </thead>
+              <tbody class="text-xs">
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-mono font-bold text-cyan-400">IT-11 / Software</td>
+                  <td class="py-4 px-5 db-text-primary font-medium">Custom Software &amp; ERP Development</td>
+                  <td class="py-4 px-5 db-text-secondary">Engineering &amp; Cloud</td>
+                  <td class="py-4 px-5 font-mono text-emerald-400">99.99%</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full font-bold">Production</span></td>
+                </tr>
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-mono font-bold text-cyan-400">IT-12 &amp; 13 / Web &amp; App</td>
+                  <td class="py-4 px-5 db-text-primary font-medium">Website, E-Commerce &amp; Mobile Apps (iOS/Android)</td>
+                  <td class="py-4 px-5 db-text-secondary">Engineering &amp; Cloud</td>
+                  <td class="py-4 px-5 font-mono text-emerald-400">99.98%</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full font-bold">Production</span></td>
+                </tr>
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-mono font-bold text-cyan-400">IT-14 &amp; 19 / Cloud &amp; DB</td>
+                  <td class="py-4 px-5 db-text-primary font-medium">Cloud Migration, DevOps &amp; Database Engineering</td>
+                  <td class="py-4 px-5 db-text-secondary">Engineering &amp; Cloud</td>
+                  <td class="py-4 px-5 font-mono text-emerald-400">99.99%</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full font-bold">Auto-Scaling</span></td>
+                </tr>
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-mono font-bold text-cyan-400">IT-15 &amp; 17 / Sec &amp; Ops</td>
+                  <td class="py-4 px-5 db-text-primary font-medium">Cybersecurity, Data Protection &amp; 24/7 Managed IT</td>
+                  <td class="py-4 px-5 db-text-secondary">Managed Support</td>
+                  <td class="py-4 px-5 font-mono text-emerald-400">100.0%</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-cyan-500/10 text-cyan-400 rounded-full font-bold">SOC Guarded</span></td>
+                </tr>
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-mono font-bold text-cyan-400">IT-16, 18 &amp; 20 / Advisory</td>
+                  <td class="py-4 px-5 db-text-primary font-medium">AI/Automation, Systems Integration &amp; IT Consulting</td>
+                  <td class="py-4 px-5 db-text-secondary">Engineering &amp; Support</td>
+                  <td class="py-4 px-5 font-mono text-emerald-400">99.95%</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full font-bold">Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ════════════════════════════════════════════════════════════
+           VIEW 4: SECURITY BY DEFAULT & SIX PROMISES
+           ════════════════════════════════════════════════════════════ -->
+      <div id="view-stpi-logs" class="dash-page-view space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-emerald-400 block mb-1">Governance · Security · Accountability</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold db-text-primary tracking-tight letter-reveal">Security &amp; Six Promises Ledger</h1>
+          </div>
+          <a href="leadership.html" class="px-4 py-2 rounded-xl db-card text-xs font-semibold db-text-secondary hover:text-emerald-400 transition-colors self-start">
+            <i class="fas fa-shield-check mr-1.5"></i> View Leadership Charter
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="db-card p-5 rounded-2xl">
+            <p class="text-xs db-text-muted uppercase font-mono">Promise 01 &amp; 02</p>
+            <h3 class="text-lg font-extrabold text-emerald-400 mt-1">Single Accountability &amp; Speed</h3>
+            <p class="text-xs db-text-secondary mt-1">One dedicated lead per engagement; rapid milestones with zero handoff friction.</p>
+          </div>
+          <div class="db-card p-5 rounded-2xl">
+            <p class="text-xs db-text-muted uppercase font-mono">Promise 03 &amp; 04</p>
+            <h3 class="text-lg font-extrabold text-cyan-400 mt-1">Security by Default &amp; Clarity</h3>
+            <p class="text-xs db-text-secondary mt-1">End-to-end encryption, role-based access, and plain-English reporting without jargon.</p>
+          </div>
+          <div class="db-card p-5 rounded-2xl">
+            <p class="text-xs db-text-muted uppercase font-mono">Promise 05 &amp; 06</p>
+            <h3 class="text-lg font-extrabold text-indigo-400 mt-1">Built to Scale &amp; Long-Term Care</h3>
+            <p class="text-xs db-text-secondary mt-1">Modular architecture and continuous post-launch support from our Kowdiar HQ.</p>
+          </div>
+        </div>
+
+        <div class="db-card rounded-2xl p-6 space-y-4">
+          <h3 class="font-bold db-text-primary text-base">Recent Security &amp; Quality Audit Logs</h3>
+          <div class="space-y-3 text-xs">
+            <div class="flex items-center justify-between p-3.5 rounded-xl db-subcard">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-file-shield text-emerald-400 text-base"></i>
+                <div>
+                  <p class="font-bold db-text-primary">ISO/IEC 27001 &amp; Zero-Trust Access Audit — Q4</p>
+                  <p class="db-text-muted">Verified across all client repositories, cloud nodes, and media assets</p>
+                </div>
+              </div>
+              <span class="font-mono text-emerald-400 font-bold">VERIFIED</span>
+            </div>
+            <div class="flex items-center justify-between p-3.5 rounded-xl db-subcard">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-lock text-cyan-400 text-base"></i>
+                <div>
+                  <p class="font-bold db-text-primary">Automated Penetration &amp; Vulnerability Scan</p>
+                  <p class="db-text-muted">24 production web &amp; mobile endpoints scanned — 0 critical/high issues</p>
+                </div>
+              </div>
+              <span class="font-mono text-cyan-400 font-bold">PASSED</span>
+            </div>
+            <div class="flex items-center justify-between p-3.5 rounded-xl db-subcard">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-database text-indigo-400 text-base"></i>
+                <div>
+                  <p class="font-bold db-text-primary">Multi-Region Encrypted Backup &amp; Disaster Recovery Drill</p>
+                  <p class="db-text-muted">RPO &lt; 5 mins · RTO &lt; 15 mins verified across client databases</p>
+                </div>
+              </div>
+              <span class="font-mono text-emerald-400 font-bold">PASSED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ════════════════════════════════════════════════════════════
+           VIEW 5: KOWDIAR HQ & UNIFIED OPERATIONS
+           ════════════════════════════════════════════════════════════ -->
+      <div id="view-coworking-os" class="dash-page-view space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-purple-400 block mb-1">Jawahar Nagar, Kowdiar · Thiruvananthapuram 695003</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold db-text-primary tracking-tight letter-reveal">Kowdiar HQ &amp; Studio Operations</h1>
+          </div>
+          <div class="flex items-center gap-2 self-start">
+            <a href="coworking.html" class="px-4 py-2 rounded-xl db-card text-xs font-semibold db-text-secondary hover:text-purple-400 transition-colors">
+              <i class="fas fa-building mr-1.5"></i> Open Co-Working Page
+            </a>
+            <a href="leadership.html" class="px-4 py-2 rounded-xl db-card text-xs font-semibold db-text-secondary hover:text-cyan-400 transition-colors">
+              <i class="fas fa-users mr-1.5"></i> View 4 Departments
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="db-card p-5 rounded-2xl">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs db-text-muted font-mono">DEPT 01</span>
+              <i class="fas fa-palette text-indigo-400"></i>
+            </div>
+            <h3 class="text-lg font-extrabold db-text-primary">Brand &amp; Creative</h3>
+            <p class="text-xs text-emerald-400 mt-1">Identity, Video &amp; Podcast Studio Active</p>
+          </div>
+          <div class="db-card p-5 rounded-2xl">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs db-text-muted font-mono">DEPT 02</span>
+              <i class="fas fa-chart-line text-cyan-400"></i>
+            </div>
+            <h3 class="text-lg font-extrabold db-text-primary">Digital Growth</h3>
+            <p class="text-xs text-cyan-400 mt-1">SEO, Social, PR &amp; Lead Funnels Live</p>
+          </div>
+          <div class="db-card p-5 rounded-2xl">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs db-text-muted font-mono">DEPT 03</span>
+              <i class="fas fa-code text-purple-400"></i>
+            </div>
+            <h3 class="text-lg font-extrabold db-text-primary">Engineering &amp; Cloud</h3>
+            <p class="text-xs text-purple-400 mt-1">Software, Web, Mobile &amp; DevOps</p>
+          </div>
+          <div class="db-card p-5 rounded-2xl">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs db-text-muted font-mono">DEPT 04</span>
+              <i class="fas fa-headset text-emerald-400"></i>
+            </div>
+            <h3 class="text-lg font-extrabold db-text-primary">Managed Support</h3>
+            <p class="text-xs text-emerald-400 mt-1">24/7 SOC, Helpdesk &amp; Maintenance</p>
+          </div>
+        </div>
+
+        <!-- HQ Address & Direct Contact Card -->
+        <div class="db-card rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <span class="text-[11px] font-mono uppercase tracking-widest text-cyan-400">Registered Headquarters</span>
+            <h3 class="text-base font-bold db-text-primary">Nellys Tech Pvt. Ltd. — J-1A, TC 9/479(1) 23/2773, Jawahar Nagar, Kowdiar</h3>
+            <p class="text-xs db-text-secondary">Thiruvananthapuram, Kerala 695003 · Direct Line: <a href="tel:04712720004" class="text-cyan-400 font-mono hover:underline">0471 2720004</a></p>
+          </div>
+          <a href="contact.html" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white text-xs font-bold shrink-0">
+            Schedule HQ Visit <i class="fas fa-arrow-right ml-1.5"></i>
+          </a>
+        </div>
+      </div>
+
+
+      <!-- ════════════════════════════════════════════════════════════
+           VIEW 6: CLIENT INQUIRIES & RFP INBOX
+           ════════════════════════════════════════════════════════════ -->
+      <div id="view-inquiries" class="dash-page-view space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 block mb-1">CRM · Lead Routing</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold db-text-primary tracking-tight letter-reveal">Client Inquiries &amp; RFP Inbox</h1>
+          </div>
+          <a href="contact.html" class="px-4 py-2 rounded-xl db-card text-xs font-semibold db-text-secondary hover:text-amber-400 transition-colors self-start">
+            <i class="fas fa-envelope-open-text mr-1.5"></i> Open Public Contact Form
+          </a>
+        </div>
+
+        <div class="db-card rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="db-table-head text-[11px] font-mono uppercase">
+                  <th class="py-3.5 px-5">Client / Organization</th>
+                  <th class="py-3.5 px-5">Requested Pillar &amp; Scope</th>
+                  <th class="py-3.5 px-5">Assigned Dept</th>
+                  <th class="py-3.5 px-5">Received</th>
+                  <th class="py-3.5 px-5">Action</th>
+                </tr>
+              </thead>
+              <tbody class="text-xs">
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-bold db-text-primary">Apex FinServe India</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-indigo-500/10 text-indigo-400 rounded-full font-semibold">Executive Branding + Custom Web Portal</span></td>
+                  <td class="py-4 px-5 db-text-secondary">Brand + Engineering</td>
+                  <td class="py-4 px-5 db-text-muted">14 mins ago</td>
+                  <td class="py-4 px-5"><button onclick="acknowledgeLead(this, 'Apex FinServe India')" class="text-cyan-400 hover:underline font-semibold">Assign Lead</button></td>
+                </tr>
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-bold db-text-primary">Malabar Health Network</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-cyan-500/10 text-cyan-400 rounded-full font-semibold">Mobile App + HIPAA Cloud Migration</span></td>
+                  <td class="py-4 px-5 db-text-secondary">Engineering &amp; Cloud</td>
+                  <td class="py-4 px-5 db-text-muted">2 hours ago</td>
+                  <td class="py-4 px-5"><button onclick="acknowledgeLead(this, 'Malabar Health Network')" class="text-cyan-400 hover:underline font-semibold">Assign Lead</button></td>
+                </tr>
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-bold db-text-primary">Vanguard Legal Partners</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-purple-500/10 text-purple-400 rounded-full font-semibold">Podcast Production &amp; SEO Authority</span></td>
+                  <td class="py-4 px-5 db-text-secondary">Brand &amp; Digital Growth</td>
+                  <td class="py-4 px-5 db-text-muted">5 hours ago</td>
+                  <td class="py-4 px-5"><button onclick="acknowledgeLead(this, 'Vanguard Legal Partners')" class="text-cyan-400 hover:underline font-semibold">Assign Lead</button></td>
+                </tr>
+                <tr class="db-table-row">
+                  <td class="py-4 px-5 font-bold db-text-primary">Keralite Exports Ltd.</td>
+                  <td class="py-4 px-5"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full font-semibold">ERP Integration &amp; 24/7 Managed IT</span></td>
+                  <td class="py-4 px-5 db-text-secondary">Managed Support</td>
+                  <td class="py-4 px-5 db-text-muted">1 day ago</td>
+                  <td class="py-4 px-5"><button onclick="acknowledgeLead(this, 'Keralite Exports Ltd.')" class="text-cyan-400 hover:underline font-semibold">Assign Lead</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom Status Footer -->
+    <footer id="db-footer" class="py-4 px-6 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 shrink-0">
+      <span>&copy; 2026 Nellys Tech Pvt. Ltd. · Jawahar Nagar, Kowdiar, Thiruvananthapuram, Kerala 695003</span>
+      <div class="flex items-center gap-4 font-mono">
+        <a href="tel:04712720004" class="hover:text-cyan-400 transition-colors"><i class="fas fa-phone mr-1"></i>0471 2720004</a>
+        <span class="flex items-center gap-1.5 text-emerald-400"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> All Systems Nominal</span>
+      </div>
+    </footer>
+
+  </div><!-- /#db-main -->
+
+</div><!-- /.dash-wrapper -->
+
+
+<!-- ══ OFFCANVAS RIGHT DRAWER (Live Telemetry Console) ══════════ -->
+<div id="offcanvas-backdrop" onclick="toggleOffcanvas()"></div>
+<aside id="offcanvas-drawer" class="p-6">
+  <div class="flex items-center justify-between pb-4 db-border border-b mb-6">
+    <div>
+      <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400">Live Telemetry</span>
+      <h3 class="text-base font-bold db-text-primary">System Control Drawer</h3>
+    </div>
+    <button onclick="toggleOffcanvas()" class="w-8 h-8 rounded-lg db-card flex items-center justify-center db-text-secondary hover:text-rose-400">
+      <i class="fas fa-times text-sm"></i>
+    </button>
+  </div>
+
+  <div class="space-y-5 flex-1">
+    <div class="p-4 rounded-xl db-card space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold db-text-primary">Auto-Scale Cloud Nodes</span>
+        <input type="checkbox" checked class="accent-cyan-500 w-4 h-4">
+      </div>
+      <p class="text-[11px] db-text-muted">Automatically scale Kubernetes &amp; web containers when client traffic exceeds 80%.</p>
+    </div>
+
+    <div class="p-4 rounded-xl db-card space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold db-text-primary">Zero-Trust Firewall Shield</span>
+        <input type="checkbox" checked class="accent-emerald-500 w-4 h-4">
+      </div>
+      <p class="text-[11px] db-text-muted">Enforce strict TLS 1.3 &amp; SOC anomaly detection across all client deployments.</p>
+    </div>
+
+    <div class="p-4 rounded-xl db-card space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold db-text-primary">SEO &amp; Lead Funnel Sync</span>
+        <input type="checkbox" checked class="accent-indigo-500 w-4 h-4">
+      </div>
+      <p class="text-[11px] db-text-muted">Real-time attribution syncing for executive branding &amp; paid ad campaigns.</p>
+    </div>
+
+    <div class="p-4 rounded-xl db-card">
+      <p class="text-[10px] font-mono uppercase db-text-muted mb-2">Live Console Stream</p>
+      <div class="font-mono text-[11px] space-y-1.5 text-emerald-400 bg-slate-950 p-3 rounded-lg border border-slate-800">
+        <p>[OK] Kowdiar HQ Core Router synced</p>
+        <p>[OK] 20/20 Service pipelines healthy</p>
+        <p class="text-cyan-400">[INFO] Podcast Studio Render #42 complete</p>
+        <p>[OK] SSL &amp; ISO security checks verified</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-4 db-border border-t mt-6">
+    <a href="services.html" class="w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2">
+      <i class="fas fa-layer-group"></i> View All 20 Capabilities
+    </a>
+  </div>
+</aside>
+
+
+<!-- ══ NEW DEPLOYMENT / PROJECT MODAL ═══════════════════════════ -->
+<div id="inquiry-modal" class="modal-overlay fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+  <div class="db-card w-full max-w-md rounded-3xl p-6 sm:p-8 relative shadow-2xl">
+    <button onclick="closeModal('inquiry-modal')" class="absolute top-5 right-5 db-text-muted hover:text-rose-400">
+      <i class="fas fa-times text-lg"></i>
+    </button>
+    <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400">Nellys Tech Command</span>
+    <h3 class="text-xl font-bold db-text-primary mt-1 mb-5">Initialize New Client Deployment</h3>
+    <form onsubmit="handleDeploySubmit(event)" class="space-y-4">
+      <div>
+        <label class="block text-xs font-mono uppercase db-text-secondary mb-1.5">Client / Project Identifier</label>
+        <input id="deploy-name" type="text" required placeholder="e.g., Horizon Enterprise Portal" class="w-full db-card rounded-xl px-4 py-2.5 text-xs db-text-primary focus:outline-none focus:border-cyan-500">
+      </div>
+      <div>
+        <label class="block text-xs font-mono uppercase db-text-secondary mb-1.5">Select Capability Pillar</label>
+        <select id="deploy-pillar" class="w-full db-card rounded-xl px-4 py-2.5 text-xs db-text-primary focus:outline-none focus:border-cyan-500">
+          <option>Pillar I + II: Unified Brand &amp; 360° IT Solution</option>
+          <option>Pillar I: Executive Visibility &amp; Digital Branding</option>
+          <option>Pillar II: Custom Software, Web &amp; Mobile Apps</option>
+          <option>Pillar II: Cloud Migration, DevOps &amp; Cybersecurity</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-bold rounded-xl text-xs shadow-lg">
+        Provision Workspace &amp; Assign Lead
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Feedback Banner -->
+<div id="dash-toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 border border-cyan-500/40 text-white text-xs shadow-2xl">
+  <i class="fas fa-circle-check text-emerald-400 text-sm"></i>
+  <span id="dash-toast-msg">Action completed successfully.</span>
+</div>
+
+<script src="js/global.js"></script>
+<script>
+  const tabLabels = {
+    'overview':     'Overview & Metrics',
+    'ai-pipelines': 'Pillar I: Digital Branding',
+    'cloud-nodes':  'Pillar II: 360° IT & Cloud',
+    'stpi-logs':    'Security & Six Promises',
+    'coworking-os': 'Kowdiar HQ & Operations',
+    'inquiries':    'Client Inquiries & RFP Inbox'
+  };
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.dash-page-view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.db-nav-btn').forEach(b => b.classList.remove('active'));
+
+    const view = document.getElementById('view-' + tabId);
+    const btn  = document.getElementById('tab-' + tabId);
+    if (view) {
+      view.classList.add('active');
+      // Re-trigger letter-by-letter animation on the active tab heading
+      const heading = view.querySelector('.letter-reveal');
+      if (heading) {
+        heading.classList.remove('char-revealed');
+        void heading.offsetWidth;
+        heading.classList.add('char-revealed');
+      }
+    }
+    if (btn) btn.classList.add('active');
+
+    const crumb = document.getElementById('breadcrumb-label');
+    if (crumb && tabLabels[tabId]) crumb.textContent = tabLabels[tabId];
+
+    if (window.innerWidth < 1024) {
+      document.getElementById('db-sidebar').classList.remove('open');
+      document.getElementById('sidebar-overlay').classList.remove('open');
+    }
+  }
+
+  function handleDashSearch(query) {
+    const q = (query || '').toLowerCase().trim();
+    if (!q) return;
+    if (q.includes('brand') || q.includes('seo') || q.includes('podcast') || q.includes('video') || q.includes('pr')) {
+      switchTab('ai-pipelines');
+    } else if (q.includes('cloud') || q.includes('it') || q.includes('software') || q.includes('app') || q.includes('web')) {
+      switchTab('cloud-nodes');
+    } else if (q.includes('sec') || q.includes('promise') || q.includes('iso') || q.includes('audit')) {
+      switchTab('stpi-logs');
+    } else if (q.includes('hq') || q.includes('kowdiar') || q.includes('work') || q.includes('team') || q.includes('dept')) {
+      switchTab('coworking-os');
+    } else if (q.includes('inq') || q.includes('client') || q.includes('lead') || q.includes('rfp')) {
+      switchTab('inquiries');
+    } else {
+      switchTab('overview');
+    }
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById('db-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    if (window.innerWidth < 1024) {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+    } else {
+      document.body.classList.toggle('sidebar-collapsed');
+    }
+  }
+
+  function toggleOffcanvas() {
+    document.getElementById('offcanvas-drawer').classList.toggle('open');
+    document.getElementById('offcanvas-backdrop').classList.toggle('open');
+  }
+
+  function toggleDashTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    if (typeof applyTheme === 'function') {
+      applyTheme(next);
+    } else {
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('nellys_theme', next);
+    }
+    syncDashThemeIcon(next);
+  }
+
+  function syncDashThemeIcon(theme) {
+    const icon = document.getElementById('dash-theme-icon');
+    if (!icon) return;
+    icon.className = theme === 'dark'
+      ? 'fas fa-sun text-amber-400 text-sm'
+      : 'fas fa-moon text-indigo-600 text-sm';
+  }
+
+  function showDashToast(msg) {
+    const toast = document.getElementById('dash-toast');
+    const text  = document.getElementById('dash-toast-msg');
+    if (!toast || !text) return;
+    text.textContent = msg;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
+    }, 3500);
+  }
+
+  function handleDeploySubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('deploy-name').value;
+    const pillar = document.getElementById('deploy-pillar').value;
+    closeModal('inquiry-modal');
+    showDashToast('Workspace provisioned for "' + name + '" (' + pillar + ').');
+    e.target.reset();
+  }
+
+  function acknowledgeLead(btn, clientName) {
+    btn.textContent = 'Assigned ✓';
+    btn.className = 'text-emerald-400 font-mono font-bold';
+    showDashToast('Dedicated project lead assigned to ' + clientName + '.');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    syncDashThemeIcon(current);
+  });
+</script>
+</body>
+</html>
+
