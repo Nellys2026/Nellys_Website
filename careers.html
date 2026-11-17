@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers & Talent Portal - Nellys Tech Pvt. Ltd.</title>
+  <meta name="description" content="Explore career opportunities at Nellys Tech Pvt. Ltd. in Kowdiar, Thiruvananthapuram. Join our unified team across Software Engineering, Cloud, Cybersecurity, Digital Branding, Podcasting & Growth.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="tailwind.cdn.js"></script>
+  <script>
+    if (!window.tailwind) {
+      document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement-bar border-b text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center flex-wrap">
+      <span class="top-announcement-badge font-bold px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider shrink-0">We're Hiring</span>
+      <span class="font-medium">Join our unified Engineering, Cloud &amp; Digital Branding team in Kowdiar, Thiruvananthapuram.</span>
+      <a href="#open-roles" class="font-semibold hover:underline flex items-center gap-1 shrink-0">View 8 Open Positions &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-[#0B0F19]/90 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+        <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto group-hover:scale-105 transition-transform">
+        <div class="flex flex-col">
+          <span class="text-lg font-bold tracking-tight text-white leading-none">Nellys <span class="text-cyan-400">Tech</span></span>
+          <span class="text-[9px] text-cyan-400 tracking-widest uppercase font-bold mt-0.5">PVT. LTD.</span>
+        </div>
+      </a>
+
+      <nav class="hidden xl:flex items-center space-x-6 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="about.html" class="nav-link hover:text-white transition-colors">About Us</a>
+        <a href="services.html" class="nav-link hover:text-white transition-colors">Services</a>
+        <a href="leadership.html" class="nav-link hover:text-white transition-colors">Leadership</a>
+        <a href="associates.html" class="nav-link hover:text-white transition-colors">Partners</a>
+        <a href="careers.html" class="nav-link active font-semibold hover:text-white transition-colors">Careers</a>
+        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+        <a href="login.html" class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors">Dashboard</a>
+      </nav>
+
+      <div class="hidden sm:flex items-center gap-3 shrink-0">
+        <button class="theme-toggle-btn w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center justify-center transition-all hover:scale-105" title="Toggle Theme">
+          <i class="fas fa-sun text-amber-400 text-sm"></i>
+        </button>
+        <button onclick="openApplyModal('General / Open Application')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow-md shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
+          Apply Now
+        </button>
+      </div>
+
+      <div class="flex xl:hidden items-center gap-2">
+        <button class="theme-toggle-btn w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center" title="Toggle Theme">
+          <i class="fas fa-sun text-amber-400 text-xs"></i>
+        </button>
+        <button id="mobile-menu-btn" class="p-2 text-slate-300 hover:text-white focus:outline-none">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="fixed inset-y-0 right-0 z-50 w-72 bg-[#0B0F19] border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <img src="nellys-logo.svg" alt="Nellys Tech" class="h-7 w-auto">
+          <span class="font-extrabold text-white text-lg">Nellys <span class="text-cyan-400">Tech</span></span>
+        </div>
+        <button id="close-drawer-btn" class="text-slate-400 hover:text-white text-xl"><i class="fas fa-xmark"></i></button>
+      </div>
+      <nav class="mt-6 flex flex-col space-y-4 font-medium text-slate-300">
+        <a href="index.html" class="hover:text-cyan-400 py-1 transition-colors">Home</a>
+        <a href="about.html" class="hover:text-cyan-400 py-1 transition-colors">About Us</a>
+        <a href="services.html" class="hover:text-cyan-400 py-1 transition-colors">Services</a>
+        <a href="leadership.html" class="hover:text-cyan-400 py-1 transition-colors">Leadership</a>
+        <a href="associates.html" class="hover:text-cyan-400 py-1 transition-colors">Partners</a>
+        <a href="careers.html" class="text-cyan-400 font-bold py-1 transition-colors">Careers</a>
+        <a href="contact.html" class="hover:text-cyan-400 py-1 transition-colors">Contact Us</a>
+        <a href="login.html" class="hover:text-cyan-400 py-1 transition-colors">Dashboard Login</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+
+    <!-- ══ HERO SECTION ══════════════════════════════════════════════ -->
+    <section class="py-16 sm:py-24 border-b border-slate-200/80 dark:border-slate-800/80 relative overflow-hidden" id="hero">
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="carousel">
+        <div class="hero-slides flex flex-nowrap h-full w-full will-change-transform" id="slides">
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide1.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide2.jpg');"></div>
+          <div class="slide flex-none w-full h-full bg-cover bg-center" style="background-image:url('assets/slide3.jpg');"></div>
+        </div>
+      </div>
+
+      <div class="absolute inset-0 z-[1] hero-bg-overlay-center pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-3xl mx-auto space-y-6 reveal-on-scroll">
+          <span class="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+            <i class="fas fa-briefcase text-cyan-400"></i> Careers at Nellys Tech &bull; Kowdiar, Thiruvananthapuram
+          </span>
+
+          <h1 class="letter-reveal hero-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            Build the Future With <span class="text-gradient">One Unified Team.</span>
+          </h1>
+
+          <p class="hero-subtitle text-lg sm:text-xl font-medium">
+            Where software engineers, cloud architects, and cybersecurity specialists collaborate daily with brand designers, podcast creators, and growth strategists.
+          </p>
+
+          <p class="hero-body text-sm sm:text-base leading-relaxed">
+            At our Jawahar Nagar, Kowdiar headquarters in Thiruvananthapuram, we don't work in isolated silos. Join a high-trust team delivering 20 integrated capabilities across Digital Branding and 360° IT Solutions.
+          </p>
+
+          <div class="pt-4 flex flex-wrap justify-center gap-4">
+            <a href="#open-roles" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-cyan-500/20 text-xs uppercase tracking-wider transition-all">
+              Explore 8 Open Roles &rarr;
+            </a>
+            <button onclick="openApplyModal('General / Open Application')" class="bg-slate-800/90 hover:bg-slate-700 text-slate-200 font-semibold px-8 py-3.5 rounded-xl border border-slate-700 text-xs uppercase tracking-wider transition-all">
+              Send Open Application
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Stats Strip -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12 pt-8 border-t border-slate-800/60" data-reveal-group>
+          <div class="glass-panel p-4 rounded-2xl text-center">
+            <span class="text-2xl sm:text-3xl font-extrabold text-cyan-400 block">4</span>
+            <span class="text-xs text-slate-300 font-medium">Unified Departments</span>
+          </div>
+          <div class="glass-panel p-4 rounded-2xl text-center">
+            <span class="text-2xl sm:text-3xl font-extrabold text-indigo-400 block">20</span>
+            <span class="text-xs text-slate-300 font-medium">Core Capabilities</span>
+          </div>
+          <div class="glass-panel p-4 rounded-2xl text-center">
+            <span class="text-2xl sm:text-3xl font-extrabold text-emerald-400 block">8</span>
+            <span class="text-xs text-slate-300 font-medium">Active Openings</span>
+          </div>
+          <div class="glass-panel p-4 rounded-2xl text-center">
+            <span class="text-2xl sm:text-3xl font-extrabold text-purple-400 block">TVM</span>
+            <span class="text-xs text-slate-300 font-medium">Kowdiar HQ &amp; Hybrid</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ WHY JOIN NELLYS TECH (CULTURE & PERKS) ═══════════════════ -->
+    <section class="py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+          <span class="px-3 py-1 bg-cyan-950 text-cyan-400 text-xs font-bold rounded-full border border-cyan-500/30 uppercase tracking-wider inline-block">
+            Life at Nellys Tech
+          </span>
+          <h2 class="letter-reveal text-3xl sm:text-4xl font-extrabold text-white">Why Build Your Career Here</h2>
+          <p class="text-slate-300 text-sm">
+            We believe great work happens when talented people have clarity, modern tools, and zero bureaucracy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-group>
+
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-3 hover:border-cyan-500/40 transition-all">
+            <div class="w-11 h-11 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg">
+              <i class="fas fa-people-group"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Two Pillars, Zero Silos</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Work directly across Engineering and Digital Branding. Developers understand the brand story; marketers and designers build on rock-solid technology.
+            </p>
+          </div>
+
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-3 hover:border-indigo-500/40 transition-all">
+            <div class="w-11 h-11 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-lg">
+              <i class="fas fa-building-user"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Prime Kowdiar HQ &amp; Studio</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Collaborate from our headquarters in Jawahar Nagar, Kowdiar, Thiruvananthapuram—equipped with high-speed infrastructure and dedicated audio/video podcast studios.
+            </p>
+          </div>
+
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-3 hover:border-emerald-500/40 transition-all">
+            <div class="w-11 h-11 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Sponsored Learning &amp; R&amp;D</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Annual learning budgets for AWS/Cloud certifications, AI &amp; workflow automation labs, cybersecurity credentials, and executive media workshops.
+            </p>
+          </div>
+
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-3 hover:border-purple-500/40 transition-all">
+            <div class="w-11 h-11 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-lg">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Real Ownership &amp; Direct Impact</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              No micromanagement or endless layers of approval. You own key modules, ship real products, and see the measurable growth your work creates for clients.
+            </p>
+          </div>
+
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-3 hover:border-amber-500/40 transition-all">
+            <div class="w-11 h-11 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg">
+              <i class="fas fa-award"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Merit-Driven Growth &amp; Rewards</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Competitive compensation packages, transparent performance bonuses, and a clear path to technical architecture or creative leadership roles.
+            </p>
+          </div>
+
+          <div class="glass-panel p-7 rounded-3xl border border-slate-800 space-y-3 hover:border-pink-500/40 transition-all">
+            <div class="w-11 h-11 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-lg">
+              <i class="fas fa-heart-pulse"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Sustainable Pace &amp; Wellness</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Well-planned sprint cycles, hybrid flexibility for eligible roles, health coverage support, and a respectful culture grounded in our Six Promises.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ OPEN POSITIONS PORTAL ════════════════════════════════════ -->
+    <section id="open-roles" class="py-20 bg-slate-900/30 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+          <div class="space-y-3">
+            <span class="px-3 py-1 bg-indigo-950 text-indigo-400 text-xs font-bold rounded-full border border-indigo-500/30 uppercase tracking-wider inline-block">
+              Career Portal &bull; 2026 Intake
+            </span>
+            <h2 class="letter-reveal text-3xl sm:text-4xl font-extrabold text-white">Open Positions</h2>
+            <p class="text-slate-300 text-sm max-w-2xl">
+              Filter by department or search by skill to find your next role at Nellys Tech Pvt. Ltd.
+            </p>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative w-full lg:w-80">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="job-search-input" type="text" oninput="filterJobs()" placeholder="Search role or skill (e.g. React, SEO, Podcast)..."
+              class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-4 py-3 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 transition-colors">
+          </div>
+        </div>
+
+        <!-- Department Filter Pills -->
+        <div class="flex flex-wrap items-center gap-2.5 mb-10">
+          <button onclick="setDeptFilter('all', this)" class="job-dept-btn active-filter px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/40 bg-cyan-500/15 text-cyan-300 transition-all">
+            All Departments (8)
+          </button>
+          <button onclick="setDeptFilter('engineering', this)" class="job-dept-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-900/80 text-slate-300 hover:border-cyan-500/30 transition-all">
+            <i class="fas fa-code text-cyan-400 mr-1.5"></i>Engineering &amp; Cloud (3)
+          </button>
+          <button onclick="setDeptFilter('branding', this)" class="job-dept-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-900/80 text-slate-300 hover:border-indigo-500/30 transition-all">
+            <i class="fas fa-palette text-indigo-400 mr-1.5"></i>Brand &amp; Creative Studio (2)
+          </button>
+          <button onclick="setDeptFilter('growth', this)" class="job-dept-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-900/80 text-slate-300 hover:border-purple-500/30 transition-all">
+            <i class="fas fa-chart-line text-purple-400 mr-1.5"></i>Digital Growth &amp; SEO (2)
+          </button>
+          <button onclick="setDeptFilter('security', this)" class="job-dept-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-900/80 text-slate-300 hover:border-emerald-500/30 transition-all">
+            <i class="fas fa-shield-halved text-emerald-400 mr-1.5"></i>Cybersecurity &amp; Support (1)
+          </button>
+        </div>
+
+        <!-- Job Cards Grid -->
+        <div id="jobs-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          <!-- JOB 1: Senior Full-Stack Engineer -->
+          <article data-dept="engineering" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                  <i class="fas fa-code mr-1"></i> Engineering &amp; Cloud
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-ENG-01 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Senior Full-Stack Software Engineer</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar, Thiruvananthapuram (Hybrid) &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 3–6+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Architect and deliver custom enterprise web platforms, SaaS portals, ERP modules, and API integrations for clients under Pillar II (Services 11, 12 &amp; 18).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">React / Next.js</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Node.js / Python</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">PostgreSQL</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">REST &amp; GraphQL APIs</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('Senior Full-Stack Software Engineer (REQ-ENG-01)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- JOB 2: Cloud & DevOps Architect -->
+          <article data-dept="engineering" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                  <i class="fas fa-cloud mr-1"></i> Engineering &amp; Cloud
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-ENG-02 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Cloud Infrastructure &amp; DevOps Engineer</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar, Thiruvananthapuram (Hybrid) &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 3–5+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Lead cloud migrations, CI/CD automation, high-availability database clusters, and containerized deployments across AWS, Azure, and GCP (Services 14 &amp; 19).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">AWS / GCP</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Docker &amp; Kubernetes</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Terraform / CI-CD</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Linux &amp; Observability</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('Cloud Infrastructure & DevOps Engineer (REQ-ENG-02)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- JOB 3: Mobile App Developer -->
+          <article data-dept="engineering" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                  <i class="fas fa-mobile-screen-button mr-1"></i> Engineering &amp; Cloud
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-ENG-03 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Mobile Application Developer (Flutter / React Native)</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar, Thiruvananthapuram &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 2–4+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Build smooth, high-performance iOS and Android applications from concept and UI polish through App Store / Play Store deployment (Service 13).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Flutter / Dart</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">React Native</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">iOS &amp; Android Release</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Push &amp; Offline Sync</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('Mobile Application Developer (REQ-ENG-03)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- JOB 4: Brand Identity & UI/UX Designer -->
+          <article data-dept="branding" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-indigo-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  <i class="fas fa-palette mr-1"></i> Brand &amp; Creative Studio
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-BRD-01 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Senior Brand Identity &amp; UI/UX Designer</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar, Thiruvananthapuram (On-Site) &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 2–5+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Craft distinctive brand identities, visual style guides, executive presentation decks, and high-converting web/mobile design systems (Services 02 &amp; 12).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Figma &amp; Design Systems</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Adobe Creative Suite</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Brand Guidelines</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Web &amp; Mobile UI</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('Senior Brand Identity & UI/UX Designer (REQ-BRD-01)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- JOB 5: Podcast & Video Production Specialist -->
+          <article data-dept="branding" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-indigo-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  <i class="fas fa-microphone-lines mr-1"></i> Brand &amp; Creative Studio
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-BRD-02 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Podcast, Audio &amp; Video Production Specialist</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar Studio, Thiruvananthapuram &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 2–4+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Direct multi-camera podcast sessions, corporate brand films, sound mixing, colour grading, and short-form social video clips for executives (Services 06 &amp; 07).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Premiere Pro / DaVinci</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Multi-Cam &amp; Studio Lighting</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Audio Mastering</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Motion Graphics</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('Podcast, Audio & Video Production Specialist (REQ-BRD-02)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- JOB 6: Executive Personal Branding & Content Strategist -->
+          <article data-dept="growth" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-purple-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                  <i class="fas fa-pen-nib mr-1"></i> Digital Growth &amp; PR
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-GRW-01 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Executive Personal Branding &amp; Content Strategist</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar, Thiruvananthapuram (Hybrid) &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 2–5+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Shape thought-leadership narratives, LinkedIn executive positioning, PR articles, and high-authority copywriting for founders and business leaders (Services 01, 03, 04 &amp; 08).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Executive Ghostwriting</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">LinkedIn &amp; PR Strategy</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Editorial Calendars</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">ORM</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('Executive Personal Branding & Content Strategist (REQ-GRW-01)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- JOB 7: SEO & Performance Marketing Lead -->
+          <article data-dept="growth" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-purple-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                  <i class="fas fa-chart-line mr-1"></i> Digital Growth &amp; SEO
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-GRW-02 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">SEO &amp; Performance Marketing Specialist</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar, Thiruvananthapuram (Hybrid) &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 3–5+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Drive technical SEO, local &amp; global search rankings, Google/Meta/LinkedIn paid acquisition funnels, and ROI analytics (Services 05 &amp; 10).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Technical &amp; On-Page SEO</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Google &amp; Meta Ads</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">GA4 &amp; Conversion Funnels</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">B2B Lead Gen</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('SEO & Performance Marketing Specialist (REQ-GRW-02)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- JOB 8: Cybersecurity & Managed IT Support Engineer -->
+          <article data-dept="security" class="job-card glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between gap-5">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <i class="fas fa-shield-halved mr-1"></i> Cybersecurity &amp; Support
+                </span>
+                <span class="text-xs font-mono text-slate-400">REQ-SEC-01 &bull; Full-Time</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Cybersecurity &amp; Managed IT Support Engineer</h3>
+                <p class="text-xs text-slate-400 mt-1">
+                  <i class="fas fa-location-dot text-cyan-400 mr-1"></i> Kowdiar, Thiruvananthapuram (On-Site) &nbsp;&bull;&nbsp;
+                  <i class="fas fa-briefcase text-indigo-400 mr-1"></i> 2–5+ Years Experience
+                </p>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Maintain our "Security by Default" promise through vulnerability assessments, endpoint hardening, backup verification, and proactive 24/7 client systems support (Services 15 &amp; 17).
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">VAPT &amp; Network Security</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Zero-Trust &amp; IAM</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Server Monitoring</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300">Incident Response</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-circle text-[8px] mr-1.5"></i>Actively Interviewing</span>
+              <button onclick="openApplyModal('Cybersecurity & Managed IT Support Engineer (REQ-SEC-01)')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs shadow-md transition-all">
+                Apply for Role &rarr;
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="jobs-empty" class="hidden text-center py-12 glass-panel rounded-3xl border border-slate-800 mt-6">
+          <i class="fas fa-magnifying-glass text-2xl text-cyan-400 mb-3"></i>
+          <h3 class="text-lg font-bold text-white">No exact role matched your filter</h3>
+          <p class="text-xs text-slate-400 mt-1 mb-4">We are always looking for exceptional engineers, designers, and marketers.</p>
+          <button onclick="openApplyModal('General / Open Application')" class="px-5 py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs">
+            Submit an Open Application
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ 4-STEP HIRING PROCESS ════════════════════════════════════ -->
+    <section class="py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+          <span class="px-3 py-1 bg-emerald-950 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/30 uppercase tracking-wider inline-block">
+            Candidate Experience
+          </span>
+          <h2 class="letter-reveal text-3xl sm:text-4xl font-extrabold text-white">Simple, Transparent Hiring</h2>
+          <p class="text-slate-300 text-sm">
+            Respecting your time is part of who we are. Our hiring process is fast, practical, and free of unnecessary hoops.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-reveal-group>
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-cyan-400 font-mono font-bold text-xs uppercase">Step 01</span>
+            <h3 class="text-lg font-bold text-white">Application &amp; Work Review</h3>
+            <p class="text-xs text-slate-300">Share your resume, GitHub, portfolio, or campaign links. Our department leads review every application directly.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-indigo-400 font-mono font-bold text-xs uppercase">Step 02</span>
+            <h3 class="text-lg font-bold text-white">Introductory Conversation</h3>
+            <p class="text-xs text-slate-300">A 25-minute call (or coffee at our Kowdiar HQ) to discuss your career goals, past work, and how our unified team operates.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-purple-400 font-mono font-bold text-xs uppercase">Step 03</span>
+            <h3 class="text-lg font-bold text-white">Practical Craft Walkthrough</h3>
+            <p class="text-xs text-slate-300">A collaborative session walking through real-world architecture, design, or campaign strategy—no trick whiteboard puzzles.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <span class="text-emerald-400 font-mono font-bold text-xs uppercase">Step 04</span>
+            <h3 class="text-lg font-bold text-white">Offer &amp; Onboarding</h3>
+            <p class="text-xs text-slate-300">Receive a clear, competitive offer and join our team in Jawahar Nagar, Kowdiar with full mentorship from day one.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ OPEN APPLICATION & INTERNSHIP CTA ═══════════════════════ -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-cyan-500/30 text-center space-y-4 max-w-3xl mx-auto reveal-on-scroll reveal-scale">
+          <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs font-bold rounded-full border border-cyan-500/20 uppercase tracking-wider inline-block">
+            Don't See Your Exact Role?
+          </span>
+          <h2 class="letter-reveal text-3xl font-extrabold text-white">Send an Open Application</h2>
+          <p class="text-slate-300 text-sm">
+            Whether you are an experienced architect, creative director, or an ambitious graduate seeking a fellowship/internship in Thiruvananthapuram, we would love to hear from you.
+          </p>
+          <div class="pt-4 flex flex-wrap justify-center gap-4">
+            <button onclick="openApplyModal('General / Open Application & Fellowship')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-xs uppercase tracking-wider">
+              Submit Your Profile &rarr;
+            </button>
+            <a href="mailto:nellystechai@gmail.com?subject=Career%20Application%20-%20Nellys%20Tech" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-8 py-3.5 rounded-xl border border-slate-700 text-xs uppercase tracking-wider">
+              <i class="fas fa-envelope mr-1.5 text-cyan-400"></i> Email HR Desk
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- STANDARDIZED CORPORATE FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80" data-reveal-group>
+
+        <div class="lg:col-span-2 space-y-4 reveal-on-scroll reveal-delay-1">
+          <div class="flex items-center gap-3">
+            <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-9 w-auto">
+            <div>
+              <span class="text-lg font-bold text-white block leading-none">Nellys Tech</span>
+              <span class="text-[9px] text-cyan-400 tracking-wider font-bold">PVT. LTD.</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed max-w-sm">
+            <em class="text-cyan-400 font-semibold">"Technology that runs your business. Visibility that grows it."</em>
+          </p>
+          <div class="text-xs text-slate-200 space-y-2 pt-2">
+            <p><i class="fas fa-location-dot text-cyan-400 mr-2"></i> <strong class="text-white">Registered Address:</strong> J-1A, TC 9/479(1) 23/2773, Jawahar Nagar, Kowdiar, Thiruvananthapuram, Kerala 695003</p>
+            <p><i class="fas fa-phone text-emerald-400 mr-2"></i> <strong class="text-white">Phone:</strong> <a href="tel:+914712720004" class="hover:text-cyan-400 transition-colors">+91 471 2720004</a> &nbsp;|&nbsp; <a href="tel:+919847738252" class="hover:text-cyan-400 transition-colors">+91 98477 38252</a></p>
+            <p><i class="fas fa-envelope text-cyan-400 mr-2"></i> <strong class="text-white">Email:</strong> nellystechai@gmail.com</p>
+            <p><i class="fas fa-globe text-indigo-400 mr-2"></i> <strong class="text-white">Web:</strong> nellystech.in</p>
+          </div>
+        </div>
+
+        <div class="space-y-3 reveal-on-scroll reveal-delay-2">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
+          <ul class="space-y-2 text-xs text-slate-200">
+            <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
+            <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+            <li><a href="services.html" class="hover:text-cyan-400 transition-colors">Services (20)</a></li>
+            <li><a href="leadership.html" class="hover:text-cyan-400 transition-colors">Leadership</a></li>
+            <li><a href="careers.html" class="text-cyan-400 font-semibold transition-colors">Careers Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3 reveal-on-scroll reveal-delay-3">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Two Strengths</h4>
+          <ul class="space-y-2 text-xs text-slate-200">
+            <li><a href="services.html#branding" class="hover:text-cyan-400 transition-colors">Digital Branding (10)</a></li>
+            <li><a href="services.html#tech" class="hover:text-cyan-400 transition-colors">IT &amp; Business (10)</a></li>
+            <li><a href="associates.html" class="hover:text-cyan-400 transition-colors">Strategic Partners</a></li>
+            <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Kowdiar HQ</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3 reveal-on-scroll reveal-delay-4">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Our Standards</h4>
+          <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] space-y-2">
+            <p class="text-cyan-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Six Promises We Live By</p>
+            <p class="text-emerald-400 font-bold"><i class="fas fa-shield-halved mr-1"></i> Security by Default</p>
+            <p class="text-indigo-400 font-bold"><i class="fas fa-bolt mr-1"></i> Simple. Honest. Perfection.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Nellys Tech Private Limited. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ MODAL: JOB APPLICATION ════════════════════════════════════ -->
+  <div id="apply-modal" class="modal-overlay fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-[#0B0F19] border border-cyan-500/40 rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative my-8">
+      <button onclick="closeModal('apply-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400">Nellys Tech Talent Portal</span>
+      <h3 class="text-2xl font-bold text-white mt-0.5 mb-1">Apply for Position</h3>
+      <p class="text-xs text-slate-400 mb-5">Jawahar Nagar, Kowdiar, Thiruvananthapuram &bull; Direct Team Review</p>
+
+      <form id="career-apply-form" onsubmit="submitCareerApplication(event)" class="space-y-4 text-sm">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Selected Role</label>
+          <input id="apply-role-input" type="text" required readonly class="w-full bg-slate-900/90 border border-cyan-500/40 rounded-xl px-4 py-2.5 text-cyan-300 font-semibold text-xs focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name *</label>
+            <input id="apply-name" type="text" required placeholder="Your Full Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Phone Number *</label>
+            <input id="apply-phone" type="tel" required placeholder="+91 98765 43210" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address *</label>
+            <input id="apply-email" type="email" required placeholder="you@example.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Total Experience *</label>
+            <select id="apply-exp" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-cyan-500">
+              <option>2–4 Years</option>
+              <option>4–7 Years</option>
+              <option>7+ Years (Senior / Lead)</option>
+              <option>0–2 Years / Fellowship</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">LinkedIn / GitHub / Portfolio / Resume Link *</label>
+          <input id="apply-link" type="url" required placeholder="https://linkedin.com/in/yourprofile or Drive Resume Link" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-cyan-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Why Nellys Tech &amp; Key Highlights</label>
+          <textarea id="apply-notes" rows="3" required placeholder="Briefly share your strongest projects, skills, and notice period..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-cyan-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold py-3 rounded-xl shadow-lg text-xs uppercase tracking-wider">
+          Submit Application &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="career-toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 px-5 py-3.5 rounded-2xl bg-slate-900 border border-emerald-500/50 text-white text-xs shadow-2xl">
+    <i class="fas fa-circle-check text-emerald-400 text-base"></i>
+    <span id="career-toast-msg">Application received! Our team at Kowdiar HQ will review your profile shortly.</span>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script>
+    let currentDept = 'all';
+
+    function setDeptFilter(dept, btnEl) {
+      currentDept = dept;
+      document.querySelectorAll('.job-dept-btn').forEach(b => {
+        b.classList.remove('active-filter', 'border-cyan-500/40', 'bg-cyan-500/15', 'text-cyan-300');
+        b.classList.add('border-slate-800', 'bg-slate-900/80', 'text-slate-300');
+      });
+      if (btnEl) {
+        btnEl.classList.remove('border-slate-800', 'bg-slate-900/80', 'text-slate-300');
+        btnEl.classList.add('active-filter', 'border-cyan-500/40', 'bg-cyan-500/15', 'text-cyan-300');
+      }
+      filterJobs();
+    }
+
+    function filterJobs() {
+      const q = (document.getElementById('job-search-input')?.value || '').toLowerCase().trim();
+      const cards = document.querySelectorAll('.job-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const deptMatch = (currentDept === 'all' || card.dataset.dept === currentDept);
+        const textMatch = !q || card.textContent.toLowerCase().includes(q);
+        if (deptMatch && textMatch) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const emptyEl = document.getElementById('jobs-empty');
+      if (emptyEl) {
+        emptyEl.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    function openApplyModal(roleTitle) {
+      const input = document.getElementById('apply-role-input');
+      if (input) input.value = roleTitle || 'General / Open Application';
+      if (typeof openModal === 'function') {
+        openModal('apply-modal');
+      } else {
+        const m = document.getElementById('apply-modal');
+        if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+      }
+    }
+
+    function submitCareerApplication(e) {
+      e.preventDefault();
+      const role = document.getElementById('apply-role-input').value;
+      const name = document.getElementById('apply-name').value;
+      if (typeof closeModal === 'function') {
+        closeModal('apply-modal');
+      }
+      const toast = document.getElementById('career-toast');
+      const msg   = document.getElementById('career-toast-msg');
+      if (toast && msg) {
+        msg.textContent = `Thank you, ${name}! Your application for "${role}" has been logged with Nellys Tech HR.`;
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 4500);
+      }
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
