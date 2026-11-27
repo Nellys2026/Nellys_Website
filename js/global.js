@@ -52,7 +52,9 @@ function applyTheme(theme) {
 
   /* Update logo image for optimal light/white vs dark background contrast */
   document.querySelectorAll('img[src*="nellys-logo"]').forEach(img => {
-    img.src = theme === 'light' ? 'nellys-logo-light.svg' : 'nellys-logo-dark.svg';
+    const rawSrc = img.getAttribute('src') || '';
+    const prefix = rawSrc.startsWith('../') ? '../' : '';
+    img.src = prefix + (theme === 'light' ? 'nellys-logo-light.svg' : 'nellys-logo-dark.svg');
   });
 }
 
@@ -115,9 +117,11 @@ function initMobileMenu() {
 /* ── ACTIVE NAV ──────────────────────────────────────────── */
 function setActiveNavLink() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
+  const normalizeHref = (href) => (href || '').split('#')[0].split('/').pop();
+
   document.querySelectorAll('.nav-link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === page || (page === '' && href === 'index.html')) {
+    const target = normalizeHref(link.getAttribute('href'));
+    if (target === page || (page === '' && target === 'index.html')) {
       link.classList.add('active', 'font-semibold');
     } else {
       link.classList.remove('active');
@@ -126,11 +130,11 @@ function setActiveNavLink() {
 
   // Also highlight active page in mobile drawer
   document.querySelectorAll('#mobile-drawer nav a').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === page || (page === '' && href === 'index.html')) {
+    const target = normalizeHref(link.getAttribute('href'));
+    if (target === page || (page === '' && target === 'index.html')) {
       link.classList.add('text-cyan-400', 'font-bold');
       link.classList.remove('text-slate-300');
-    } else if (href !== 'login.html') {
+    } else if (target !== 'login.html') {
       link.classList.remove('text-cyan-400', 'font-bold');
       link.classList.add('text-slate-300');
     }

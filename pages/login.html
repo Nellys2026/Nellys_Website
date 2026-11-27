@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enterprise Portal Login — Nellys Tech PVT. LTD.</title>
   <meta name="description" content="Secure Portal Authentication — Nellys Tech Private Limited Enterprise Command Center.">
   <!-- Tailwind CSS (Local bundle with CDN fallback) -->
-  <script src="tailwind.cdn.js"></script>
+  <script src="../tailwind.cdn.js"></script>
   <script>
     if (!window.tailwind) {
       document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/login.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <script>
     (function() {
@@ -38,8 +38,8 @@
     <!-- LEFT BRAND PANEL -->
     <div class="brand-panel hidden lg:flex flex-col justify-between p-10 xl:p-12 w-[45%] shrink-0">
       <div>
-        <a href="index.html" class="flex items-center gap-3 group">
-          <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-10 w-auto group-hover:scale-105 transition-transform">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <img src="../nellys-logo.svg" alt="Nellys Tech Logo" class="h-10 w-auto group-hover:scale-105 transition-transform">
           <div>
             <span class="text-lg font-extrabold text-white tracking-tight leading-none block">Nellys <span class="text-cyan-400">Tech</span></span>
             <span class="text-[10px] text-cyan-400 tracking-wider font-bold uppercase">PVT. LTD. · Portal</span>
@@ -106,7 +106,7 @@
     <div class="flex-1 flex flex-col justify-center p-8 sm:p-10 xl:p-12">
 
       <div class="flex items-center justify-between mb-8">
-        <a href="index.html" class="flex items-center gap-2 text-xs text-slate-400 hover:text-cyan-400 transition-colors font-semibold">
+        <a href="../index.html" class="flex items-center gap-2 text-xs text-slate-400 hover:text-cyan-400 transition-colors font-semibold">
           <i class="fas fa-arrow-left text-[10px]"></i> Back to Public Portal
         </a>
         <button onclick="toggleTheme()" id="theme-btn" class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-400 hover:text-amber-300 transition-all" title="Toggle Theme">
@@ -115,7 +115,7 @@
       </div>
 
       <div class="lg:hidden flex items-center gap-3 mb-6">
-        <img src="nellys-logo.svg" alt="Nellys Tech Logo" class="h-8 w-auto">
+        <img src="../nellys-logo.svg" alt="Nellys Tech Logo" class="h-8 w-auto">
         <span class="text-base font-extrabold text-white">Nellys <span class="text-cyan-400">Tech Portal</span></span>
       </div>
 
@@ -263,7 +263,7 @@
         }
       }
       document.querySelectorAll('img[src*="nellys-logo"]').forEach(img => {
-        img.src = theme === 'light' ? 'nellys-logo-light.svg' : 'nellys-logo-dark.svg';
+        img.src = theme === 'light' ? '../nellys-logo-light.svg' : '../nellys-logo-dark.svg';
       });
     }
 
@@ -275,6 +275,6 @@
 
     document.addEventListener('DOMContentLoaded', syncLoginTheme);
   </script>
-<script src="js/global.js"></script>
+<script src="../js/global.js"></script>
 </body>
 </html>
